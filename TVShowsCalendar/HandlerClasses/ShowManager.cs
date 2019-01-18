@@ -107,15 +107,13 @@ namespace TVShowsCalendar
 							Notification.Create(
 								(f, x) => PaintEpNotification(f, ep, x)
 								, () => { Data.Dashboard.ShowUp(); Data.Dashboard.PushPanel(null, new PC_Download(ep)); }
+								, true
 								, new Size(400, 80))
 								.Show(Data.Dashboard)
 								.PictureBox.GetImage(ep.TMDbData.StillPath.IfEmpty(ep.Show.TMDbData.BackdropPath), 200);
 						});
 						remindLog.Add($"E{ep.TMDbData.Id}", DateTime.Now);
 					}
-
-					if (Data.Options.NotificationSound && eps.Any())
-						new System.Media.SoundPlayer(Properties.Resources.TodayNotification).Play();
 
 					ISave.Save(remindLog.Where(x => x.Value > DateTime.Now.AddDays(-60)).AsDictionary(), "RemindLog.tf");
 				}, 5000);
@@ -190,6 +188,9 @@ namespace TVShowsCalendar
 				var show = ISave.Load<Show>($"ShowsData/{file.Name}");
 				Add(show, false);
 			}
+
+			if (Shows.All(x => x.Loaded))
+				ShowLoadedMethod(null);
 
 			Data.Preferences.LastShowCheck = DateTime.Now;
 			Data.Preferences.Save();

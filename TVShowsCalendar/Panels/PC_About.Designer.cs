@@ -38,6 +38,8 @@
 			this.B_ChangeLog = new SlickControls.Controls.SlickButton();
 			this.P_Licence = new System.Windows.Forms.TableLayoutPanel();
 			this.P_Tips = new System.Windows.Forms.TableLayoutPanel();
+			this.autoSizeLabel1 = new TVShowsCalendar.UserControls.AutoSizeLabel();
+			this.sectionPanel1 = new TVShowsCalendar.UserControls.SectionPanel();
 			this.P_AppInfo = new System.Windows.Forms.TableLayoutPanel();
 			this.B_Icons8 = new SlickControls.Controls.SlickButton();
 			this.B_TMDb = new SlickControls.Controls.SlickButton();
@@ -55,8 +57,6 @@
 			this.P_Spacer = new SlickControls.Controls.DBPanel();
 			this.P_Spacer_2 = new SlickControls.Controls.DBPanel();
 			this.Content = new System.Windows.Forms.FlowLayoutPanel();
-			this.sectionPanel1 = new TVShowsCalendar.UserControls.SectionPanel();
-			this.autoSizeLabel1 = new TVShowsCalendar.UserControls.AutoSizeLabel();
 			this.TLP_Main.SuspendLayout();
 			this.P_OptionContainer.SuspendLayout();
 			this.P_Stuff.SuspendLayout();
@@ -124,7 +124,7 @@
 			this.P_Stuff.Location = new System.Drawing.Point(0, 0);
 			this.P_Stuff.MinimumSize = new System.Drawing.Size(600, 200);
 			this.P_Stuff.Name = "P_Stuff";
-			this.P_Stuff.Size = new System.Drawing.Size(600, 849);
+			this.P_Stuff.Size = new System.Drawing.Size(600, 798);
 			this.P_Stuff.TabIndex = 34;
 			// 
 			// P_Changelog
@@ -133,7 +133,7 @@
 			this.P_Changelog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.P_Changelog.Controls.Add(this.panel1);
 			this.P_Changelog.Dock = System.Windows.Forms.DockStyle.Top;
-			this.P_Changelog.Location = new System.Drawing.Point(0, 809);
+			this.P_Changelog.Location = new System.Drawing.Point(0, 758);
 			this.P_Changelog.Name = "P_Changelog";
 			this.P_Changelog.Size = new System.Drawing.Size(600, 40);
 			this.P_Changelog.TabIndex = 3;
@@ -172,7 +172,7 @@
 			// 
 			this.P_Licence.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.P_Licence.Dock = System.Windows.Forms.DockStyle.Top;
-			this.P_Licence.Location = new System.Drawing.Point(0, 674);
+			this.P_Licence.Location = new System.Drawing.Point(0, 623);
 			this.P_Licence.Name = "P_Licence";
 			this.P_Licence.Size = new System.Drawing.Size(600, 135);
 			this.P_Licence.TabIndex = 2;
@@ -186,15 +186,42 @@
 			this.P_Tips.Controls.Add(this.autoSizeLabel1, 0, 1);
 			this.P_Tips.Controls.Add(this.sectionPanel1, 0, 0);
 			this.P_Tips.Dock = System.Windows.Forms.DockStyle.Top;
-			this.P_Tips.Location = new System.Drawing.Point(0, 491);
+			this.P_Tips.Location = new System.Drawing.Point(0, 455);
 			this.P_Tips.Name = "P_Tips";
 			this.P_Tips.RowCount = 3;
 			this.P_Tips.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_Tips.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_Tips.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.P_Tips.Size = new System.Drawing.Size(600, 183);
+			this.P_Tips.Size = new System.Drawing.Size(600, 168);
 			this.P_Tips.TabIndex = 1;
 			this.P_Tips.Visible = false;
+			// 
+			// autoSizeLabel1
+			// 
+			this.autoSizeLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.autoSizeLabel1.Location = new System.Drawing.Point(3, 57);
+			this.autoSizeLabel1.Name = "autoSizeLabel1";
+			this.autoSizeLabel1.Size = new System.Drawing.Size(594, 88);
+			this.autoSizeLabel1.TabIndex = 16;
+			this.autoSizeLabel1.Text = resources.GetString("autoSizeLabel1.Text");
+			// 
+			// sectionPanel1
+			// 
+			this.sectionPanel1.Active = false;
+			this.sectionPanel1.AutoHide = false;
+			this.sectionPanel1.AutoSize = true;
+			this.sectionPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.sectionPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.sectionPanel1.Flavor = null;
+			this.sectionPanel1.Icon = global::TVShowsCalendar.Properties.Resources.Icon_22;
+			this.sectionPanel1.Info = "";
+			this.sectionPanel1.Location = new System.Drawing.Point(0, 0);
+			this.sectionPanel1.Margin = new System.Windows.Forms.Padding(0);
+			this.sectionPanel1.MaximumSize = new System.Drawing.Size(9999, 54);
+			this.sectionPanel1.Name = "sectionPanel1";
+			this.sectionPanel1.Size = new System.Drawing.Size(600, 54);
+			this.sectionPanel1.TabIndex = 1;
+			this.sectionPanel1.Text = "Shows Calendar";
 			// 
 			// P_AppInfo
 			// 
@@ -221,7 +248,7 @@
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.P_AppInfo.Size = new System.Drawing.Size(600, 491);
+			this.P_AppInfo.Size = new System.Drawing.Size(600, 455);
 			this.P_AppInfo.TabIndex = 0;
 			// 
 			// B_Icons8
@@ -235,7 +262,7 @@
 			this.B_Icons8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.B_Icons8.IconSize = 16;
 			this.B_Icons8.Image = global::TVShowsCalendar.Properties.Resources.Tiny_RestoreWindow;
-			this.B_Icons8.Location = new System.Drawing.Point(456, 461);
+			this.B_Icons8.Location = new System.Drawing.Point(456, 425);
 			this.B_Icons8.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
 			this.B_Icons8.Name = "B_Icons8";
 			this.B_Icons8.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
@@ -255,7 +282,7 @@
 			this.B_TMDb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
 			this.B_TMDb.IconSize = 16;
 			this.B_TMDb.Image = global::TVShowsCalendar.Properties.Resources.Tiny_RestoreWindow;
-			this.B_TMDb.Location = new System.Drawing.Point(456, 312);
+			this.B_TMDb.Location = new System.Drawing.Point(456, 284);
 			this.B_TMDb.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
 			this.B_TMDb.Name = "B_TMDb";
 			this.B_TMDb.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
@@ -267,10 +294,10 @@
 			// L_Icons8Info
 			// 
 			this.L_Icons8Info.Dock = System.Windows.Forms.DockStyle.Top;
-			this.L_Icons8Info.Location = new System.Drawing.Point(7, 399);
+			this.L_Icons8Info.Location = new System.Drawing.Point(7, 371);
 			this.L_Icons8Info.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
 			this.L_Icons8Info.Name = "L_Icons8Info";
-			this.L_Icons8Info.Size = new System.Drawing.Size(586, 59);
+			this.L_Icons8Info.Size = new System.Drawing.Size(586, 51);
 			this.L_Icons8Info.TabIndex = 16;
 			this.L_Icons8Info.Text = "Shows Calendar uses Icons8 for all its icon needs.\r\n\r\nIcons8 allows professional " +
     "and amateur designers to express their ideas by providing the right design eleme" +
@@ -282,7 +309,7 @@
 			this.L_ShowsCalendarInfo.Location = new System.Drawing.Point(7, 57);
 			this.L_ShowsCalendarInfo.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
 			this.L_ShowsCalendarInfo.Name = "L_ShowsCalendarInfo";
-			this.L_ShowsCalendarInfo.Size = new System.Drawing.Size(586, 103);
+			this.L_ShowsCalendarInfo.Size = new System.Drawing.Size(586, 88);
 			this.L_ShowsCalendarInfo.TabIndex = 15;
 			this.L_ShowsCalendarInfo.Text = resources.GetString("L_ShowsCalendarInfo.Text");
 			// 
@@ -296,7 +323,7 @@
 			this.SP_Icons8.Flavor = null;
 			this.SP_Icons8.Icon = ((System.Drawing.Image)(resources.GetObject("SP_Icons8.Icon")));
 			this.SP_Icons8.Info = "";
-			this.SP_Icons8.Location = new System.Drawing.Point(0, 342);
+			this.SP_Icons8.Location = new System.Drawing.Point(0, 314);
 			this.SP_Icons8.Margin = new System.Windows.Forms.Padding(0);
 			this.SP_Icons8.MaximumSize = new System.Drawing.Size(9999, 54);
 			this.SP_Icons8.Name = "SP_Icons8";
@@ -314,7 +341,7 @@
 			this.SP_TMDb.Flavor = null;
 			this.SP_TMDb.Icon = global::TVShowsCalendar.Properties.Resources.TMDB;
 			this.SP_TMDb.Info = "";
-			this.SP_TMDb.Location = new System.Drawing.Point(0, 163);
+			this.SP_TMDb.Location = new System.Drawing.Point(0, 148);
 			this.SP_TMDb.Margin = new System.Windows.Forms.Padding(0);
 			this.SP_TMDb.MaximumSize = new System.Drawing.Size(9999, 54);
 			this.SP_TMDb.Name = "SP_TMDb";
@@ -343,10 +370,10 @@
 			// L_TMDbInfo
 			// 
 			this.L_TMDbInfo.Dock = System.Windows.Forms.DockStyle.Top;
-			this.L_TMDbInfo.Location = new System.Drawing.Point(7, 220);
+			this.L_TMDbInfo.Location = new System.Drawing.Point(7, 205);
 			this.L_TMDbInfo.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
 			this.L_TMDbInfo.Name = "L_TMDbInfo";
-			this.L_TMDbInfo.Size = new System.Drawing.Size(586, 89);
+			this.L_TMDbInfo.Size = new System.Drawing.Size(586, 76);
 			this.L_TMDbInfo.TabIndex = 14;
 			this.L_TMDbInfo.Text = resources.GetString("L_TMDbInfo.Text");
 			// 
@@ -391,6 +418,7 @@
 			this.T_Licence.TabIndex = 40;
 			this.T_Licence.TabStop = false;
 			this.T_Licence.Text = "Licence Agreement";
+			this.T_Licence.Visible = false;
 			this.T_Licence.Click += new System.EventHandler(this.T_Licence_Click);
 			// 
 			// T_Tips
@@ -406,6 +434,7 @@
 			this.T_Tips.TabIndex = 38;
 			this.T_Tips.TabStop = false;
 			this.T_Tips.Text = "Tips & Tricks";
+			this.T_Tips.Visible = false;
 			this.T_Tips.Click += new System.EventHandler(this.T_Tips_Click);
 			// 
 			// T_AppInfo
@@ -456,35 +485,9 @@
 			this.Content.Size = new System.Drawing.Size(557, 13);
 			this.Content.TabIndex = 0;
 			// 
-			// sectionPanel1
-			// 
-			this.sectionPanel1.Active = false;
-			this.sectionPanel1.AutoHide = false;
-			this.sectionPanel1.AutoSize = true;
-			this.sectionPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.sectionPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.sectionPanel1.Flavor = null;
-			this.sectionPanel1.Icon = global::TVShowsCalendar.Properties.Resources.Icon_22;
-			this.sectionPanel1.Info = "";
-			this.sectionPanel1.Location = new System.Drawing.Point(0, 0);
-			this.sectionPanel1.Margin = new System.Windows.Forms.Padding(0);
-			this.sectionPanel1.MaximumSize = new System.Drawing.Size(9999, 54);
-			this.sectionPanel1.Name = "sectionPanel1";
-			this.sectionPanel1.Size = new System.Drawing.Size(600, 54);
-			this.sectionPanel1.TabIndex = 1;
-			this.sectionPanel1.Text = "Shows Calendar";
-			// 
-			// autoSizeLabel1
-			// 
-			this.autoSizeLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.autoSizeLabel1.Location = new System.Drawing.Point(3, 57);
-			this.autoSizeLabel1.Name = "autoSizeLabel1";
-			this.autoSizeLabel1.Size = new System.Drawing.Size(594, 103);
-			this.autoSizeLabel1.TabIndex = 16;
-			this.autoSizeLabel1.Text = resources.GetString("autoSizeLabel1.Text");
-			// 
 			// PC_About
 			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.Controls.Add(this.TLP_Main);
 			this.Name = "PC_About";

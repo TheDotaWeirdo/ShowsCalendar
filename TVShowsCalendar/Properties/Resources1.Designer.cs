@@ -491,6 +491,24 @@ namespace TVShowsCalendar.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Notif_Long {
+            get {
+                return ResourceManager.GetStream("Notif_Long", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Notif_Quick {
+            get {
+                return ResourceManager.GetStream("Notif_Quick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap PB_5_Stars {
@@ -1087,15 +1105,6 @@ namespace TVShowsCalendar.Properties {
             get {
                 object obj = ResourceManager.GetObject("TMDB", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream TodayNotification {
-            get {
-                return ResourceManager.GetStream("TodayNotification", resourceCulture);
             }
         }
     }

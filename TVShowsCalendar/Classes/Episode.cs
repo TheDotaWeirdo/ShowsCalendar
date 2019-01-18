@@ -242,11 +242,8 @@ namespace TVShowsCalendar.Classes
 					Cursor.Current = Cursors.WaitCursor;
 					WatchDate = DateTime.Now;
 					Watched = !Watched;
-					if(Watched)
-					{
-						WatchTime = 0;
-						Progress = 0;
-					}
+					WatchTime = 0;
+					Progress = 0;
 					new Action(()=>
 					{
 						LocalShowHandler.Refresh(Show);

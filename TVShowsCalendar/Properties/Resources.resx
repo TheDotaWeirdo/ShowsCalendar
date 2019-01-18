@@ -208,9 +208,6 @@
   <data name="Tiny_ToggleOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_ToggleOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TodayNotification" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TodayNotification.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Tiny_Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -429,5 +426,11 @@
   </data>
   <data name="Icons8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Notif_Long" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Notif_Long.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Notif_Quick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Notif_Quick.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

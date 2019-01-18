@@ -32,7 +32,7 @@ namespace TVShowsCalendar
 			{
 				Movies.Add(movie);
 				MovieAdded?.Invoke(movie);
-				movie.MovieLoaded += ShowLoadedMethod;
+				movie.MovieLoaded += MovieLoadedMethod;
 			}
 
 			if (save && movie.Id != 0)
@@ -48,7 +48,7 @@ namespace TVShowsCalendar
 			{
 				movie.Delete();
 				Movies.Remove(movie);
-				movie.MovieLoaded -= ShowLoadedMethod;
+				movie.MovieLoaded -= MovieLoadedMethod;
 				MovieRemoved?.Invoke(movie);
 			}
 			catch
@@ -60,7 +60,7 @@ namespace TVShowsCalendar
 
 		private static WaitIdentifier RemindLogIdentifier = new WaitIdentifier();
 
-		private static void ShowLoadedMethod(Movie movie)
+		private static void MovieLoadedMethod(Movie movie)
 		{
 			MovieLoaded?.Invoke(movie);
 
@@ -85,15 +85,13 @@ namespace TVShowsCalendar
 							Notification.Create(
 								(f, x) => PaintEpNotification(f, mov, x)
 								, () => { Data.Dashboard.ShowUp(); Data.Dashboard.PushPanel(null, new PC_Download(mov)); }
+								, true
 								, new Size(400, 80))
 								.Show(Data.Dashboard)
 								.PictureBox.GetImage(mov.TMDbData.BackdropPath, 200);
 						});
 						remindLog.Add($"M{mov.TMDbData.Id}", DateTime.Now);
 					}
-
-					if (Data.Options.NotificationSound && movs.Any())
-						new System.Media.SoundPlayer(Properties.Resources.TodayNotification).Play();
 
 					ISave.Save(remindLog.Where(x => x.Value > DateTime.Now.AddDays(-60)).AsDictionary(), "RemindLog.tf");
 				}, 5000);
@@ -169,6 +167,9 @@ namespace TVShowsCalendar
 				if (movie.Loaded)
 					MovieLoaded?.Invoke(movie);
 			}
+
+			if (Movies.All(x => x.Loaded))
+				MovieLoadedMethod(null);
 
 			LocalMovieHandler.Load();
 

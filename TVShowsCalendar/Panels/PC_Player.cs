@@ -194,6 +194,22 @@ namespace TVShowsCalendar.Panels
 						P_BotSpacer.Enabled = false;
 						P_Info.Controls.Clear(true);
 						P_Info.Controls.Add(new EpisodeTile(ep, true, true) { Dock = DockStyle.Fill });
+
+						var next = ep.Next;
+						if (next != null && next.AirState == AirStateEnum.Aired && !(next.VidFile?.Exists ?? false))
+						{
+							Notification.Create("Download Next Episode?"
+								, $"Episode {next} isn't downloaded yet.\nClick to download it while you watch."
+								, SlickControls.Enums.PromptIcons.Question
+								, () => 
+								{
+									ToggleFullscreen(false);
+									vlcControl.Pause();
+									Paused = true;
+									Form.PushPanel(null, new PC_Download(next));
+								}
+							).Show(Data.Dashboard, 20);
+						}
 					});
 
 					new Action(() =>

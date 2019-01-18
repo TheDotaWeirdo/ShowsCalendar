@@ -48,7 +48,7 @@ namespace TVShowsCalendar.Forms
 					SetPanel<PC_LibraryFolders>(PI_LibraryFolders);
 
 					Notification.Clear();
-					Notification.Create("First Time Setup • Library Folders", "This is your library folders screen, add in the folders that contain your Series and Movies so the app knows where to look.", PromptIcons.Info, null, new Size(350, 70))
+					Notification.Create("First Time Setup • Library Folders", "This is your library folders screen, add in the folders that contain your Series and Movies so the app knows where to look.", PromptIcons.Info, null, false, new Size(350, 70))
 						.Show(this, 30);
 					System.Media.SystemSounds.Beep.Play();
 					break;
@@ -58,7 +58,7 @@ namespace TVShowsCalendar.Forms
 
 					Notification.Clear();
 					Notification.Create("First Time Setup • Shows", "Finally, this is your Shows screen, add or discover TV Shows to your library to finish.\n\n" +
-						"You can always go to the About section for more help and other tips about the App.", PromptIcons.Info, null, new Size(350, 115))
+						"You can always go to the About section for more help and other tips about the App.", PromptIcons.Info, null, false, new Size(350, 115))
 						.Show(this, 50);
 					System.Media.SystemSounds.Beep.Play();
 					EnableSideBar();
@@ -109,7 +109,7 @@ namespace TVShowsCalendar.Forms
 				{
 					MessagePrompt.Show("Welcome to Shows Calendar!\nLet's set you up nice and breezy.", "First Time Setup", icon: PromptIcons.Info, form: this);
 
-					Notification.Create("First Time Setup • Settings", "This is your settings screen, go through them to cherry-pick your experience. You can come here anytime.", PromptIcons.Info, null, new Size(350, 70))
+					Notification.Create("First Time Setup • Settings", "This is your settings screen, go through them to cherry-pick your experience. You can come here anytime.", PromptIcons.Info, null, false, new Size(350, 70))
 						.Show(this, 30);
 				}));
 			}

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TV Shows Calendar")]
+[assembly: AssemblyTitle("Shows Calendar")]
 [assembly: AssemblyDescription("Save the Shows that matter to you for the app to remind you when new episodes air, and provide you with info as well as download links for your Shows and Episodes.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jad Hajjar")]
