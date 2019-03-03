@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Watch
 	{
@@ -29,17 +29,17 @@
 		private void InitializeComponent()
 		{
 			this.P_Tabs = new System.Windows.Forms.Panel();
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.TLP_NoShows = new System.Windows.Forms.TableLayoutPanel();
 			this.L_NoShows = new System.Windows.Forms.Label();
 			this.L_NoShowsInfo = new System.Windows.Forms.Label();
-			this.SP_OnDeck = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_ContinueEps = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_ContinueMovies = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_StartShows = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_StartMovies = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_RewatchEps = new TVShowsCalendar.UserControls.SectionPanel();
+			this.SP_OnDeck = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_ContinueEps = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_ContinueMovies = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_StartShows = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_StartMovies = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_RewatchEps = new SlickControls.Controls.SlickSectionPanel();
 			this.P_Tabs.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.TLP_NoShows.SuspendLayout();
@@ -63,7 +63,6 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = this.P_Tabs;
 			this.verticalScroll.Location = new System.Drawing.Point(779, 30);
@@ -133,7 +132,7 @@
 			this.SP_OnDeck.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_OnDeck.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_OnDeck.Flavor = null;
-			this.SP_OnDeck.Icon = global::TVShowsCalendar.Properties.Resources.Big_Play;
+			this.SP_OnDeck.Icon = global::ShowsCalendar.Properties.Resources.Big_Play;
 			this.SP_OnDeck.Info = "";
 			this.SP_OnDeck.Location = new System.Drawing.Point(0, 0);
 			this.SP_OnDeck.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -150,7 +149,7 @@
 			this.SP_ContinueEps.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_ContinueEps.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_ContinueEps.Flavor = null;
-			this.SP_ContinueEps.Icon = global::TVShowsCalendar.Properties.Resources.Big_TV;
+			this.SP_ContinueEps.Icon = global::ShowsCalendar.Properties.Resources.Big_TV;
 			this.SP_ContinueEps.Info = "";
 			this.SP_ContinueEps.Location = new System.Drawing.Point(0, 54);
 			this.SP_ContinueEps.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -167,7 +166,7 @@
 			this.SP_ContinueMovies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_ContinueMovies.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_ContinueMovies.Flavor = null;
-			this.SP_ContinueMovies.Icon = global::TVShowsCalendar.Properties.Resources.Big_Movie;
+			this.SP_ContinueMovies.Icon = global::ShowsCalendar.Properties.Resources.Big_Movie;
 			this.SP_ContinueMovies.Info = "";
 			this.SP_ContinueMovies.Location = new System.Drawing.Point(0, 108);
 			this.SP_ContinueMovies.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -184,7 +183,7 @@
 			this.SP_StartShows.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_StartShows.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_StartShows.Flavor = null;
-			this.SP_StartShows.Icon = global::TVShowsCalendar.Properties.Resources.Big_TV;
+			this.SP_StartShows.Icon = global::ShowsCalendar.Properties.Resources.Big_TV;
 			this.SP_StartShows.Info = "";
 			this.SP_StartShows.Location = new System.Drawing.Point(0, 162);
 			this.SP_StartShows.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -201,7 +200,7 @@
 			this.SP_StartMovies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_StartMovies.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_StartMovies.Flavor = null;
-			this.SP_StartMovies.Icon = global::TVShowsCalendar.Properties.Resources.Big_Movie;
+			this.SP_StartMovies.Icon = global::ShowsCalendar.Properties.Resources.Big_Movie;
 			this.SP_StartMovies.Info = "";
 			this.SP_StartMovies.Location = new System.Drawing.Point(0, 216);
 			this.SP_StartMovies.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -218,7 +217,7 @@
 			this.SP_RewatchEps.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_RewatchEps.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_RewatchEps.Flavor = null;
-			this.SP_RewatchEps.Icon = global::TVShowsCalendar.Properties.Resources.Big_TV;
+			this.SP_RewatchEps.Icon = global::ShowsCalendar.Properties.Resources.Big_TV;
 			this.SP_RewatchEps.Info = "";
 			this.SP_RewatchEps.Location = new System.Drawing.Point(0, 270);
 			this.SP_RewatchEps.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -276,7 +275,7 @@
 				"Be sure you haven't missed anything"
 			};
 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.TLP_NoShows);
 			this.Controls.Add(this.verticalScroll);
 			this.Controls.Add(this.panel1);
@@ -301,16 +300,16 @@
 		#endregion
 
 		private System.Windows.Forms.Panel P_Tabs;
-		private SlickControls.Controls.VerticalScroll verticalScroll;
+		private SlickControls.Controls.SlickScroll verticalScroll;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TableLayoutPanel TLP_NoShows;
 		private System.Windows.Forms.Label L_NoShows;
 		private System.Windows.Forms.Label L_NoShowsInfo;
-		private UserControls.SectionPanel SP_RewatchEps;
-		private UserControls.SectionPanel SP_StartMovies;
-		private UserControls.SectionPanel SP_StartShows;
-		private UserControls.SectionPanel SP_ContinueMovies;
-		private UserControls.SectionPanel SP_ContinueEps;
-		private UserControls.SectionPanel SP_OnDeck;
+		private SlickControls.Controls.SlickSectionPanel SP_RewatchEps;
+		private SlickControls.Controls.SlickSectionPanel SP_StartMovies;
+		private SlickControls.Controls.SlickSectionPanel SP_StartShows;
+		private SlickControls.Controls.SlickSectionPanel SP_ContinueMovies;
+		private SlickControls.Controls.SlickSectionPanel SP_ContinueEps;
+		private SlickControls.Controls.SlickSectionPanel SP_OnDeck;
 	}
 }

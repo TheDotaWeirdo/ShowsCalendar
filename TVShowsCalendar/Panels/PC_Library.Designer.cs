@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Library
 	{
@@ -29,14 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.P_Tabs = new System.Windows.Forms.Panel();
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.TLP_NoShows = new System.Windows.Forms.TableLayoutPanel();
 			this.L_NoShows = new System.Windows.Forms.Label();
 			this.L_NoShowsInfo = new System.Windows.Forms.Label();
-			this.SP_Shows = new TVShowsCalendar.UserControls.SectionPanel();
+			this.SP_Shows = new SlickControls.Controls.SlickSectionPanel();
 			this.Content = new System.Windows.Forms.FlowLayoutPanel();
-			this.SP_Movies = new TVShowsCalendar.UserControls.SectionPanel();
+			this.SP_Movies = new SlickControls.Controls.SlickSectionPanel();
 			this.P_Tabs.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.TLP_NoShows.SuspendLayout();
@@ -56,7 +56,6 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = this.P_Tabs;
 			this.verticalScroll.Location = new System.Drawing.Point(774, 30);
@@ -126,7 +125,7 @@
 			this.SP_Shows.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_Shows.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Shows.Flavor = null;
-			this.SP_Shows.Icon = global::TVShowsCalendar.Properties.Resources.Big_TV;
+			this.SP_Shows.Icon = global::ShowsCalendar.Properties.Resources.Big_TV;
 			this.SP_Shows.Info = "TV Shows available to watch";
 			this.SP_Shows.Location = new System.Drawing.Point(0, 0);
 			this.SP_Shows.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -154,7 +153,7 @@
 			this.SP_Movies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_Movies.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Movies.Flavor = null;
-			this.SP_Movies.Icon = global::TVShowsCalendar.Properties.Resources.Big_Movie;
+			this.SP_Movies.Icon = global::ShowsCalendar.Properties.Resources.Big_Movie;
 			this.SP_Movies.Info = "Movies available to watch";
 			this.SP_Movies.Location = new System.Drawing.Point(0, 54);
 			this.SP_Movies.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -165,7 +164,7 @@
 			// 
 			// PC_Library
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.TLP_NoShows);
 			this.Controls.Add(this.verticalScroll);
 			this.Controls.Add(this.panel1);
@@ -190,13 +189,13 @@
 		#endregion
 
 		private System.Windows.Forms.Panel P_Tabs;
-		private SlickControls.Controls.VerticalScroll verticalScroll;
+		private SlickControls.Controls.SlickScroll verticalScroll;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TableLayoutPanel TLP_NoShows;
 		private System.Windows.Forms.Label L_NoShows;
 		private System.Windows.Forms.Label L_NoShowsInfo;
-		private UserControls.SectionPanel SP_Movies;
-		private UserControls.SectionPanel SP_Shows;
+		private SlickControls.Controls.SlickSectionPanel SP_Movies;
+		private SlickControls.Controls.SlickSectionPanel SP_Shows;
 		private System.Windows.Forms.FlowLayoutPanel Content;
 	}
 }

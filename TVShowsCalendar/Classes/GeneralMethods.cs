@@ -14,7 +14,7 @@ using Extensions;
 using Microsoft.WindowsAPICodePack.Shell;
 using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public enum TaskbarLocation { Top, Left, Bottom, Right, None }
 

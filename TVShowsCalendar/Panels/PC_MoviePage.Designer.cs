@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_MoviePage
 	{
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.P_Content = new System.Windows.Forms.Panel();
 			this.P_Info = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -61,7 +61,7 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.P_Line_5 = new System.Windows.Forms.Panel();
 			this.PB_Info5 = new System.Windows.Forms.PictureBox();
-			this.PB_Stars = new TVShowsCalendar.UserControls.SlickPB();
+			this.PB_Stars = new ShowsCalendar.Controls.SlickPB();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.P_Line_0 = new System.Windows.Forms.Panel();
@@ -69,6 +69,7 @@
 			this.L_InfoStatus = new System.Windows.Forms.Label();
 			this.P_Container = new System.Windows.Forms.Panel();
 			this.TLP_Tabs = new System.Windows.Forms.TableLayoutPanel();
+			this.ST_Files = new SlickControls.Controls.SlickTab();
 			this.ST_Images = new SlickControls.Controls.SlickTab();
 			this.ST_Info = new SlickControls.Controls.SlickTab();
 			this.ST_Crew = new SlickControls.Controls.SlickTab();
@@ -77,8 +78,9 @@
 			this.FLP_Crew = new System.Windows.Forms.FlowLayoutPanel();
 			this.FLP_Cast = new System.Windows.Forms.FlowLayoutPanel();
 			this.FLP_Similar = new System.Windows.Forms.FlowLayoutPanel();
-			this.PB_Top = new TVShowsCalendar.UserControls.SlickPB();
+			this.PB_Top = new ShowsCalendar.Controls.SlickPB();
 			this.FLP_Images = new System.Windows.Forms.FlowLayoutPanel();
+			this.FLP_Files = new System.Windows.Forms.FlowLayoutPanel();
 			this.P_Content.SuspendLayout();
 			this.P_Info.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
@@ -104,13 +106,14 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = this.P_Content;
 			this.verticalScroll.Location = new System.Drawing.Point(779, 202);
 			this.verticalScroll.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
 			this.verticalScroll.Name = "verticalScroll";
-			this.verticalScroll.Size = new System.Drawing.Size(12, 236);
+			this.verticalScroll.Size = new System.Drawing.Size(5, 236);
+			this.verticalScroll.SizeSource = null;
+			this.verticalScroll.Style = SlickControls.Controls.StyleType.Vertical;
 			this.verticalScroll.TabIndex = 13;
 			// 
 			// P_Content
@@ -208,7 +211,7 @@
 			// PB_Info7
 			// 
 			this.PB_Info7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info7.Image = global::TVShowsCalendar.Properties.Resources.Big_Budget;
+			this.PB_Info7.Image = global::ShowsCalendar.Properties.Resources.Big_Budget;
 			this.PB_Info7.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info7.Name = "PB_Info7";
@@ -276,7 +279,7 @@
 			// PB_Info1
 			// 
 			this.PB_Info1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info1.Image = global::TVShowsCalendar.Properties.Resources.Big_Country;
+			this.PB_Info1.Image = global::ShowsCalendar.Properties.Resources.Big_Country;
 			this.PB_Info1.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info1.Name = "PB_Info1";
@@ -344,7 +347,7 @@
 			// PB_Info4
 			// 
 			this.PB_Info4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info4.Image = global::TVShowsCalendar.Properties.Resources.Big_Production;
+			this.PB_Info4.Image = global::ShowsCalendar.Properties.Resources.Big_Production;
 			this.PB_Info4.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info4.Name = "PB_Info4";
@@ -413,7 +416,7 @@
 			// PB_Info3
 			// 
 			this.PB_Info3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info3.Image = global::TVShowsCalendar.Properties.Resources.Big_Website;
+			this.PB_Info3.Image = global::ShowsCalendar.Properties.Resources.Big_Website;
 			this.PB_Info3.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info3.Name = "PB_Info3";
@@ -485,7 +488,7 @@
 			// PB_Info2
 			// 
 			this.PB_Info2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info2.Image = global::TVShowsCalendar.Properties.Resources.Big_Language;
+			this.PB_Info2.Image = global::ShowsCalendar.Properties.Resources.Big_Language;
 			this.PB_Info2.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info2.Name = "PB_Info2";
@@ -554,7 +557,7 @@
 			// PB_Info5
 			// 
 			this.PB_Info5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info5.Image = global::TVShowsCalendar.Properties.Resources.Big_Rating;
+			this.PB_Info5.Image = global::ShowsCalendar.Properties.Resources.Big_Rating;
 			this.PB_Info5.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info5.Name = "PB_Info5";
@@ -623,7 +626,7 @@
 			// PB_Info6
 			// 
 			this.PB_Info6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.PB_Info6.Image = global::TVShowsCalendar.Properties.Resources.Big_Status;
+			this.PB_Info6.Image = global::ShowsCalendar.Properties.Resources.Big_Status;
 			this.PB_Info6.Location = new System.Drawing.Point(15, 22);
 			this.PB_Info6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
 			this.PB_Info6.Name = "PB_Info6";
@@ -649,19 +652,21 @@
 			this.P_Container.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.P_Container.Location = new System.Drawing.Point(0, 202);
 			this.P_Container.Name = "P_Container";
-			this.P_Container.Size = new System.Drawing.Size(783, 502);
+			this.P_Container.Size = new System.Drawing.Size(1045, 502);
 			this.P_Container.TabIndex = 15;
 			// 
 			// TLP_Tabs
 			// 
-			this.TLP_Tabs.ColumnCount = 6;
-			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+			this.TLP_Tabs.ColumnCount = 7;
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
 			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP_Tabs.Controls.Add(this.ST_Images, 4, 0);
+			this.TLP_Tabs.Controls.Add(this.ST_Files, 4, 0);
+			this.TLP_Tabs.Controls.Add(this.ST_Images, 5, 0);
 			this.TLP_Tabs.Controls.Add(this.ST_Info, 0, 0);
 			this.TLP_Tabs.Controls.Add(this.ST_Crew, 2, 0);
 			this.TLP_Tabs.Controls.Add(this.ST_Similar, 3, 0);
@@ -672,8 +677,24 @@
 			this.TLP_Tabs.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
 			this.TLP_Tabs.RowCount = 1;
 			this.TLP_Tabs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP_Tabs.Size = new System.Drawing.Size(783, 32);
+			this.TLP_Tabs.Size = new System.Drawing.Size(1045, 32);
 			this.TLP_Tabs.TabIndex = 17;
+			// 
+			// ST_Files
+			// 
+			this.ST_Files.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.ST_Files.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ST_Files.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ST_Files.Hovered = false;
+			this.ST_Files.Icon = global::ShowsCalendar.Properties.Resources.Tiny_FolderPlay;
+			this.ST_Files.Location = new System.Drawing.Point(540, 6);
+			this.ST_Files.Margin = new System.Windows.Forms.Padding(0);
+			this.ST_Files.Name = "ST_Files";
+			this.ST_Files.Selected = false;
+			this.ST_Files.Size = new System.Drawing.Size(135, 26);
+			this.ST_Files.TabIndex = 6;
+			this.ST_Files.Text = "Local Files";
+			this.ST_Files.TabSelected += new System.EventHandler(this.ST_Files_TabSelected);
 			// 
 			// ST_Images
 			// 
@@ -681,11 +702,12 @@
 			this.ST_Images.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ST_Images.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ST_Images.Hovered = false;
-			this.ST_Images.Location = new System.Drawing.Point(600, 6);
+			this.ST_Images.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Image;
+			this.ST_Images.Location = new System.Drawing.Point(675, 6);
 			this.ST_Images.Margin = new System.Windows.Forms.Padding(0);
 			this.ST_Images.Name = "ST_Images";
 			this.ST_Images.Selected = false;
-			this.ST_Images.Size = new System.Drawing.Size(150, 26);
+			this.ST_Images.Size = new System.Drawing.Size(135, 26);
 			this.ST_Images.TabIndex = 5;
 			this.ST_Images.Text = "Images";
 			this.ST_Images.TabSelected += new System.EventHandler(this.ST_Images_TabSelected);
@@ -696,11 +718,12 @@
 			this.ST_Info.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ST_Info.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ST_Info.Hovered = false;
+			this.ST_Info.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Info;
 			this.ST_Info.Location = new System.Drawing.Point(0, 6);
 			this.ST_Info.Margin = new System.Windows.Forms.Padding(0);
 			this.ST_Info.Name = "ST_Info";
 			this.ST_Info.Selected = true;
-			this.ST_Info.Size = new System.Drawing.Size(150, 26);
+			this.ST_Info.Size = new System.Drawing.Size(135, 26);
 			this.ST_Info.TabIndex = 4;
 			this.ST_Info.Text = "Info";
 			this.ST_Info.TabSelected += new System.EventHandler(this.ST_Info_TabSelected);
@@ -711,11 +734,12 @@
 			this.ST_Crew.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ST_Crew.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ST_Crew.Hovered = false;
-			this.ST_Crew.Location = new System.Drawing.Point(300, 6);
+			this.ST_Crew.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Crew;
+			this.ST_Crew.Location = new System.Drawing.Point(270, 6);
 			this.ST_Crew.Margin = new System.Windows.Forms.Padding(0);
 			this.ST_Crew.Name = "ST_Crew";
 			this.ST_Crew.Selected = false;
-			this.ST_Crew.Size = new System.Drawing.Size(150, 26);
+			this.ST_Crew.Size = new System.Drawing.Size(135, 26);
 			this.ST_Crew.TabIndex = 3;
 			this.ST_Crew.Text = "Crew";
 			this.ST_Crew.TabSelected += new System.EventHandler(this.ST_Crew_TabSelected);
@@ -726,11 +750,12 @@
 			this.ST_Similar.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ST_Similar.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ST_Similar.Hovered = false;
-			this.ST_Similar.Location = new System.Drawing.Point(450, 6);
+			this.ST_Similar.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Similar;
+			this.ST_Similar.Location = new System.Drawing.Point(405, 6);
 			this.ST_Similar.Margin = new System.Windows.Forms.Padding(0);
 			this.ST_Similar.Name = "ST_Similar";
 			this.ST_Similar.Selected = false;
-			this.ST_Similar.Size = new System.Drawing.Size(150, 26);
+			this.ST_Similar.Size = new System.Drawing.Size(135, 26);
 			this.ST_Similar.TabIndex = 2;
 			this.ST_Similar.Text = "Similar";
 			this.ST_Similar.TabSelected += new System.EventHandler(this.ST_Similar_TabSelected);
@@ -741,11 +766,12 @@
 			this.ST_Cast.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ST_Cast.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ST_Cast.Hovered = false;
-			this.ST_Cast.Location = new System.Drawing.Point(150, 6);
+			this.ST_Cast.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Cast;
+			this.ST_Cast.Location = new System.Drawing.Point(135, 6);
 			this.ST_Cast.Margin = new System.Windows.Forms.Padding(0);
 			this.ST_Cast.Name = "ST_Cast";
 			this.ST_Cast.Selected = false;
-			this.ST_Cast.Size = new System.Drawing.Size(150, 26);
+			this.ST_Cast.Size = new System.Drawing.Size(135, 26);
 			this.ST_Cast.TabIndex = 1;
 			this.ST_Cast.Text = "Cast";
 			this.ST_Cast.TabSelected += new System.EventHandler(this.ST_Cast_TabSelected);
@@ -782,7 +808,7 @@
 			this.PB_Top.Dock = System.Windows.Forms.DockStyle.Top;
 			this.PB_Top.Location = new System.Drawing.Point(0, 30);
 			this.PB_Top.Name = "PB_Top";
-			this.PB_Top.Size = new System.Drawing.Size(783, 140);
+			this.PB_Top.Size = new System.Drawing.Size(1045, 140);
 			this.PB_Top.TabIndex = 16;
 			this.PB_Top.TabStop = false;
 			this.PB_Top.Paint += new System.Windows.Forms.PaintEventHandler(this.PB_Top_Paint);
@@ -798,17 +824,25 @@
 			this.FLP_Images.Size = new System.Drawing.Size(0, 0);
 			this.FLP_Images.TabIndex = 21;
 			// 
+			// FLP_Files
+			// 
+			this.FLP_Files.AutoSize = true;
+			this.FLP_Files.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.FLP_Files.Location = new System.Drawing.Point(0, 0);
+			this.FLP_Files.Name = "FLP_Files";
+			this.FLP_Files.Size = new System.Drawing.Size(0, 0);
+			this.FLP_Files.TabIndex = 20;
+			// 
 			// PC_MoviePage
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.verticalScroll);
 			this.Controls.Add(this.P_Container);
 			this.Controls.Add(this.TLP_Tabs);
 			this.Controls.Add(this.PB_Top);
 			this.Name = "PC_MoviePage";
 			this.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
-			this.ShowBack = true;
-			this.Size = new System.Drawing.Size(783, 704);
+			this.Size = new System.Drawing.Size(1045, 704);
 			this.Text = "Show Page";
 			this.Resize += new System.EventHandler(this.PC_MoviePage_Resize);
 			this.Controls.SetChildIndex(this.PB_Top, 0);
@@ -854,17 +888,13 @@
 
 		#endregion
 
-		private SlickControls.Controls.VerticalScroll verticalScroll;
+		private SlickControls.Controls.SlickScroll verticalScroll;
 		private System.Windows.Forms.Panel P_Content;
 		private System.Windows.Forms.Panel P_Container;
-		private UserControls.SlickPB PB_Top;
+		private ShowsCalendar.Controls.SlickPB PB_Top;
 		private System.Windows.Forms.TableLayoutPanel TLP_Tabs;
-		private SlickControls.Controls.SlickTab ST_Similar;
-		private SlickControls.Controls.SlickTab ST_Cast;
-		private SlickControls.Controls.SlickTab ST_Crew;
 		private System.Windows.Forms.FlowLayoutPanel FLP_Crew;
 		private System.Windows.Forms.FlowLayoutPanel FLP_Similar;
-		private SlickControls.Controls.SlickTab ST_Info;
 		private System.Windows.Forms.Panel P_Info;
 		private System.Windows.Forms.FlowLayoutPanel FLP_Cast;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -891,7 +921,7 @@
 		private System.Windows.Forms.PictureBox PB_Info5;
 		private System.Windows.Forms.Label L_InfoStatus;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-		private UserControls.SlickPB PB_Stars;
+		private ShowsCalendar.Controls.SlickPB PB_Stars;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
 		private System.Windows.Forms.Label LabelBudget;
 		private System.Windows.Forms.Panel P_Line_7;
@@ -903,7 +933,13 @@
 		private System.Windows.Forms.PictureBox PB_Info1;
 		private System.Windows.Forms.Label L_Info_Countries;
 		private System.Windows.Forms.Label L_InfoLanguage;
-		private SlickControls.Controls.SlickTab ST_Images;
 		private System.Windows.Forms.FlowLayoutPanel FLP_Images;
+		internal SlickControls.Controls.SlickTab ST_Files;
+		internal SlickControls.Controls.SlickTab ST_Similar;
+		internal SlickControls.Controls.SlickTab ST_Cast;
+		internal SlickControls.Controls.SlickTab ST_Crew;
+		internal SlickControls.Controls.SlickTab ST_Info;
+		internal SlickControls.Controls.SlickTab ST_Images;
+		private System.Windows.Forms.FlowLayoutPanel FLP_Files;
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TMDbLib.Objects.Search;
 using TMDbLib.Objects.TvShows;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public class LightShow
 	{

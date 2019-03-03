@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Movies
 	{
@@ -30,10 +30,10 @@
 		{
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.P_Tabs = new System.Windows.Forms.Panel();
-			this.SP_Earlier = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_Upcoming = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_Recent = new TVShowsCalendar.UserControls.SectionPanel();
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.SP_Earlier = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_Upcoming = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_Recent = new SlickControls.Controls.SlickSectionPanel();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.TB_Search = new SlickControls.Controls.SlickTextBox();
 			this.B_Discover = new SlickControls.Controls.SlickButton();
@@ -42,7 +42,7 @@
 			this.TLP_NoMovies = new System.Windows.Forms.TableLayoutPanel();
 			this.L_NoMovies = new System.Windows.Forms.Label();
 			this.L_NoMoviesInfo = new System.Windows.Forms.Label();
-			this.SP_Oldies = new TVShowsCalendar.UserControls.SectionPanel();
+			this.SP_Oldies = new SlickControls.Controls.SlickSectionPanel();
 			this.panel2.SuspendLayout();
 			this.P_Tabs.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -83,7 +83,7 @@
 			this.SP_Earlier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_Earlier.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Earlier.Flavor = null;
-			this.SP_Earlier.Icon = global::TVShowsCalendar.Properties.Resources.Big_Movie;
+			this.SP_Earlier.Icon = global::ShowsCalendar.Properties.Resources.Big_Movie;
 			this.SP_Earlier.Info = "Movies released a while back";
 			this.SP_Earlier.Location = new System.Drawing.Point(0, 108);
 			this.SP_Earlier.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -100,7 +100,7 @@
 			this.SP_Upcoming.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_Upcoming.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Upcoming.Flavor = null;
-			this.SP_Upcoming.Icon = global::TVShowsCalendar.Properties.Resources.Big_Schedule;
+			this.SP_Upcoming.Icon = global::ShowsCalendar.Properties.Resources.Big_Schedule;
 			this.SP_Upcoming.Info = "Recently aired Movies";
 			this.SP_Upcoming.Location = new System.Drawing.Point(0, 54);
 			this.SP_Upcoming.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -117,7 +117,7 @@
 			this.SP_Recent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_Recent.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Recent.Flavor = null;
-			this.SP_Recent.Icon = global::TVShowsCalendar.Properties.Resources.Big_Popcorn;
+			this.SP_Recent.Icon = global::ShowsCalendar.Properties.Resources.Big_Popcorn;
 			this.SP_Recent.Info = "Recently aired Movies";
 			this.SP_Recent.Location = new System.Drawing.Point(0, 0);
 			this.SP_Recent.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -128,7 +128,6 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = this.P_Tabs;
 			this.verticalScroll.Location = new System.Drawing.Point(881, 62);
@@ -183,13 +182,13 @@
 			// B_Discover
 			// 
 			this.B_Discover.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.B_Discover.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.B_Discover.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_Discover.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_Discover.ColorShade = null;
 			this.B_Discover.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.B_Discover.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
 			this.B_Discover.IconSize = 16;
-			this.B_Discover.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Discover;
+			this.B_Discover.Image = global::ShowsCalendar.Properties.Resources.Tiny_Discover;
 			this.B_Discover.Location = new System.Drawing.Point(595, 1);
 			this.B_Discover.Margin = new System.Windows.Forms.Padding(15, 0, 10, 0);
 			this.B_Discover.Name = "B_Discover";
@@ -202,13 +201,13 @@
 			// B_Add
 			// 
 			this.B_Add.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.B_Add.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.B_Add.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_Add.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_Add.ColorShade = null;
 			this.B_Add.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.B_Add.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
 			this.B_Add.IconSize = 16;
-			this.B_Add.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Add;
+			this.B_Add.Image = global::ShowsCalendar.Properties.Resources.Tiny_Add;
 			this.B_Add.Location = new System.Drawing.Point(745, 1);
 			this.B_Add.Margin = new System.Windows.Forms.Padding(15, 0, 10, 0);
 			this.B_Add.Name = "B_Add";
@@ -222,7 +221,7 @@
 			// 
 			this.PB_Search.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.PB_Search.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.PB_Search.Image = global::TVShowsCalendar.Properties.Resources.Big_Search;
+			this.PB_Search.Image = global::ShowsCalendar.Properties.Resources.Big_Search;
 			this.PB_Search.Location = new System.Drawing.Point(15, 5);
 			this.PB_Search.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
 			this.PB_Search.Name = "PB_Search";
@@ -284,7 +283,7 @@
 			this.SP_Oldies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_Oldies.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Oldies.Flavor = null;
-			this.SP_Oldies.Icon = global::TVShowsCalendar.Properties.Resources.Big_OldMovie;
+			this.SP_Oldies.Icon = global::ShowsCalendar.Properties.Resources.Big_OldMovie;
 			this.SP_Oldies.Info = "Movies released a while back";
 			this.SP_Oldies.Location = new System.Drawing.Point(0, 162);
 			this.SP_Oldies.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -295,7 +294,7 @@
 			// 
 			// PC_Movies
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.TLP_NoMovies);
 			this.Controls.Add(this.verticalScroll);
 			this.Controls.Add(this.panel2);
@@ -327,7 +326,7 @@
 		#endregion
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Panel P_Tabs;
-		private SlickControls.Controls.VerticalScroll verticalScroll;
+		private SlickControls.Controls.SlickScroll verticalScroll;
 		private SlickControls.Controls.SlickButton B_Add;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.PictureBox PB_Search;
@@ -335,10 +334,10 @@
 		private System.Windows.Forms.TableLayoutPanel TLP_NoMovies;
 		private System.Windows.Forms.Label L_NoMovies;
 		private System.Windows.Forms.Label L_NoMoviesInfo;
-		private UserControls.SectionPanel SP_Recent;
-		private UserControls.SectionPanel SP_Earlier;
-		private UserControls.SectionPanel SP_Upcoming;
+		private SlickControls.Controls.SlickSectionPanel SP_Recent;
+		private SlickControls.Controls.SlickSectionPanel SP_Earlier;
+		private SlickControls.Controls.SlickSectionPanel SP_Upcoming;
 		private SlickControls.Controls.SlickTextBox TB_Search;
-		private UserControls.SectionPanel SP_Oldies;
+		private SlickControls.Controls.SlickSectionPanel SP_Oldies;
 	}
 }

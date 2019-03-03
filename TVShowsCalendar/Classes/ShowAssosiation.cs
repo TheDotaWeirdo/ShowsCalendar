@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Extensions;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public class ShowAssociation
 	{

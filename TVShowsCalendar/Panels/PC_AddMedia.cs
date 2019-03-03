@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using SlickControls.Panels;
 using SlickControls.Forms;
 using Extensions;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.UserControls;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Controls;
 using SlickControls.Enums;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_AddMedia : PanelContent
 	{

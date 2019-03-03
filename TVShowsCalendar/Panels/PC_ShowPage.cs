@@ -8,22 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.HandlerClasses;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Handlers;
 using Extensions;
-using ProjectImages = TVShowsCalendar.Properties.Resources;
-using TVShowsCalendar.UserControls;
+using ProjectImages = ShowsCalendar.Properties.Resources;
+using ShowsCalendar.Controls;
 using SlickControls.Forms;
 using SlickControls.Classes;
 using System.Text.RegularExpressions;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_ShowPage : PanelContent
 	{
 		public readonly Show LinkedShow;
 
-		public PC_ShowPage(Show linkedShow)
+		public PC_ShowPage(Show linkedShow) : base(true)
 		{
 			InitializeComponent();
 			LinkedShow = linkedShow;
@@ -95,6 +95,42 @@ namespace TVShowsCalendar.Panels
 			if (linkedShow.SimilarShows != null)
 				foreach (var item in linkedShow.SimilarShows)
 				FLP_Similar.Controls.Add(new MediaViewer(item) { Margin = new Padding(15, 10, 15, 10) });
+		}
+
+		protected override bool LoadData()
+		{
+			if (LinkedShow.Images == null)
+				LinkedShow.Images = Data.TMDbHandler.RunTask(c => c.GetTvShowImagesAsync(LinkedShow.tMDbData.Id, "en")).Result;
+
+			return true;
+		}
+
+		protected override void OnDataLoad()
+		{
+			foreach (var item in LinkedShow.Images.Backdrops)
+			{
+				var width = 265;
+				var height = width * item.Height / item.Width;
+
+				var pb = new BorderedImage() { Size = new Size(width, height), Margin = new Padding(7) };
+				pb.GetImage(item.FilePath, 300);
+
+				FLP_Images.Controls.Add(pb);
+			}
+
+			if (FLP_Images.Controls.Count > 0)
+				FLP_Images.SetFlowBreak(FLP_Images.Controls.Cast<Control>().Last(), true);
+
+			foreach (var item in LinkedShow.Images.Posters)
+			{
+				var width = 195;
+				var height = width * item.Height / item.Width;
+
+				var pb = new BorderedImage() { Size = new Size(width, height), Margin = new Padding(7) };
+				pb.GetImage(item.FilePath, 200);
+
+				FLP_Images.Controls.Add(pb);
+			}
 		}
 
 		private void Season_PB_Paint(object sender, PaintEventArgs e)
@@ -383,6 +419,13 @@ namespace TVShowsCalendar.Panels
 			e.Graphics.DrawImageUnscaledAndClipped(ProjectImages.PB_5_Stars_Filled.Color(LinkedShow.tMDbData.VoteAverage.If(10, FormDesign.Design.ActiveColor, FormDesign.Design.IconColor)), new Rectangle(0, 0, (int)(82 * LinkedShow.tMDbData.VoteAverage / 10), 16));
 
 			e.Graphics.DrawString($"Rated '{Math.Round(LinkedShow.tMDbData.VoteAverage / 2, 2)}' over {LinkedShow.tMDbData.VoteCount} votes", new Font("Nirmala UI", 9F), new SolidBrush(FormDesign.Design.InfoColor), new RectangleF(87, 1, PB_Stars.Width - 90, 13), new StringFormat() { Trimming = StringTrimming.EllipsisCharacter });
+		}
+
+		private void ST_Images_TabSelected(object sender, EventArgs e)
+		{
+			P_Content.Controls.RemoveAt(0);
+			P_Content.Controls.Add(FLP_Images);
+			verticalScroll.Reset();
 		}
 	}
 }

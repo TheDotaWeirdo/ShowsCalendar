@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
 using Extensions;
-using TVShowsCalendar.HandlerClasses;
-using TVShowsCalendar.UserControls;
-using TVShowsCalendar.Classes;
+using ShowsCalendar.Handlers;
+using ShowsCalendar.Controls;
+using ShowsCalendar.Classes;
 using SlickControls.Classes;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Dashboard : PanelContent
 	{

@@ -15,11 +15,11 @@ using System.Windows.Forms;
 using Extensions;
 using SlickControls.Enums;
 using SlickControls.Forms;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.Forms;
-using TVShowsCalendar.HandlerClasses;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Forms;
+using ShowsCalendar.Handlers;
 
-namespace TVShowsCalendar
+namespace ShowsCalendar
 {
 	internal static class Program
 	{
@@ -73,8 +73,11 @@ namespace TVShowsCalendar
 					Directory.CreateDirectory(Path.Combine(ISave.DocsFolder, "MoviesData"));
 					Directory.CreateDirectory(Path.Combine(ISave.DocsFolder, "Thumbs"));
 
+					LocalFileHandler.Load();
 					ShowManager.LoadAllShows();
 					MovieManager.LoadAllMovies();
+					LocalShowHandler.Load();
+					LocalMovieHandler.Load();
 				}
 
 #if !DEBUG
@@ -83,7 +86,7 @@ namespace TVShowsCalendar
 					if (spi.IsSingleInstance || spi.RaiseOtherProcess())
 					{
 #endif
-						Application.Run(Data.Dashboard = new Dashboard());
+						Application.Run(Data.Mainform = new Dashboard());
 #if !DEBUG
 					}
 				}
@@ -110,7 +113,7 @@ namespace TVShowsCalendar
 					using (SmtpClient client = new SmtpClient("smtp.live.com")
 						{
 							UseDefaultCredentials = false,
-							Credentials = new NetworkCredential("TVShowsCalendar@hotmail.com", "iPhone0X", "hotmail.com"),
+							Credentials = new NetworkCredential("ShowsCalendar@hotmail.com", "iPhone0X", "hotmail.com"),
 							Port = 587,
 							EnableSsl = true,
 							DeliveryMethod = SmtpDeliveryMethod.Network
@@ -118,7 +121,7 @@ namespace TVShowsCalendar
 					{
 						MailMessage mailMessage = new MailMessage
 						{
-							From = new MailAddress("TVShowsCalendar@hotmail.com"),
+							From = new MailAddress("ShowsCalendar@hotmail.com"),
 							IsBodyHtml = true,
 							Body = GetBody(ex),
 							Subject = "Error Report",

@@ -8,16 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.Handlers;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Handlers;
 using TMDbLib.Objects.General;
-using TVShowsCalendar.UserControls;
-using TVShowsCalendar.HandlerClasses;
+using ShowsCalendar.Controls;
 using Extensions;
-using ProjectImages = TVShowsCalendar.Properties.Resources;
+using ProjectImages = ShowsCalendar.Properties.Resources;
 using SlickControls.Forms;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_EpisodeView : PanelContent
 	{
@@ -33,6 +32,23 @@ namespace TVShowsCalendar.Panels
 
 			SL_Backwards.Enabled = episode.Previous != null && episode.Previous.Season == episode.Season;
 			SL_Forward.Enabled = episode.Next != null && episode.Next.Season == episode.Season;
+
+			L_Unwatched.Parent = PB_EpisodeInfo;
+
+			if (Data.Options.ShowUnwatchedOnThumb && !Episode.Watched && Episode.AirState == AirStateEnum.Aired)
+			{
+				if (!Episode.Watched && (Episode.TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
+				{
+					L_Unwatched.Size = new Size(50, 19);
+					L_Unwatched.Text = "NEW";
+					L_Unwatched.ColorStyle = ColorStyle.Active;
+				}
+			}
+			else
+				L_Unwatched.Visible = false;
+
+			if (!Episode.VidFiles.Any(x => x.Exists))
+				L_Unwatched.Location = new Point(50, 6);
 
 			SlickTip.SetTo(SL_Backwards, "Previous Episode");
 			SlickTip.SetTo(SL_Forward, "Next Episode");
@@ -78,7 +94,7 @@ namespace TVShowsCalendar.Panels
 			else
 				e.Graphics.DrawImage(new Bitmap(ProjectImages.Icon_Dots_H).Color(FormDesign.Design.IconColor), Width - 45, 0);
 
-			if (Episode.VidFile?.Exists ?? false)
+			if (Episode.VidFiles.Any(x => x.Exists))
 			{
 				if (new Rectangle(Width - 80, 0, 32, 32).Contains(PB_EpisodeInfo.PointToClient(MousePosition)))
 					e.Graphics.DrawImage(new Bitmap(ProjectImages.Icon_PlaySlick).Color(FormDesign.Design.ActiveColor), Width - 80, 0);
@@ -167,7 +183,7 @@ namespace TVShowsCalendar.Panels
 			if (e.Button == MouseButtons.Left && new Rectangle(Width - 45, 0, 32, 32).Contains(e.Location))
 				Episode.ShowStrip();
 
-			if (e.Button == MouseButtons.Left && new Rectangle(Width - 80, 0, 32, 32).Contains(e.Location) && (Episode.VidFile?.Exists ?? false))
+			if (e.Button == MouseButtons.Left && new Rectangle(Width - 80, 0, 32, 32).Contains(e.Location) && (Episode.VidFiles.Any(x => x.Exists)))
 				Episode.Play();
 		}
 
@@ -179,12 +195,52 @@ namespace TVShowsCalendar.Panels
 
 		private void SL_Forward_Click(object sender, EventArgs e)
 		{
-			Form.SetPanel(null, new PC_EpisodeView(Episode.Next), clearHistory: false);
+			var epPan = new PC_EpisodeView(Episode.Next);
+
+			epPan.ST_Cast.Selected = ST_Cast.Selected;
+			epPan.ST_Crew.Selected = ST_Crew.Selected;
+			epPan.ST_Files.Selected = ST_Files.Selected;
+
+			Form.SetPanel(null, epPan, clearHistory: false);
 		}
 
 		private void SL_Backwards_Click(object sender, EventArgs e)
 		{
-			Form.SetPanel(null, new PC_EpisodeView(Episode.Previous), clearHistory: false);
+			var epPan = new PC_EpisodeView(Episode.Previous);
+
+			epPan.ST_Cast.Selected = ST_Cast.Selected;
+			epPan.ST_Crew.Selected = ST_Crew.Selected;
+			epPan.ST_Files.Selected = ST_Files.Selected;
+
+			Form.SetPanel(null, epPan, clearHistory: false);
+		}
+
+		private void ST_Files_TabSelected(object sender, EventArgs e)
+		{
+			FLP_Content.Controls.Clear(true);
+			foreach (var item in Episode.VidFiles)
+			{
+				var ctrl = new VideoFileControl(item, Episode);
+
+				FLP_Content.Controls.Add(ctrl);
+			}
+		}
+
+		public override bool KeyPressed(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Left && SL_Backwards.Enabled)
+			{
+				SL_Backwards_Click(null, null);
+				return true;
+			}
+
+			if (keyData == Keys.Right && SL_Forward.Enabled)
+			{
+				SL_Forward_Click(null, null);
+				return true;
+			}
+
+			return base.KeyPressed(ref msg, keyData);
 		}
 	}
 }

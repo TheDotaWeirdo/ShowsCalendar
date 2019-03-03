@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
 using Extensions;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.Forms;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Forms;
 using SlickControls.Enums;
-using TVShowsCalendar.UserControls;
+using ShowsCalendar.Controls;
 using SlickControls.Forms;
+using SlickControls.Controls;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Movies : PanelContent
 	{
@@ -106,7 +107,7 @@ namespace TVShowsCalendar.Panels
 
 			if (tile == null)
 			{
-				foreach (var item in P_Tabs.Controls.ThatAre<SectionPanel>())
+				foreach (var item in P_Tabs.Controls.ThatAre<SlickSectionPanel>())
 					item.Content.Controls.Clear(true, x => (x is MovieTile st) && st.LinkedMovie == movie);
 
 				tile = new MovieTile(movie);
@@ -220,22 +221,22 @@ namespace TVShowsCalendar.Panels
 
 			if (!searchOpened)
 			{
-				searchOpened = TB_Search.Enabled = true;
+				searchOpened = TB_Search.ReadOnly = true;
 				TB_Search.Text = string.Empty;
 				TB_Search.Focus();
 				PB_Search.Color(FormDesign.Design.ActiveColor);
 				SlickTip.SetTo(PB_Search, string.Empty);
 
-				(searchAnimation = new AnimationHandler(TB_Search, new Size(350, 21))).StartAnimation();
+				(searchAnimation = new AnimationHandler(TB_Search, new Size(350, TB_Search.Height)) { IgnoreHeight = true, Lazy = true }).StartAnimation();
 			}
 			else
 			{
-				searchOpened = TB_Search.Enabled = false;
+				searchOpened = TB_Search.ReadOnly = false;
 				TB_Search.Text = string.Empty;
 				PB_Search.Color(FormDesign.Design.IconColor);
 				SlickTip.SetTo(PB_Search, "Click to Search");
 
-				(searchAnimation = new AnimationHandler(TB_Search, new Size(0, 21))).StartAnimation();
+				(searchAnimation = new AnimationHandler(TB_Search, new Size(0, TB_Search.Height)) { IgnoreHeight = true, Lazy = true }).StartAnimation();
 			}
 		}
 

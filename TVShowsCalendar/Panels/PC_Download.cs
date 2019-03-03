@@ -8,10 +8,10 @@ using System.Windows.Forms;
 using Extensions;
 using SlickControls.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.HandlerClasses;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Handlers;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Download : PanelContent
 	{
@@ -91,20 +91,15 @@ namespace TVShowsCalendar.Panels
 		{
 			InitializeComponent();
 			Season = season;
-			Text = Season.TMDbData.Name;
+			Text = Season.Show.TMDbData.Name;
 
-			if (!string.IsNullOrWhiteSpace(season.Show.ZooqleURL))
-				InitializeQuality();
-			else
+			LoadTorrents(new[]
 			{
-				LoadTorrents(new[]
-				{
-					$"https://zooqle.com/search?q={GetHttp(season.Show.Name)}+Season+{season.SeasonNumber.ToString("00")}+category%3ATV",
-					$"https://zooqle.com/search?q={GetHttp(season.Show.Name)}+Season+{season.SeasonNumber}+category%3ATV",
-				});
-				Select(selectedLabel = L_AllDownloads);
-				L_Low.Cursor = L_720p.Cursor = L_1080p.Cursor = L_4K.Cursor = L_3D.Cursor = Cursors.Default;
-			}
+				$"https://zooqle.com/search?q={GetHttp(season.Show.Name)}+Season+{season.SeasonNumber.ToString("00")}+category%3ATV",
+				$"https://zooqle.com/search?q={GetHttp(season.Show.Name)}+Season+{season.SeasonNumber}+category%3ATV",
+			});
+			Select(selectedLabel = L_AllDownloads);
+			L_Low.Cursor = L_720p.Cursor = L_1080p.Cursor = L_4K.Cursor = L_3D.Cursor = Cursors.Default;
 
 			PB_Image.GetImage(season.TMDbData.PosterPath.IfEmpty(season.Show.TMDbData.PosterPath), 200);
 
@@ -342,7 +337,9 @@ namespace TVShowsCalendar.Panels
 						if (TLP_Torrents.Controls.Count != 0)
 						{
 							PB_Loader.Hide();
-							TLP_QualitySelection.Enabled = TLP_Icons.Enabled = true;
+							TLP_Icons.Enabled = true;
+							foreach (Control item in TLP_QualitySelection.Controls)
+								item.Enabled = true;
 						}
 						else if (urlsDone == 0)
 						{
@@ -388,7 +385,9 @@ namespace TVShowsCalendar.Panels
 					if (TLP_Torrents.Controls.Count != 0)
 					{
 						PB_Loader.Hide();
-						TLP_QualitySelection.Enabled = TLP_Icons.Enabled = true;
+						TLP_Icons.Enabled = true;
+						foreach (Control item in TLP_QualitySelection.Controls)
+							item.Enabled = true;
 					}
 					else if (urls.Count() > 1)
 					{
@@ -409,12 +408,12 @@ namespace TVShowsCalendar.Panels
 		{
 			e.Graphics.Clear(PB_Image.BackColor);
 
-			e.Graphics.DrawBorderedImage(PB_Image.Image, new Rectangle(10, 5, 160, 90), PB_Image.Image.IsAnimated() ? ImageHandler.ImageSizeMode.Center : ImageHandler.ImageSizeMode.Stretch);
+			e.Graphics.DrawBorderedImage(PB_Image.Image, new Rectangle(10, 5, Season == null ? 160 : 60, 90), PB_Image.Image.IsAnimated() ? ImageHandler.ImageSizeMode.Center : ImageHandler.ImageSizeMode.Stretch);
 
 			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
 			var h = 5;
-			var w = 175;
+			var w = Season == null ? 175 : 75;
 
 			e.Graphics.DrawString(Episode == null ? (Movie == null ? Season.TMDbData.Name : Movie.Name) : Episode.Name, new Font("Nirmala UI", 9.75F, FontStyle.Bold), new SolidBrush(FormDesign.Design.ForeColor), w, h);
 
@@ -592,26 +591,37 @@ namespace TVShowsCalendar.Panels
 			SlickTip.SetTo(PB_Sound, "Sort by Sound Channels");
 			SlickTip.SetTo(PB_Subs, "Sort by Subtitles");
 			SlickTip.SetTo(PB_Label, "Sort by Torrent Name");
+			SlickTip.SetTo(PB_Health, "Sort by Torrent Health");
 		}
 
 		private void SortBy(SortOption sortOption)
 		{
-			var torrentData = new List<SortingData>();
-			foreach (TorrentTile item in TLP_Torrents.Controls)
-				torrentData.Add(item.SortingData);
+			var torrentData = TLP_Torrents.Controls.OfType<TorrentTile>().Select(x => x.SortingData);
 
-			if (sortOption == SortOption.Name)
-				torrentData = torrentData.OrderByDescending(x => x.Name).ToList();
-			else if (sortOption == SortOption.Subs)
-				torrentData = torrentData.OrderBy(x => x.Subs).ToList();
-			else if (sortOption == SortOption.Sound)
-				torrentData = torrentData.OrderBy(x => x.Sound).ToList();
-			else if (sortOption == SortOption.Res)
-				torrentData = torrentData.OrderBy(x => x.Res).ToList();
-			else if (sortOption == SortOption.Size)
-				torrentData = torrentData.OrderBy(x => x.Size).ToList();
-			else
-				torrentData = torrentData.OrderByDescending(x => x.SeedOrder).ToList();
+			switch (sortOption)
+			{
+				case SortOption.Name:
+					torrentData = torrentData.OrderByDescending(x => x.Name);
+					break;
+				case SortOption.Subs:
+					torrentData = torrentData.OrderBy(x => x.Subs);
+					break;
+				case SortOption.Sound:
+					torrentData = torrentData.OrderBy(x => x.Sound);
+					break;
+				case SortOption.Res:
+					torrentData = torrentData.OrderBy(x => x.Res);
+					break;
+				case SortOption.Size:
+					torrentData = torrentData.OrderBy(x => x.Size);
+					break;
+				case SortOption.Health:
+					torrentData = torrentData.OrderBy(x => x.Health);
+					break;
+				default:
+					torrentData = torrentData.OrderByDescending(x => x.SeedOrder);
+					break;
+			}
 
 			if (Reversed)
 				torrentData.Reverse();
@@ -629,5 +639,22 @@ namespace TVShowsCalendar.Panels
 		}
 
 		#endregion Private Methods
+
+		private void PB_Health_Click(object sender, EventArgs e)
+		{
+			var r = (e as MouseEventArgs).Button == MouseButtons.Right;
+			if (SelectedSort == PB_Health && r == Reversed)
+			{
+				SelectedSort = null;
+				Reversed = false;
+				SortBy(SortOption.None);
+			}
+			else
+			{
+				Reversed = r;
+				SelectedSort = PB_Health;
+				SortBy(SortOption.Health);
+			}
+		}
 	}
 }

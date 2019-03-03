@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
+using ShowsCalendar.Classes;
 using Extensions;
-using TVShowsCalendar.HandlerClasses;
-using ProjectImages = TVShowsCalendar.Properties.Resources;
-using TVShowsCalendar.UserControls;
+using ShowsCalendar.Handlers;
+using ProjectImages = ShowsCalendar.Properties.Resources;
+using ShowsCalendar.Controls;
 using SlickControls.Forms;
 using SlickControls.Classes;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_SeasonView : PanelContent
 	{
@@ -158,12 +158,24 @@ namespace TVShowsCalendar.Panels
 
 		private void SL_Forward_Click(object sender, EventArgs e)
 		{
-			Form.SetPanel(null, new PC_SeasonView(Season.Next), clearHistory: false);
+			var sePan = new PC_SeasonView(Season.Next);
+
+			sePan.ST_Cast.Selected = ST_Cast.Selected;
+			sePan.ST_Crew.Selected = ST_Crew.Selected;
+			sePan.ST_Images.Selected = ST_Images.Selected;
+
+			Form.SetPanel(null, sePan, clearHistory: false);
 		}
 
 		private void SL_Backwards_Click(object sender, EventArgs e)
 		{
-			Form.SetPanel(null, new PC_SeasonView(Season.Previous), clearHistory: false);
+			var sePan = new PC_SeasonView(Season.Previous);
+
+			sePan.ST_Cast.Selected = ST_Cast.Selected;
+			sePan.ST_Crew.Selected = ST_Crew.Selected;
+			sePan.ST_Images.Selected = ST_Images.Selected;
+
+			Form.SetPanel(null, sePan, clearHistory: false);
 		}
 
 		private void ST_Cast_TabSelected(object sender, EventArgs e)
@@ -182,6 +194,23 @@ namespace TVShowsCalendar.Panels
 			if (Season.TMDbData.Credits?.Crew != null)
 				foreach (var item in Season.TMDbData.Credits.Crew)
 					FLP_Episodes.Controls.Add(new CharacterControl(item));
+		}
+
+		public override bool KeyPressed(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.Left && SL_Backwards.Enabled)
+			{
+				SL_Backwards_Click(null, null);
+				return true;
+			}
+
+			if (keyData == Keys.Right && SL_Forward.Enabled)
+			{
+				SL_Forward_Click(null, null);
+				return true;
+			}
+
+			return base.KeyPressed(ref msg, keyData);
 		}
 	}
 }

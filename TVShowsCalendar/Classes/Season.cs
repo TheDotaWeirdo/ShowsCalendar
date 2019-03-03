@@ -6,21 +6,16 @@ using SlickControls.Classes;
 using SlickControls.Forms;
 using TMDbLib.Objects.General;
 using TMDbLib.Objects.TvShows;
-using TVShowsCalendar.HandlerClasses;
-using TVShowsCalendar.Panels;
+using ShowsCalendar.Handlers;
+using ShowsCalendar.Panels;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public class Season
 	{
-		#region Public Properties
 
 		public List<Episode> Episodes { get; set; } = new List<Episode>();
 		public TvSeason TMDbData { get; set; }
-
-		#endregion Public Properties
-
-		#region Internal Properties
 
 		internal string Name => TMDbData?.Name ?? $"Season {SeasonNumber}";
 
@@ -32,9 +27,8 @@ namespace TVShowsCalendar.Classes
 		{
 			get
 			{
-				if (Show.Seasons.Last() != this)
+				if (Show.Seasons.LastOrDefault() != this)
 					return Show.Seasons[Show.Seasons.IndexOf(this) + 1];
-
 				return null;
 			}
 		}
@@ -43,50 +37,39 @@ namespace TVShowsCalendar.Classes
 		{
 			get
 			{
-				if (Show.Seasons.First() != this)
+				if (Show.Seasons.FirstOrDefault() != this)
 					return Show.Seasons[Show.Seasons.IndexOf(this) - 1];
-
 				return null;
 			}
 		}
 
 		internal Show Show { get; set; }
 
-		#endregion Internal Properties
-
-		#region Public Constructors
-
 		public Season()
 		{
 		}
 
-		public Season(TvSeason tvSeason, IEnumerable<Episode> watchTimes, Show show = null)
+		public Season(TvSeason tvSeason, Show show = null)
 		{
 			TMDbData = tvSeason;
 			Show = show;
 
-			if (tvSeason.Episodes != null)
-				foreach (var ep in tvSeason.Episodes)
-				{
-					if (ep != null)
-					{
-						var watchdat = watchTimes?.FirstThat(x => x.EN == ep.EpisodeNumber);
-						var episode = new Episode(ep, this, show)
-						{
-							WatchTime = watchdat?.WatchTime ?? -1,
-							WatchDate = watchdat?.WatchDate ?? DateTime.MinValue,
-							Progress = watchdat?.Progress ?? 0,
-							Watched = watchdat?.Watched ?? false
-						};
-
-						Episodes.Add(episode);
-					}
-				}
+			foreach (var ep in tvSeason.Episodes)
+				Episodes.Add(new Episode(ep, this, show));
 		}
 
-		#endregion Public Constructors
+		internal void Update(Season season)
+		{
+			if (season != null)
+			{
+				TMDbData = season.TMDbData;
 
-		#region Public Methods
+				foreach (var e in Episodes)
+					e.Update(season.Episodes.FirstThat(y => e.EN == y.EN));
+
+				Episodes.AddRange(season.Episodes.Where(y => !Episodes.Any(x => x.EN == y.EN)));
+			}
+		}
 
 		public override bool Equals(object obj)
 		{
@@ -105,11 +88,11 @@ namespace TVShowsCalendar.Classes
 
 		public void ShowStrip()
 		{
-			FlatToolStrip.Show(Data.Dashboard,
-				new FlatStripItem("Play", () =>  Show.GetCurrentWatchEpisode(SeasonNumber).Play(), image: Properties.Resources.Tiny_Play, show: Show.GetCurrentWatchEpisode(SeasonNumber)?.VidFile?.Exists ?? false),
+			FlatToolStrip.Show(Data.Mainform,
+				new FlatStripItem("Play", () =>  Show.GetCurrentWatchEpisode(SeasonNumber).Play(), image: Properties.Resources.Tiny_Play, show: Show.GetCurrentWatchEpisode(SeasonNumber)?.VidFiles.Any(x => x.Exists) ?? false),
 				new FlatStripItem("Download", () =>
 				{
-					Data.Dashboard.PushPanel(null, new PC_Download(this));
+					Data.Mainform.PushPanel(null, new PC_Download(this));
 				}, image: Properties.Resources.Tiny_Download),
 				FlatStripItem.Empty,
 				new FlatStripItem("Mark as " + (Episodes.All(x => x.AirState != AirStateEnum.Aired || x.Watched) ? "Unwatched" : "Watched"), show: !Show.Temporary, image: Properties.Resources.Tiny_Ok, action: () =>
@@ -132,6 +115,5 @@ namespace TVShowsCalendar.Classes
 
 		public override string ToString() => Name;
 
-		#endregion Public Methods
 	}
 }

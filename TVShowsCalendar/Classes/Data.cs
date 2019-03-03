@@ -9,16 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Interop;
-using TVShowsCalendar.Handlers;
+using ShowsCalendar.Handlers;
 using Extensions;
-using TVShowsCalendar.Forms;
+using ShowsCalendar.Forms;
 using SlickControls.Forms;
+using ShowsRenamer.Module.Handlers;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public static class Data
 	{
-		public static Dashboard Dashboard { get; set; }
+		public static Dashboard Mainform { get; set; }
 
 		public static TMDbHandler TMDbHandler { get; set; }
 
@@ -28,5 +29,7 @@ namespace TVShowsCalendar.Classes
 		public static Preferences Preferences { get; set; } = new Preferences();
 
 		public static NotifyIcon TaskIcon { get; internal set; }
+
+		public static RenameHandler RenameHandler { get; internal set; }
 	}
 }

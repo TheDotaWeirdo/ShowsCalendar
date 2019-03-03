@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
+using ShowsCalendar.Classes;
 using Extensions;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_VidInfo : PanelContent
 	{

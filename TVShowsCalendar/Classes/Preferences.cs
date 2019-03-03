@@ -5,7 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Extensions;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public class Preferences : ISave
 	{

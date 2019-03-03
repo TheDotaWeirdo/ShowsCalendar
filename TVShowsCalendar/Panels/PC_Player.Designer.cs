@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Player
 	{
@@ -127,14 +127,13 @@
 			this.SL_Play.ActiveColor = null;
 			this.SL_Play.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Play.AutoSize = true;
-			this.SL_Play.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Play.Center = true;
 			this.SL_Play.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Play.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_Play.HideText = true;
 			this.SL_Play.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Play.IconSize = 16;
-			this.SL_Play.Image = global::TVShowsCalendar.Properties.Resources.Tiny_PlayNoBorder;
+			this.SL_Play.Image = global::ShowsCalendar.Properties.Resources.Tiny_PlayNoBorder;
 			this.SL_Play.Location = new System.Drawing.Point(328, 3);
 			this.SL_Play.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Play.Name = "SL_Play";
@@ -148,14 +147,13 @@
 			this.SL_Forward.ActiveColor = null;
 			this.SL_Forward.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Forward.AutoSize = true;
-			this.SL_Forward.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Forward.Center = true;
 			this.SL_Forward.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Forward.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_Forward.HideText = true;
 			this.SL_Forward.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Forward.IconSize = 16;
-			this.SL_Forward.Image = global::TVShowsCalendar.Properties.Resources.Tiny_JumpForward;
+			this.SL_Forward.Image = global::ShowsCalendar.Properties.Resources.Tiny_JumpForward;
 			this.SL_Forward.Location = new System.Drawing.Point(373, 3);
 			this.SL_Forward.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Forward.Name = "SL_Forward";
@@ -169,14 +167,13 @@
 			this.SL_Next.ActiveColor = null;
 			this.SL_Next.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Next.AutoSize = true;
-			this.SL_Next.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Next.Center = true;
 			this.SL_Next.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Next.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_Next.HideText = true;
 			this.SL_Next.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Next.IconSize = 16;
-			this.SL_Next.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Next;
+			this.SL_Next.Image = global::ShowsCalendar.Properties.Resources.Tiny_Next;
 			this.SL_Next.Location = new System.Drawing.Point(418, 3);
 			this.SL_Next.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Next.Name = "SL_Next";
@@ -191,14 +188,13 @@
 			this.SL_Backwards.ActiveColor = null;
 			this.SL_Backwards.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Backwards.AutoSize = true;
-			this.SL_Backwards.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Backwards.Center = true;
 			this.SL_Backwards.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Backwards.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_Backwards.HideText = true;
 			this.SL_Backwards.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Backwards.IconSize = 16;
-			this.SL_Backwards.Image = global::TVShowsCalendar.Properties.Resources.Tiny_JumpBack;
+			this.SL_Backwards.Image = global::ShowsCalendar.Properties.Resources.Tiny_JumpBack;
 			this.SL_Backwards.Location = new System.Drawing.Point(283, 3);
 			this.SL_Backwards.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Backwards.Name = "SL_Backwards";
@@ -212,14 +208,13 @@
 			this.SL_Previous.ActiveColor = null;
 			this.SL_Previous.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Previous.AutoSize = true;
-			this.SL_Previous.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Previous.Center = true;
 			this.SL_Previous.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Previous.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_Previous.HideText = true;
 			this.SL_Previous.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Previous.IconSize = 16;
-			this.SL_Previous.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Previous;
+			this.SL_Previous.Image = global::ShowsCalendar.Properties.Resources.Tiny_Previous;
 			this.SL_Previous.Location = new System.Drawing.Point(238, 3);
 			this.SL_Previous.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Previous.Name = "SL_Previous";
@@ -234,14 +229,13 @@
 			this.SL_Subs.ActiveColor = null;
 			this.SL_Subs.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Subs.AutoSize = true;
-			this.SL_Subs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Subs.Center = true;
 			this.SL_Subs.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Subs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_Subs.HideText = true;
 			this.SL_Subs.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Subs.IconSize = 16;
-			this.SL_Subs.Image = global::TVShowsCalendar.Properties.Resources.Tiny_CC;
+			this.SL_Subs.Image = global::ShowsCalendar.Properties.Resources.Tiny_CC;
 			this.SL_Subs.Location = new System.Drawing.Point(3, 3);
 			this.SL_Subs.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Subs.Name = "SL_Subs";
@@ -280,7 +274,6 @@
 			this.SL_Audio.ActiveColor = null;
 			this.SL_Audio.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_Audio.AutoSize = true;
-			this.SL_Audio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_Audio.Center = true;
 			this.SL_Audio.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_Audio.Enabled = false;
@@ -288,7 +281,7 @@
 			this.SL_Audio.HideText = true;
 			this.SL_Audio.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_Audio.IconSize = 16;
-			this.SL_Audio.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Sound;
+			this.SL_Audio.Image = global::ShowsCalendar.Properties.Resources.Tiny_Sound;
 			this.SL_Audio.Location = new System.Drawing.Point(48, 3);
 			this.SL_Audio.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_Audio.Name = "SL_Audio";
@@ -302,14 +295,13 @@
 			this.SL_MiniPlayer.ActiveColor = null;
 			this.SL_MiniPlayer.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_MiniPlayer.AutoSize = true;
-			this.SL_MiniPlayer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_MiniPlayer.Center = true;
 			this.SL_MiniPlayer.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_MiniPlayer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_MiniPlayer.HideText = true;
 			this.SL_MiniPlayer.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_MiniPlayer.IconSize = 16;
-			this.SL_MiniPlayer.Image = global::TVShowsCalendar.Properties.Resources.Tiny_MiniWindow;
+			this.SL_MiniPlayer.Image = global::ShowsCalendar.Properties.Resources.Tiny_MiniWindow;
 			this.SL_MiniPlayer.Location = new System.Drawing.Point(563, 3);
 			this.SL_MiniPlayer.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_MiniPlayer.Name = "SL_MiniPlayer";
@@ -323,14 +315,13 @@
 			this.SL_More.ActiveColor = null;
 			this.SL_More.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_More.AutoSize = true;
-			this.SL_More.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_More.Center = true;
 			this.SL_More.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_More.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_More.HideText = true;
 			this.SL_More.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_More.IconSize = 16;
-			this.SL_More.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Dots_V;
+			this.SL_More.Image = global::ShowsCalendar.Properties.Resources.Tiny_Dots_V;
 			this.SL_More.Location = new System.Drawing.Point(653, 3);
 			this.SL_More.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_More.Name = "SL_More";
@@ -344,14 +335,13 @@
 			this.SL_FullScreen.ActiveColor = null;
 			this.SL_FullScreen.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.SL_FullScreen.AutoSize = true;
-			this.SL_FullScreen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SL_FullScreen.Center = true;
 			this.SL_FullScreen.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.SL_FullScreen.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SL_FullScreen.HideText = true;
 			this.SL_FullScreen.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.SL_FullScreen.IconSize = 16;
-			this.SL_FullScreen.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Fullscreen;
+			this.SL_FullScreen.Image = global::ShowsCalendar.Properties.Resources.Tiny_Fullscreen;
 			this.SL_FullScreen.Location = new System.Drawing.Point(608, 3);
 			this.SL_FullScreen.Margin = new System.Windows.Forms.Padding(0);
 			this.SL_FullScreen.Name = "SL_FullScreen";
@@ -425,14 +415,14 @@
 			// 
 			// PC_Player
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.P_Info);
 			this.Controls.Add(this.P_BotSpacer);
 			this.Controls.Add(this.P_VLC);
 			this.LabelBounds = new System.Drawing.Point(3, 1);
 			this.Name = "PC_Player";
 			this.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
-			this.ShowBack = true;
+			
 			this.Size = new System.Drawing.Size(696, 495);
 			this.Load += new System.EventHandler(this.PC_Player_Load);
 			this.Resize += new System.EventHandler(this.PC_Player_Resize);

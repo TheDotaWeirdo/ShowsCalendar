@@ -10,15 +10,15 @@ using System.Windows.Forms;
 using SlickControls.Panels;
 using AudioSwitcher.AudioApi.CoreAudio;
 using System.IO;
-using TVShowsCalendar.Classes;
+using ShowsCalendar.Classes;
 using Extensions;
 using SlickControls.Forms;
-using ProjectImages = TVShowsCalendar.Properties.Resources;
-using TVShowsCalendar.HandlerClasses;
+using ProjectImages = ShowsCalendar.Properties.Resources;
+using ShowsCalendar.Handlers;
 using SlickControls.Classes;
-using TVShowsCalendar.Forms;
+using ShowsCalendar.Forms;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Player : PanelContent
 	{
@@ -26,6 +26,7 @@ namespace TVShowsCalendar.Panels
 		private WaitIdentifier ControlsHideIdentifier = new WaitIdentifier();
 		private bool ControlsOpening = false;
 		public Episode Episode { get; private set; }
+		public FileInfo VidFile { get; private set; }
 		public Movie Movie { get; private set; }
 		private DateTime lastClick = DateTime.MinValue;
 		private Point LastMousePoint = Point.Empty;
@@ -87,12 +88,18 @@ namespace TVShowsCalendar.Panels
 
 		private void VlcControl_EndReached(object sender, Vlc.DotNet.Core.VlcMediaPlayerEndReachedEventArgs e)
 		{
+			if (Episode != null)
+				Episode.MarkAs(true);
+			else
+				Movie.MarkAs(true);
+
 			this.TryInvoke(() =>
 			{
-				ToggleFullscreen(false);
 				SL_Play.Image = ProjectImages.Tiny_PlayNoBorder;
-				if (Episode != null && (Episode.Next?.VidFile?.Exists ?? false))
+				if (Episode != null && (Episode.Next?.VidFiles.Any(y => y.Exists) ?? false))
 					SetEpisode(Episode.Next, play: false);
+				else
+					ToggleFullscreen(false);
 			});
 		}
 
@@ -105,7 +112,7 @@ namespace TVShowsCalendar.Panels
 			P_BotSpacer.Enabled = true;
 			if (SL_Subs.Enabled = vlcControl.SubTitles.All.Any(x => x.ID != -1))
 				vlcControl.SubTitles.Current = vlcControl.SubTitles.All.FirstThat(x => x.ID != -1);
-			//ToggleFullscreen(FullScreen);
+
 			ShowPlayControls();
 			var vidInf = vlcControl.GetCurrentMedia().TracksInformations.FirstThat(mediaInformation => mediaInformation.Type == Vlc.DotNet.Core.Interops.Signatures.MediaTrackTypes.Video).Video;
 			if (vidInf.Width != 0)
@@ -116,12 +123,13 @@ namespace TVShowsCalendar.Panels
 		{
 			if (movie != null)
 			{
-				epFile = epFile != null && epFile.Exists ? epFile : LocalMovieHandler.GetFile(movie);
+				epFile = epFile != null && epFile.Exists ? epFile : LocalMovieHandler.GetFile(movie).FirstOrDefault();
 				if (epFile != null)
 				{
 					StartLoader();
 
 					Movie = Movie ?? movie;
+					VidFile = epFile;
 
 					this.TryInvoke(() =>
 					{
@@ -181,12 +189,13 @@ namespace TVShowsCalendar.Panels
 		{
 			if (ep != null)
 			{
-				epFile = epFile != null && epFile.Exists ? epFile : LocalShowHandler.GetFile(ep);
+				epFile = epFile != null && epFile.Exists ? epFile : LocalShowHandler.GetFile(ep).FirstOrDefault();
 				if (epFile != null)
 				{
 					StartLoader();
 
 					Episode = Episode ?? ep;
+					VidFile = epFile;
 
 					this.TryInvoke(() => 
 					{
@@ -196,7 +205,7 @@ namespace TVShowsCalendar.Panels
 						P_Info.Controls.Add(new EpisodeTile(ep, true, true) { Dock = DockStyle.Fill });
 
 						var next = ep.Next;
-						if (next != null && next.AirState == AirStateEnum.Aired && !(next.VidFile?.Exists ?? false))
+						if (next != null && next.AirState == AirStateEnum.Aired && !(next.VidFiles.Any(y => y.Exists)))
 						{
 							Notification.Create("Download Next Episode?"
 								, $"Episode {next} isn't downloaded yet.\nClick to download it while you watch."
@@ -208,7 +217,7 @@ namespace TVShowsCalendar.Panels
 									Paused = true;
 									Form.PushPanel(null, new PC_Download(next));
 								}
-							).Show(Data.Dashboard, 20);
+							).Show(Data.Mainform, 20);
 						}
 					});
 
@@ -247,7 +256,7 @@ namespace TVShowsCalendar.Panels
 						MessagePrompt.Show($"Episode \"{ep}\" does not seem to have a file associated with it.\n\nCheck that a file exists, or is named correctly", "File Missing", icon: SlickControls.Enums.PromptIcons.Error);
 						if (!string.IsNullOrWhiteSpace(ep.Show.ZooqleURL)
 							&& DialogResult.Yes == MessagePrompt.Show($"Would you like to open the download window for \"{ep}\" ?", "Open Downloads", SlickControls.Enums.PromptButtons.YesNo, SlickControls.Enums.PromptIcons.Question))
-							Data.Dashboard.PushPanel(null, new PC_Download(ep));
+							Data.Mainform.PushPanel(null, new PC_Download(ep));
 					});
 			}
 		}
@@ -492,7 +501,7 @@ namespace TVShowsCalendar.Panels
 						if (FullScreen)
 							ToggleFullscreen(false);
 
-						Data.Dashboard.PushPanel(null, new PC_ShowPage(Episode));
+						Data.Mainform.PushPanel(null, new PC_ShowPage(Episode));
 					}, image: ProjectImages.Tiny_TV, show: Episode != null),
 
 					new FlatStripItem("Movie Page", () =>
@@ -518,8 +527,8 @@ namespace TVShowsCalendar.Panels
 						if (FullScreen)
 							ToggleFullscreen(false);
 
-						System.Diagnostics.Process.Start((Episode?.VidFile ?? Movie.VidFile).Directory.FullName);
-					}, image: ProjectImages.Tiny_Folder, show: !string.IsNullOrWhiteSpace(Episode.VidFile?.Directory?.FullName)),
+						System.Diagnostics.Process.Start(VidFile.Directory.FullName);
+					}, image: ProjectImages.Tiny_Folder, show: VidFile != null && VidFile.Exists),
 
 					FlatStripItem.Empty
 				};
@@ -620,7 +629,7 @@ namespace TVShowsCalendar.Panels
 					Cursor.Current = Cursors.Default;
 				}));
 
-			new FlatToolStrip(items, Data.Dashboard).ShowUp();
+			new FlatToolStrip(items, Data.Mainform).ShowUp();
 		}
 
 		private FormWindowState lastState;
@@ -773,7 +782,7 @@ namespace TVShowsCalendar.Panels
 				, fade: vlcControl.SubTitles.Current.ID == x.ID));
 
 			if (subs.Count > 0)
-				new FlatToolStrip(subs, Data.Dashboard).ShowUp();
+				new FlatToolStrip(subs, Data.Mainform).ShowUp();
 		}
 
 		private void SL_Audio_Click(object sender, EventArgs e)
@@ -788,7 +797,7 @@ namespace TVShowsCalendar.Panels
 				, fade: vlcControl.Audio.Tracks.Current.ID == x.ID));
 
 			if (tracks.Count > 0)
-				new FlatToolStrip(tracks, Data.Dashboard).ShowUp();
+				new FlatToolStrip(tracks, Data.Mainform).ShowUp();
 		}
 
 		private void SS_Volume_ValuesChanged(object sender, EventArgs e)

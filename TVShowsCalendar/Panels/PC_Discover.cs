@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
 using Extensions;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.UserControls;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Controls;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Discover : PanelContent
 	{

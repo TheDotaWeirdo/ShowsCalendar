@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Save the Shows that matter to you for the app to remind you when new episodes air, and provide you with info as well as download links for your Shows and Episodes.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jad Hajjar")]
-[assembly: AssemblyProduct("TVShowsCalendar")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyProduct("Shows Calendar")]
+[assembly: AssemblyCopyright("Copyright © 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

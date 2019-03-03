@@ -121,6 +121,9 @@
   <data name="Icon_Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Hint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Hint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tiny_1080" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_1080.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,20 +142,32 @@
   <data name="ArrowLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Signal_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Signal_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Big_Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Dash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Dash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Manage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Manage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Huge_TV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Huge_TV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icons8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tiny_Resolution" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Resolution.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Airing" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Airing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Fullscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Fullscreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Big_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Big_TV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_TV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,9 +181,6 @@
   <data name="Tiny_Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_All" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_All.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Tiny_TVEmpty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_TVEmpty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,11 +190,14 @@
   <data name="Tiny_JumpForward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_JumpForward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Resolution" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Resolution.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Big_Automatic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Automatic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Huge_Crew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Huge_Crew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Notif_Quick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Notif_Quick.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Tiny_Previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Previous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,11 +211,14 @@
   <data name="Circle_Filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Circle_Filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_Sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Sound.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon_PlaySlick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_PlaySlick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Big_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ArrowRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -210,6 +228,9 @@
   </data>
   <data name="Tiny_Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Notif_Long" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Notif_Long.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Huge_Quill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Huge_Quill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,11 +253,14 @@
   <data name="Tiny_Country" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Country.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Big_Z" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Big_Z.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_Signal_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Signal_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Sound.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_Pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tiny_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Huge_Movie" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Huge_Movie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,6 +280,9 @@
   <data name="TMDB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TMDB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Cast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Cast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Big_Budget" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_Budget.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -265,20 +292,23 @@
   <data name="Tiny_TV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_TV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tiny_Link" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Link.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Log" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Log.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Big_Palette" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Palette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Icon_ErrorImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_ErrorImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_JumpBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_JumpBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Huge_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Huge_Play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,11 +325,20 @@
   <data name="Tiny_4K" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_4K.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_Z" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Z.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tiny_Licence" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Licence.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Big_Cog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Cog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tiny_Fullscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Fullscreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Big_RetroTv" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_RetroTv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,8 +346,14 @@
   <data name="Tiny_Paint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Paint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Big_Website" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_Website.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tiny_Signal_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Signal_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_CC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_CC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -331,8 +376,8 @@
   <data name="Big_Rating" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_Rating.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Big_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Big_Play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Big_Z" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Z.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Big_Schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Big_Schedule.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -346,8 +391,8 @@
   <data name="Icon_BigPlay" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_BigPlay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_3D" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_3D.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Library" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Library.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,6 +412,9 @@
   <data name="Circle_Empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Circle_Empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_SD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_SD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -379,20 +427,35 @@
   <data name="Tiny_NormalScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_NormalScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Big_Status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Status.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tiny_Switch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Switch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Automatic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Automatic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Icon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Big_Brush" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Brush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Movie" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Movie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_Ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_App" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_App.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Big_Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Dots_V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Dots_V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -403,34 +466,37 @@
   <data name="Icon_Dots_V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_Dots_V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Signal_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Signal_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tiny_Schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Schedule.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_Storage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Storage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tiny_Similar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Similar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tiny_Dots_H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_Dots_H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Big_Status" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Big_Status.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_Crew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Crew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_3D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_3D.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tiny_SD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tiny_SD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tiny_All" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_All.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Big_Airing1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Big_Airing1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tiny_PlayNoBorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiny_PlayNoBorder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icons8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Notif_Long" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Notif_Long.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Notif_Quick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Notif_Quick.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Tiny_Health" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiny_Health.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

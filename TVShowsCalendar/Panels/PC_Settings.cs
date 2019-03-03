@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
+using ShowsCalendar.Classes;
 using System.IO;
 using SlickControls.Forms;
 using Extensions;
@@ -16,7 +16,7 @@ using SlickControls.Enums;
 using System.Drawing.Drawing2D;
 using SlickControls.Controls;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Settings : PanelContent
 	{
@@ -82,7 +82,7 @@ namespace TVShowsCalendar.Panels
 			if (GeneralMethods.IsAdministrator)
 			{
 				if (OC_LaunchWithWindows.Checked)
-					GeneralMethods.CreateShortcut(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Shows Calendar.lnk", Path.GetFullPath(".") + @"\TVShowsCalendar.exe");
+					GeneralMethods.CreateShortcut(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Shows Calendar.lnk", Path.GetFullPath(".") + @"\ShowsCalendar.exe");
 				else if (File.Exists(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Shows Calendar.lnk"))
 					File.Delete(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Shows Calendar.lnk");
 			}
@@ -91,27 +91,15 @@ namespace TVShowsCalendar.Panels
 
 			if (Data.FirstTimeSetup)
 			{
-				Data.Dashboard.Setup(1);
+				Data.Mainform.Setup(1);
 			}
 		}
 
-		private void P_Spacer_Paint(object sender, PaintEventArgs e)
+		protected override void DesignChanged(FormDesign design)
 		{
-			e.Graphics.Clear(FormDesign.Design.BackColor);
-			e.Graphics.FillRectangle(new SolidBrush(FormDesign.Design.AccentColor), 0, 0, 1, P_Spacer.Height - 150);
+			base.DesignChanged(design);
 
-			e.Graphics.FillRectangle(new LinearGradientBrush(
-				new RectangleF(0, P_Spacer.Height - 175, 1, 150),
-				FormDesign.Design.AccentColor,
-				FormDesign.Design.BackColor,
-				90),
-				new RectangleF(0, P_Spacer.Height - 175, 1, 150));
-		}
-
-		private void SettingsForm_Resize(object sender, EventArgs e)
-		{
-			P_Spacer.Refresh();
-			P_Spacer_2.Refresh();
+			P_OptionContainer.BackColor = B_Done.BackColor = verticalScroll1.BackColor = design.BackColor.Tint(Lum: design.Type.If(FormDesignType.Dark, 3, -3));
 		}
 
 		public override bool CanExit()
@@ -136,24 +124,9 @@ namespace TVShowsCalendar.Panels
 			P_OptionContainer.SuspendDrawing();
 			foreach (var item in P_Options.Controls.ThatAre<Panel>())
 				item.Visible = (sender as Control).Tag == item.Tag;
-			foreach (var item in P_Tiles.Controls.ThatAre<SlickTile>())
-				item.Selected = item == sender;
 			P_OptionContainer.ResumeDrawing();
 		}
 
 		private void OC_ValueChanged(object sender, EventArgs e) => valuesChanged = true;
-
-		private void P_Spacer_2_Paint(object sender, PaintEventArgs e)
-		{
-			e.Graphics.Clear(FormDesign.Design.BackColor);
-			e.Graphics.FillRectangle(new SolidBrush(FormDesign.Design.AccentColor), 0, 0, P_Spacer_2.Width - 150, 1);
-
-			e.Graphics.FillRectangle(new LinearGradientBrush(
-				new RectangleF(P_Spacer_2.Width - 175, 0, 150, 1),
-				FormDesign.Design.AccentColor,
-				FormDesign.Design.BackColor,
-				0F),
-				new RectangleF(P_Spacer_2.Width - 175, 0, 150, 1));
-		}
 	}
 }

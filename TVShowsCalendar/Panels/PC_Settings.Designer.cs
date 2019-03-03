@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Settings
 	{
@@ -28,112 +28,66 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.TLP_Main = new System.Windows.Forms.TableLayoutPanel();
-			this.B_Done = new SlickControls.Controls.SlickButton();
 			this.P_OptionContainer = new System.Windows.Forms.Panel();
-			this.verticalScroll1 = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll1 = new SlickControls.Controls.SlickScroll();
 			this.P_Options = new System.Windows.Forms.Panel();
 			this.P_Watch = new System.Windows.Forms.Panel();
-			this.OC_BackwardTime = new TVShowsCalendar.OptionControl();
-			this.OC_ForwardTime = new TVShowsCalendar.OptionControl();
-			this.OC_FullScreenPlayer = new TVShowsCalendar.OptionControl();
+			this.OC_BackwardTime = new ShowsCalendar.OptionControl();
+			this.OC_ForwardTime = new ShowsCalendar.OptionControl();
+			this.OC_FullScreenPlayer = new ShowsCalendar.OptionControl();
 			this.P_Download = new System.Windows.Forms.Panel();
-			this.OC_Quality = new TVShowsCalendar.OptionControl();
-			this.OC_DownloadOption = new TVShowsCalendar.OptionControl();
-			this.OC_DownloadBehavior = new TVShowsCalendar.OptionControl();
-			this.OC_EpBehavior = new TVShowsCalendar.OptionControl();
+			this.OC_Quality = new ShowsCalendar.OptionControl();
+			this.OC_DownloadOption = new ShowsCalendar.OptionControl();
+			this.OC_DownloadBehavior = new ShowsCalendar.OptionControl();
+			this.OC_EpBehavior = new ShowsCalendar.OptionControl();
 			this.P_App = new System.Windows.Forms.Panel();
-			this.OC_MoviesRefreshDays = new TVShowsCalendar.OptionControl();
-			this.OC_ShowsRefreshDays = new TVShowsCalendar.OptionControl();
-			this.OC_StartMode = new TVShowsCalendar.OptionControl();
-			this.OC_LaunchWithWindows = new TVShowsCalendar.OptionControl();
+			this.OC_MoviesRefreshDays = new ShowsCalendar.OptionControl();
+			this.OC_ShowsRefreshDays = new ShowsCalendar.OptionControl();
+			this.OC_StartMode = new ShowsCalendar.OptionControl();
+			this.OC_LaunchWithWindows = new ShowsCalendar.OptionControl();
 			this.P_General = new System.Windows.Forms.Panel();
-			this.OC_NotificationSound = new TVShowsCalendar.OptionControl();
-			this.OC_UnwatchedBanner = new TVShowsCalendar.OptionControl();
-			this.OC_FinaleWarning = new TVShowsCalendar.OptionControl();
-			this.OC_EpNotification = new TVShowsCalendar.OptionControl();
-			this.P_Tiles = new System.Windows.Forms.Panel();
-			this.T_Watch = new SlickControls.Controls.SlickTile();
-			this.T_Downloads = new SlickControls.Controls.SlickTile();
-			this.T_App = new SlickControls.Controls.SlickTile();
-			this.T_General = new SlickControls.Controls.SlickTile();
-			this.P_Spacer = new SlickControls.Controls.DBPanel();
-			this.P_Spacer_2 = new System.Windows.Forms.Panel();
-			this.TLP_Main.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.B_Done)).BeginInit();
+			this.OC_NotificationSound = new ShowsCalendar.OptionControl();
+			this.OC_UnwatchedBanner = new ShowsCalendar.OptionControl();
+			this.OC_FinaleWarning = new ShowsCalendar.OptionControl();
+			this.OC_EpNotification = new ShowsCalendar.OptionControl();
+			this.TLP_Tabs = new System.Windows.Forms.TableLayoutPanel();
+			this.T_App = new SlickControls.Controls.SlickTab();
+			this.T_Watch = new SlickControls.Controls.SlickTab();
+			this.T_Downloads = new SlickControls.Controls.SlickTab();
+			this.T_General = new SlickControls.Controls.SlickTab();
+			this.B_Done = new SlickControls.Controls.SlickButton();
 			this.P_OptionContainer.SuspendLayout();
 			this.P_Options.SuspendLayout();
 			this.P_Watch.SuspendLayout();
 			this.P_Download.SuspendLayout();
 			this.P_App.SuspendLayout();
 			this.P_General.SuspendLayout();
-			this.P_Tiles.SuspendLayout();
+			this.TLP_Tabs.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.B_Done)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// TLP_Main
-			// 
-			this.TLP_Main.ColumnCount = 3;
-			this.TLP_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-			this.TLP_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-			this.TLP_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP_Main.Controls.Add(this.B_Done, 0, 2);
-			this.TLP_Main.Controls.Add(this.P_OptionContainer, 2, 1);
-			this.TLP_Main.Controls.Add(this.P_Tiles, 0, 1);
-			this.TLP_Main.Controls.Add(this.P_Spacer, 1, 1);
-			this.TLP_Main.Controls.Add(this.P_Spacer_2, 0, 0);
-			this.TLP_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TLP_Main.Location = new System.Drawing.Point(0, 30);
-			this.TLP_Main.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-			this.TLP_Main.Name = "TLP_Main";
-			this.TLP_Main.RowCount = 3;
-			this.TLP_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-			this.TLP_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-			this.TLP_Main.Size = new System.Drawing.Size(1077, 1039);
-			this.TLP_Main.TabIndex = 11;
-			// 
-			// B_Done
-			// 
-			this.B_Done.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.B_Done.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.B_Done.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.B_Done.ColorShade = null;
-			this.TLP_Main.SetColumnSpan(this.B_Done, 3);
-			this.B_Done.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.B_Done.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.B_Done.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-			this.B_Done.IconSize = 16;
-			this.B_Done.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Ok;
-			this.B_Done.Location = new System.Drawing.Point(457, 1004);
-			this.B_Done.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-			this.B_Done.Name = "B_Done";
-			this.B_Done.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
-			this.B_Done.Size = new System.Drawing.Size(162, 30);
-			this.B_Done.TabIndex = 10;
-			this.B_Done.Text = "APPLY CHANGES";
-			this.B_Done.Click += new System.EventHandler(this.B_Apply_Click);
 			// 
 			// P_OptionContainer
 			// 
 			this.P_OptionContainer.Controls.Add(this.verticalScroll1);
 			this.P_OptionContainer.Controls.Add(this.P_Options);
 			this.P_OptionContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.P_OptionContainer.Location = new System.Drawing.Point(176, 1);
+			this.P_OptionContainer.Location = new System.Drawing.Point(0, 32);
 			this.P_OptionContainer.Margin = new System.Windows.Forms.Padding(0);
 			this.P_OptionContainer.Name = "P_OptionContainer";
-			this.P_OptionContainer.Size = new System.Drawing.Size(901, 998);
+			this.P_OptionContainer.Size = new System.Drawing.Size(1082, 1042);
 			this.P_OptionContainer.TabIndex = 34;
 			this.P_OptionContainer.Resize += new System.EventHandler(this.P_OptionContainer_Resize);
 			// 
 			// verticalScroll1
 			// 
-			this.verticalScroll1.BarColor = null;
 			this.verticalScroll1.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll1.LinkedControl = this.P_Options;
-			this.verticalScroll1.Location = new System.Drawing.Point(897, 0);
+			this.verticalScroll1.Location = new System.Drawing.Point(1077, 0);
 			this.verticalScroll1.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
 			this.verticalScroll1.Name = "verticalScroll1";
-			this.verticalScroll1.Size = new System.Drawing.Size(4, 901);
+			this.verticalScroll1.Size = new System.Drawing.Size(5, 1012);
+			this.verticalScroll1.SizeSource = null;
+			this.verticalScroll1.Style = SlickControls.Controls.StyleType.Vertical;
 			this.verticalScroll1.TabIndex = 35;
 			// 
 			// P_Options
@@ -178,9 +132,9 @@
         "15 seconds",
         "10 seconds",
         "5 seconds"};
-			this.OC_BackwardTime.OptionType = TVShowsCalendar.OptionType.OptionList;
+			this.OC_BackwardTime.OptionType = ShowsCalendar.OptionType.OptionList;
 			this.OC_BackwardTime.SelectedOption = "5 seconds";
-			this.OC_BackwardTime.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_BackwardTime.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_BackwardTime.Size = new System.Drawing.Size(600, 62);
 			this.OC_BackwardTime.TabIndex = 3;
 			this.OC_BackwardTime.Text_CheckBox_Checked = "Show All Downloads";
@@ -204,9 +158,9 @@
         "15 seconds",
         "10 seconds",
         "5 seconds"};
-			this.OC_ForwardTime.OptionType = TVShowsCalendar.OptionType.OptionList;
+			this.OC_ForwardTime.OptionType = ShowsCalendar.OptionType.OptionList;
 			this.OC_ForwardTime.SelectedOption = "15 seconds";
-			this.OC_ForwardTime.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_ForwardTime.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_ForwardTime.Size = new System.Drawing.Size(600, 62);
 			this.OC_ForwardTime.TabIndex = 2;
 			this.OC_ForwardTime.Text_CheckBox_Checked = "Show All Downloads";
@@ -224,9 +178,9 @@
 			this.OC_FullScreenPlayer.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_FullScreenPlayer.Name = "OC_FullScreenPlayer";
 			this.OC_FullScreenPlayer.OptionList = new string[0];
-			this.OC_FullScreenPlayer.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_FullScreenPlayer.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_FullScreenPlayer.SelectedOption = "";
-			this.OC_FullScreenPlayer.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_FullScreenPlayer.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_FullScreenPlayer.Size = new System.Drawing.Size(600, 62);
 			this.OC_FullScreenPlayer.TabIndex = 4;
 			this.OC_FullScreenPlayer.Text_CheckBox_Checked = "Fullscreen Window";
@@ -263,9 +217,9 @@
         "1080p",
         "720p",
         "Low"};
-			this.OC_Quality.OptionType = TVShowsCalendar.OptionType.OptionList;
+			this.OC_Quality.OptionType = ShowsCalendar.OptionType.OptionList;
 			this.OC_Quality.SelectedOption = "1080p";
-			this.OC_Quality.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_Quality.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_Quality.Size = new System.Drawing.Size(600, 62);
 			this.OC_Quality.TabIndex = 1;
 			this.OC_Quality.Text_CheckBox_Checked = "Show All Downloads";
@@ -283,9 +237,9 @@
 			this.OC_DownloadOption.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_DownloadOption.Name = "OC_DownloadOption";
 			this.OC_DownloadOption.OptionList = new string[0];
-			this.OC_DownloadOption.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_DownloadOption.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_DownloadOption.SelectedOption = "";
-			this.OC_DownloadOption.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_DownloadOption.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_DownloadOption.Size = new System.Drawing.Size(600, 62);
 			this.OC_DownloadOption.TabIndex = 2;
 			this.OC_DownloadOption.Text_CheckBox_Checked = "Show All Downloads";
@@ -304,9 +258,9 @@
 			this.OC_DownloadBehavior.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_DownloadBehavior.Name = "OC_DownloadBehavior";
 			this.OC_DownloadBehavior.OptionList = new string[0];
-			this.OC_DownloadBehavior.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_DownloadBehavior.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_DownloadBehavior.SelectedOption = "";
-			this.OC_DownloadBehavior.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_DownloadBehavior.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_DownloadBehavior.Size = new System.Drawing.Size(600, 62);
 			this.OC_DownloadBehavior.TabIndex = 3;
 			this.OC_DownloadBehavior.Text_CheckBox_Checked = "Close After Download";
@@ -325,9 +279,9 @@
 			this.OC_EpBehavior.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_EpBehavior.Name = "OC_EpBehavior";
 			this.OC_EpBehavior.OptionList = new string[0];
-			this.OC_EpBehavior.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_EpBehavior.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_EpBehavior.SelectedOption = "";
-			this.OC_EpBehavior.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_EpBehavior.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_EpBehavior.Size = new System.Drawing.Size(600, 62);
 			this.OC_EpBehavior.TabIndex = 5;
 			this.OC_EpBehavior.Text_CheckBox_Checked = "Download Window";
@@ -368,9 +322,9 @@
         "3 days",
         "2 days",
         "1 day"};
-			this.OC_MoviesRefreshDays.OptionType = TVShowsCalendar.OptionType.OptionList;
+			this.OC_MoviesRefreshDays.OptionType = ShowsCalendar.OptionType.OptionList;
 			this.OC_MoviesRefreshDays.SelectedOption = "10 days";
-			this.OC_MoviesRefreshDays.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_MoviesRefreshDays.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_MoviesRefreshDays.Size = new System.Drawing.Size(600, 62);
 			this.OC_MoviesRefreshDays.TabIndex = 11;
 			this.OC_MoviesRefreshDays.Text_CheckBox_Checked = "Show All Downloads";
@@ -396,9 +350,9 @@
         "3 days",
         "2 days",
         "1 day"};
-			this.OC_ShowsRefreshDays.OptionType = TVShowsCalendar.OptionType.OptionList;
+			this.OC_ShowsRefreshDays.OptionType = ShowsCalendar.OptionType.OptionList;
 			this.OC_ShowsRefreshDays.SelectedOption = "2 days";
-			this.OC_ShowsRefreshDays.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_ShowsRefreshDays.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_ShowsRefreshDays.Size = new System.Drawing.Size(600, 62);
 			this.OC_ShowsRefreshDays.TabIndex = 10;
 			this.OC_ShowsRefreshDays.Text_CheckBox_Checked = "Show All Downloads";
@@ -416,9 +370,9 @@
 			this.OC_StartMode.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_StartMode.Name = "OC_StartMode";
 			this.OC_StartMode.OptionList = new string[0];
-			this.OC_StartMode.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_StartMode.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_StartMode.SelectedOption = "";
-			this.OC_StartMode.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_StartMode.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_StartMode.Size = new System.Drawing.Size(600, 62);
 			this.OC_StartMode.TabIndex = 8;
 			this.OC_StartMode.Text_CheckBox_Checked = "Start Normally";
@@ -436,9 +390,9 @@
 			this.OC_LaunchWithWindows.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_LaunchWithWindows.Name = "OC_LaunchWithWindows";
 			this.OC_LaunchWithWindows.OptionList = new string[0];
-			this.OC_LaunchWithWindows.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_LaunchWithWindows.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_LaunchWithWindows.SelectedOption = "";
-			this.OC_LaunchWithWindows.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_LaunchWithWindows.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_LaunchWithWindows.Size = new System.Drawing.Size(600, 62);
 			this.OC_LaunchWithWindows.TabIndex = 9;
 			this.OC_LaunchWithWindows.Text_CheckBox_Checked = "Launch Automatically";
@@ -470,9 +424,9 @@
 			this.OC_NotificationSound.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_NotificationSound.Name = "OC_NotificationSound";
 			this.OC_NotificationSound.OptionList = new string[0];
-			this.OC_NotificationSound.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_NotificationSound.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_NotificationSound.SelectedOption = "";
-			this.OC_NotificationSound.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_NotificationSound.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_NotificationSound.Size = new System.Drawing.Size(600, 62);
 			this.OC_NotificationSound.TabIndex = 18;
 			this.OC_NotificationSound.Text_CheckBox_Checked = "Play Sound";
@@ -490,9 +444,9 @@
 			this.OC_UnwatchedBanner.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_UnwatchedBanner.Name = "OC_UnwatchedBanner";
 			this.OC_UnwatchedBanner.OptionList = new string[0];
-			this.OC_UnwatchedBanner.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_UnwatchedBanner.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_UnwatchedBanner.SelectedOption = "";
-			this.OC_UnwatchedBanner.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_UnwatchedBanner.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_UnwatchedBanner.Size = new System.Drawing.Size(600, 62);
 			this.OC_UnwatchedBanner.TabIndex = 19;
 			this.OC_UnwatchedBanner.Text_CheckBox_Checked = "Show Banner";
@@ -510,9 +464,9 @@
 			this.OC_FinaleWarning.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_FinaleWarning.Name = "OC_FinaleWarning";
 			this.OC_FinaleWarning.OptionList = new string[0];
-			this.OC_FinaleWarning.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_FinaleWarning.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_FinaleWarning.SelectedOption = "";
-			this.OC_FinaleWarning.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_FinaleWarning.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_FinaleWarning.Size = new System.Drawing.Size(600, 62);
 			this.OC_FinaleWarning.TabIndex = 20;
 			this.OC_FinaleWarning.Text_CheckBox_Checked = "Warn";
@@ -530,9 +484,9 @@
 			this.OC_EpNotification.Margin = new System.Windows.Forms.Padding(0);
 			this.OC_EpNotification.Name = "OC_EpNotification";
 			this.OC_EpNotification.OptionList = new string[0];
-			this.OC_EpNotification.OptionType = TVShowsCalendar.OptionType.Checkbox;
+			this.OC_EpNotification.OptionType = ShowsCalendar.OptionType.Checkbox;
 			this.OC_EpNotification.SelectedOption = "";
-			this.OC_EpNotification.SettingType = TVShowsCalendar.Classes.Setting.App;
+			this.OC_EpNotification.SettingType = ShowsCalendar.Classes.Setting.App;
 			this.OC_EpNotification.Size = new System.Drawing.Size(600, 62);
 			this.OC_EpNotification.TabIndex = 17;
 			this.OC_EpNotification.Text_CheckBox_Checked = "On Episode Air";
@@ -541,114 +495,124 @@
 			this.OC_EpNotification.Text_Title = "Episode Notification";
 			this.OC_EpNotification.ValueChanged += new System.EventHandler(this.OC_ValueChanged);
 			// 
-			// P_Tiles
+			// TLP_Tabs
 			// 
-			this.P_Tiles.Controls.Add(this.T_Watch);
-			this.P_Tiles.Controls.Add(this.T_Downloads);
-			this.P_Tiles.Controls.Add(this.T_App);
-			this.P_Tiles.Controls.Add(this.T_General);
-			this.P_Tiles.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.P_Tiles.Location = new System.Drawing.Point(0, 1);
-			this.P_Tiles.Margin = new System.Windows.Forms.Padding(0);
-			this.P_Tiles.Name = "P_Tiles";
-			this.P_Tiles.Size = new System.Drawing.Size(175, 998);
-			this.P_Tiles.TabIndex = 35;
-			// 
-			// T_Watch
-			// 
-			this.T_Watch.Dock = System.Windows.Forms.DockStyle.Top;
-			this.T_Watch.DrawLeft = false;
-			this.T_Watch.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-			this.T_Watch.Image = global::TVShowsCalendar.Properties.Resources.ArrowRight;
-			this.T_Watch.Location = new System.Drawing.Point(0, 135);
-			this.T_Watch.Name = "T_Watch";
-			this.T_Watch.Padding = new System.Windows.Forms.Padding(10);
-			this.T_Watch.Size = new System.Drawing.Size(175, 45);
-			this.T_Watch.TabIndex = 40;
-			this.T_Watch.TabStop = false;
-			this.T_Watch.Text = "Video Player";
-			this.T_Watch.Click += new System.EventHandler(this.Tile_Click);
-			// 
-			// T_Downloads
-			// 
-			this.T_Downloads.Dock = System.Windows.Forms.DockStyle.Top;
-			this.T_Downloads.DrawLeft = false;
-			this.T_Downloads.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-			this.T_Downloads.Image = global::TVShowsCalendar.Properties.Resources.ArrowRight;
-			this.T_Downloads.Location = new System.Drawing.Point(0, 90);
-			this.T_Downloads.Name = "T_Downloads";
-			this.T_Downloads.Padding = new System.Windows.Forms.Padding(10);
-			this.T_Downloads.Size = new System.Drawing.Size(175, 45);
-			this.T_Downloads.TabIndex = 39;
-			this.T_Downloads.TabStop = false;
-			this.T_Downloads.Text = "Downloads";
-			this.T_Downloads.Click += new System.EventHandler(this.Tile_Click);
+			this.TLP_Tabs.ColumnCount = 6;
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.TLP_Tabs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.TLP_Tabs.Controls.Add(this.T_App, 2, 0);
+			this.TLP_Tabs.Controls.Add(this.T_Watch, 4, 0);
+			this.TLP_Tabs.Controls.Add(this.T_Downloads, 3, 0);
+			this.TLP_Tabs.Controls.Add(this.T_General, 1, 0);
+			this.TLP_Tabs.Dock = System.Windows.Forms.DockStyle.Top;
+			this.TLP_Tabs.Location = new System.Drawing.Point(0, 0);
+			this.TLP_Tabs.Name = "TLP_Tabs";
+			this.TLP_Tabs.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+			this.TLP_Tabs.RowCount = 1;
+			this.TLP_Tabs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.TLP_Tabs.Size = new System.Drawing.Size(1082, 32);
+			this.TLP_Tabs.TabIndex = 18;
 			// 
 			// T_App
 			// 
-			this.T_App.Dock = System.Windows.Forms.DockStyle.Top;
-			this.T_App.DrawLeft = false;
-			this.T_App.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-			this.T_App.Image = global::TVShowsCalendar.Properties.Resources.ArrowRight;
-			this.T_App.Location = new System.Drawing.Point(0, 45);
+			this.T_App.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.T_App.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.T_App.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.T_App.Hovered = false;
+			this.T_App.Icon = global::ShowsCalendar.Properties.Resources.Tiny_App;
+			this.T_App.Location = new System.Drawing.Point(391, 6);
+			this.T_App.Margin = new System.Windows.Forms.Padding(0);
 			this.T_App.Name = "T_App";
-			this.T_App.Padding = new System.Windows.Forms.Padding(10);
-			this.T_App.Size = new System.Drawing.Size(175, 45);
-			this.T_App.TabIndex = 38;
-			this.T_App.TabStop = false;
+			this.T_App.Selected = false;
+			this.T_App.Size = new System.Drawing.Size(150, 26);
+			this.T_App.TabIndex = 4;
 			this.T_App.Text = "Application";
-			this.T_App.Click += new System.EventHandler(this.Tile_Click);
+			this.T_App.TabSelected += new System.EventHandler(this.Tile_Click);
+			// 
+			// T_Watch
+			// 
+			this.T_Watch.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.T_Watch.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.T_Watch.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.T_Watch.Hovered = false;
+			this.T_Watch.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Play;
+			this.T_Watch.Location = new System.Drawing.Point(691, 6);
+			this.T_Watch.Margin = new System.Windows.Forms.Padding(0);
+			this.T_Watch.Name = "T_Watch";
+			this.T_Watch.Selected = false;
+			this.T_Watch.Size = new System.Drawing.Size(150, 26);
+			this.T_Watch.TabIndex = 3;
+			this.T_Watch.Text = "Video Player";
+			this.T_Watch.TabSelected += new System.EventHandler(this.Tile_Click);
+			// 
+			// T_Downloads
+			// 
+			this.T_Downloads.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.T_Downloads.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.T_Downloads.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.T_Downloads.Hovered = false;
+			this.T_Downloads.Icon = global::ShowsCalendar.Properties.Resources.Tiny_CloudDownload;
+			this.T_Downloads.Location = new System.Drawing.Point(541, 6);
+			this.T_Downloads.Margin = new System.Windows.Forms.Padding(0);
+			this.T_Downloads.Name = "T_Downloads";
+			this.T_Downloads.Selected = false;
+			this.T_Downloads.Size = new System.Drawing.Size(150, 26);
+			this.T_Downloads.TabIndex = 1;
+			this.T_Downloads.Text = "Downloads";
+			this.T_Downloads.TabSelected += new System.EventHandler(this.Tile_Click);
 			// 
 			// T_General
 			// 
-			this.T_General.Dock = System.Windows.Forms.DockStyle.Top;
-			this.T_General.DrawLeft = false;
-			this.T_General.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-			this.T_General.Image = global::TVShowsCalendar.Properties.Resources.ArrowRight;
-			this.T_General.Location = new System.Drawing.Point(0, 0);
+			this.T_General.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.T_General.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.T_General.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.T_General.Hovered = false;
+			this.T_General.Icon = global::ShowsCalendar.Properties.Resources.Tiny_Settings;
+			this.T_General.Location = new System.Drawing.Point(241, 6);
+			this.T_General.Margin = new System.Windows.Forms.Padding(0);
 			this.T_General.Name = "T_General";
-			this.T_General.Padding = new System.Windows.Forms.Padding(10);
 			this.T_General.Selected = true;
-			this.T_General.Size = new System.Drawing.Size(175, 45);
-			this.T_General.TabIndex = 37;
-			this.T_General.TabStop = false;
+			this.T_General.Size = new System.Drawing.Size(150, 26);
+			this.T_General.TabIndex = 0;
 			this.T_General.Text = "General";
-			this.T_General.Click += new System.EventHandler(this.Tile_Click);
+			this.T_General.TabSelected += new System.EventHandler(this.Tile_Click);
 			// 
-			// P_Spacer
+			// B_Done
 			// 
-			this.P_Spacer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.P_Spacer.Location = new System.Drawing.Point(175, 1);
-			this.P_Spacer.Margin = new System.Windows.Forms.Padding(0);
-			this.P_Spacer.Name = "P_Spacer";
-			this.P_Spacer.Size = new System.Drawing.Size(1, 998);
-			this.P_Spacer.TabIndex = 36;
-			this.P_Spacer.Paint += new System.Windows.Forms.PaintEventHandler(this.P_Spacer_Paint);
-			// 
-			// P_Spacer_2
-			// 
-			this.TLP_Main.SetColumnSpan(this.P_Spacer_2, 3);
-			this.P_Spacer_2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.P_Spacer_2.Location = new System.Drawing.Point(0, 0);
-			this.P_Spacer_2.Margin = new System.Windows.Forms.Padding(0);
-			this.P_Spacer_2.Name = "P_Spacer_2";
-			this.P_Spacer_2.Size = new System.Drawing.Size(1077, 1);
-			this.P_Spacer_2.TabIndex = 37;
-			this.P_Spacer_2.Paint += new System.Windows.Forms.PaintEventHandler(this.P_Spacer_2_Paint);
+			this.B_Done.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.B_Done.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.B_Done.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.B_Done.ColorShade = null;
+			this.B_Done.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.B_Done.IconSize = 16;
+			this.B_Done.Image = global::ShowsCalendar.Properties.Resources.Tiny_Ok;
+			this.B_Done.Location = new System.Drawing.Point(932, 1031);
+			this.B_Done.Margin = new System.Windows.Forms.Padding(0, 0, 15, 15);
+			this.B_Done.Name = "B_Done";
+			this.B_Done.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
+			this.B_Done.Size = new System.Drawing.Size(135, 28);
+			this.B_Done.TabIndex = 107;
+			this.B_Done.Text = "APPLY CHANGES";
+			this.B_Done.Click += new System.EventHandler(this.B_Apply_Click);
 			// 
 			// PC_Settings
 			// 
-			this.AcceptButton = this.B_Done;
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.Controls.Add(this.TLP_Main);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.Controls.Add(this.B_Done);
+			this.Controls.Add(this.P_OptionContainer);
+			this.Controls.Add(this.TLP_Tabs);
 			this.Name = "PC_Settings";
-			this.Padding = new System.Windows.Forms.Padding(0, 30, 5, 5);
+			this.Padding = new System.Windows.Forms.Padding(0);
 			this.Size = new System.Drawing.Size(1082, 1074);
 			this.Text = "Settings";
-			this.Resize += new System.EventHandler(this.SettingsForm_Resize);
-			this.Controls.SetChildIndex(this.TLP_Main, 0);
-			this.TLP_Main.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.B_Done)).EndInit();
+			this.Controls.SetChildIndex(this.TLP_Tabs, 0);
+			this.Controls.SetChildIndex(this.P_OptionContainer, 0);
+			this.Controls.SetChildIndex(this.B_Done, 0);
 			this.P_OptionContainer.ResumeLayout(false);
 			this.P_OptionContainer.PerformLayout();
 			this.P_Options.ResumeLayout(false);
@@ -657,18 +621,16 @@
 			this.P_Download.ResumeLayout(false);
 			this.P_App.ResumeLayout(false);
 			this.P_General.ResumeLayout(false);
-			this.P_Tiles.ResumeLayout(false);
+			this.TLP_Tabs.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.B_Done)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.TableLayoutPanel TLP_Main;
-		private SlickControls.Controls.SlickButton B_Done;
 		private System.Windows.Forms.Panel P_OptionContainer;
-		private SlickControls.Controls.VerticalScroll verticalScroll1;
+		private SlickControls.Controls.SlickScroll verticalScroll1;
 		private System.Windows.Forms.Panel P_Options;
 		private System.Windows.Forms.Panel P_Watch;
 		private OptionControl OC_BackwardTime;
@@ -689,12 +651,11 @@
 		private OptionControl OC_UnwatchedBanner;
 		private OptionControl OC_FinaleWarning;
 		private OptionControl OC_EpNotification;
-		private System.Windows.Forms.Panel P_Tiles;
-		private SlickControls.Controls.SlickTile T_Watch;
-		private SlickControls.Controls.SlickTile T_Downloads;
-		private SlickControls.Controls.SlickTile T_App;
-		private SlickControls.Controls.SlickTile T_General;
-		private SlickControls.Controls.DBPanel P_Spacer;
-		private System.Windows.Forms.Panel P_Spacer_2;
+		private System.Windows.Forms.TableLayoutPanel TLP_Tabs;
+		private SlickControls.Controls.SlickTab T_App;
+		private SlickControls.Controls.SlickTab T_Watch;
+		private SlickControls.Controls.SlickTab T_Downloads;
+		private SlickControls.Controls.SlickTab T_General;
+		private SlickControls.Controls.SlickButton B_Done;
 	}
 }

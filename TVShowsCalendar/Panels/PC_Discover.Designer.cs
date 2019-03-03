@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Discover
 	{
@@ -31,7 +31,7 @@
 			this.TLP_4 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.FLP_Results = new System.Windows.Forms.FlowLayoutPanel();
-			this.verticalScroll1 = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll1 = new SlickControls.Controls.SlickScroll();
 			this.PB_Load = new System.Windows.Forms.PictureBox();
 			this.TLP_4.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -74,7 +74,6 @@
 			// 
 			// verticalScroll1
 			// 
-			this.verticalScroll1.BarColor = null;
 			this.verticalScroll1.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll1.LinkedControl = null;
 			this.verticalScroll1.Location = new System.Drawing.Point(779, 30);
@@ -95,13 +94,13 @@
 			// 
 			// PC_Discover
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.PB_Load);
 			this.Controls.Add(this.verticalScroll1);
 			this.Controls.Add(this.TLP_4);
 			this.Name = "PC_Discover";
 			this.Padding = new System.Windows.Forms.Padding(5, 30, 0, 0);
-			this.ShowBack = true;
+			
 			this.Text = "Discover";
 			this.Resize += new System.EventHandler(this.PC_Discover_Resize);
 			this.Controls.SetChildIndex(this.TLP_4, 0);
@@ -121,7 +120,7 @@
 		private System.Windows.Forms.TableLayoutPanel TLP_4;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.FlowLayoutPanel FLP_Results;
-		private SlickControls.Controls.VerticalScroll verticalScroll1;
+		private SlickControls.Controls.SlickScroll verticalScroll1;
 		private System.Windows.Forms.PictureBox PB_Load;
 	}
 }

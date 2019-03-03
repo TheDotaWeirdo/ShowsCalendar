@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.HandlerClasses;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Handlers;
 using Extensions;
-using ProjectImages = TVShowsCalendar.Properties.Resources;
-using TVShowsCalendar.UserControls;
+using ProjectImages = ShowsCalendar.Properties.Resources;
+using ShowsCalendar.Controls;
 using SlickControls.Forms;
 using SlickControls.Classes;
 using System.Text.RegularExpressions;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_MoviePage : PanelContent
 	{
@@ -77,6 +77,9 @@ namespace TVShowsCalendar.Panels
 			if (linkedMovie.SimilarMovies != null)
 				foreach (var item in linkedMovie.SimilarMovies)
 					FLP_Similar.Controls.Add(new MediaViewer(item) { Margin = new Padding(15, 10, 15, 10) });
+
+			foreach (var item in linkedMovie.VidFiles)
+				FLP_Files.Controls.Add(new VideoFileControl(item, linkedMovie));
 		}
 
 		protected override bool LoadData()
@@ -268,11 +271,6 @@ namespace TVShowsCalendar.Panels
 			verticalScroll.Reset();
 		}
 
-		private void SL_ZooqleLink_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void L_InfoWebpage_MouseEnter(object sender, EventArgs e)
 		{
 			L_InfoWebpage.Font = new Font(L_InfoWebpage.Font, FontStyle.Underline);
@@ -310,6 +308,13 @@ namespace TVShowsCalendar.Panels
 		{
 			P_Content.Controls.RemoveAt(0);
 			P_Content.Controls.Add(FLP_Images);
+			verticalScroll.Reset();
+		}
+
+		private void ST_Files_TabSelected(object sender, EventArgs e)
+		{
+			P_Content.Controls.RemoveAt(0);
+			P_Content.Controls.Add(FLP_Files);
 			verticalScroll.Reset();
 		}
 	}

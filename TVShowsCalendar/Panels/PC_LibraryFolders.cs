@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using SlickControls.Panels;
 using SlickControls.Enums;
 using Extensions;
-using TVShowsCalendar.HandlerClasses;
+using ShowsCalendar.Handlers;
 using System.IO;
-using TVShowsCalendar.Classes;
+using ShowsCalendar.Classes;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_LibraryFolders : PanelContent
 	{
@@ -23,10 +23,7 @@ namespace TVShowsCalendar.Panels
 			InitializeComponent();
 			LoadFolders();
 
-			if (Data.FirstTimeSetup)
-				B_Done.Visible = true;
-			else
-				TLP_Main.RowStyles[3].Height = 0;
+			B_Done.Visible = Data.FirstTimeSetup;
 		}
 
 		protected override void DesignChanged(FormDesign design)
@@ -40,7 +37,7 @@ namespace TVShowsCalendar.Panels
 			if (!string.IsNullOrWhiteSpace(TB_Path.Text) && (Directory.Exists(TB_Path.Text) || ShowPrompt("The selected folder does not currently exist.\n\nWould you like to add it anyway?",
 				"Directory Unavailable", PromptButtons.YesNo, PromptIcons.Question) == DialogResult.Yes))
 			{
-				LocalShowHandler.AddGeneralFolder(TB_Path.Text);
+				LocalFileHandler.AddGeneralFolder(TB_Path.Text);
 				LoadFolders();
 				TB_Path.Text = string.Empty;
 			}
@@ -51,7 +48,7 @@ namespace TVShowsCalendar.Panels
 			FLP_Folders.SuspendDrawing();
 			FLP_Folders.Controls.Clear(true);
 
-			foreach (var item in LocalShowHandler.GeneralFolders)
+			foreach (var item in LocalFileHandler.GeneralFolders)
 			{
 				var myL = new SlickControls.Controls.SlickLabel()
 				{
@@ -79,7 +76,7 @@ namespace TVShowsCalendar.Panels
 				{
 					if (ShowPrompt("Are you sure you want to remove this folder?", "Confirm Action", PromptButtons.OKCancel, PromptIcons.Hand) == DialogResult.OK)
 					{
-						LocalShowHandler.RemoveGeneralFolder(item.FullName);
+						LocalFileHandler.RemoveGeneralFolder(item.FullName);
 						myL.Dispose();
 					}
 				};
@@ -103,7 +100,12 @@ namespace TVShowsCalendar.Panels
 
 		private void B_Done_Click(object sender, EventArgs e)
 		{
-			Data.Dashboard.Setup(2);
+			Data.Mainform.Setup(2);
+		}
+
+		private void B_SearchMedia_Click(object sender, EventArgs e)
+		{
+			Form.PushPanel<PC_DiscoverLibrary>(null);
 		}
 	}
 }

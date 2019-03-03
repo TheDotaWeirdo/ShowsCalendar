@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public enum SortOption
 	{
@@ -13,6 +13,7 @@ namespace TVShowsCalendar.Classes
 		Subs,
 		Sound,
 		Res,
-		Size
+		Size,
+		Health
 	};
 }

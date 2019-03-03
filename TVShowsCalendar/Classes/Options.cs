@@ -1,6 +1,6 @@
 ﻿using Extensions;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public class Options : ISave
 	{
@@ -20,5 +20,6 @@ namespace TVShowsCalendar.Classes
 		public int BackwardTime { get; set; } = 5;
 		public int MoviesRefreshDays { get; set; } = 10;
 		public int ShowsRefreshDays { get; set; } = 2;
+		public bool AutoCleaner { get; set; } = false;
 	}
 }

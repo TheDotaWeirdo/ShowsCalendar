@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Dashboard
 	{
@@ -30,12 +30,12 @@
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.P_Tabs = new System.Windows.Forms.Panel();
-			this.SP_UpcomingMovies = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_UpcomingEps = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_RecentMovies = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_RecentEps = new TVShowsCalendar.UserControls.SectionPanel();
-			this.SP_OnDeck = new TVShowsCalendar.UserControls.SectionPanel();
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.SP_UpcomingMovies = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_UpcomingEps = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_RecentMovies = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_RecentEps = new SlickControls.Controls.SlickSectionPanel();
+			this.SP_OnDeck = new SlickControls.Controls.SlickSectionPanel();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.panel1.SuspendLayout();
 			this.P_Tabs.SuspendLayout();
 			this.SuspendLayout();
@@ -72,7 +72,7 @@
 			this.SP_UpcomingMovies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_UpcomingMovies.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_UpcomingMovies.Flavor = null;
-			this.SP_UpcomingMovies.Icon = global::TVShowsCalendar.Properties.Resources.Big_Movie;
+			this.SP_UpcomingMovies.Icon = global::ShowsCalendar.Properties.Resources.Big_Movie;
 			this.SP_UpcomingMovies.Info = "Movies with a definitive release date";
 			this.SP_UpcomingMovies.Location = new System.Drawing.Point(0, 216);
 			this.SP_UpcomingMovies.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -89,7 +89,7 @@
 			this.SP_UpcomingEps.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_UpcomingEps.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_UpcomingEps.Flavor = null;
-			this.SP_UpcomingEps.Icon = global::TVShowsCalendar.Properties.Resources.Big_TV;
+			this.SP_UpcomingEps.Icon = global::ShowsCalendar.Properties.Resources.Big_TV;
 			this.SP_UpcomingEps.Info = "Episodes to look forward to within the next month";
 			this.SP_UpcomingEps.Location = new System.Drawing.Point(0, 162);
 			this.SP_UpcomingEps.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -106,7 +106,7 @@
 			this.SP_RecentMovies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.SP_RecentMovies.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_RecentMovies.Flavor = null;
-			this.SP_RecentMovies.Icon = global::TVShowsCalendar.Properties.Resources.Big_Popcorn;
+			this.SP_RecentMovies.Icon = global::ShowsCalendar.Properties.Resources.Big_Popcorn;
 			this.SP_RecentMovies.Info = "Movies that were released not so long ago";
 			this.SP_RecentMovies.Location = new System.Drawing.Point(0, 108);
 			this.SP_RecentMovies.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -126,7 +126,7 @@
         "Episodes that came out in the past week",
         "Episodes straight out of last week",
         "Freshest episodes around"};
-			this.SP_RecentEps.Icon = global::TVShowsCalendar.Properties.Resources.Big_Airing;
+			this.SP_RecentEps.Icon = global::ShowsCalendar.Properties.Resources.Big_Airing;
 			this.SP_RecentEps.Info = "Episodes that aired in the last week";
 			this.SP_RecentEps.Location = new System.Drawing.Point(0, 54);
 			this.SP_RecentEps.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -148,7 +148,7 @@
         "Yes, those are the things you were watching.",
         "Gotcha covered, buddy!",
         "The temptation is small, but your will is weak, press on one."};
-			this.SP_OnDeck.Icon = global::TVShowsCalendar.Properties.Resources.Big_Play;
+			this.SP_OnDeck.Icon = global::ShowsCalendar.Properties.Resources.Big_Play;
 			this.SP_OnDeck.Info = "";
 			this.SP_OnDeck.Location = new System.Drawing.Point(0, 0);
 			this.SP_OnDeck.MaximumSize = new System.Drawing.Size(9999, 54);
@@ -159,7 +159,6 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = this.P_Tabs;
 			this.verticalScroll.Location = new System.Drawing.Point(776, 30);
@@ -170,7 +169,7 @@
 			// 
 			// PC_Dashboard
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.verticalScroll);
 			this.Controls.Add(this.panel1);
 			this.Name = "PC_Dashboard";
@@ -193,11 +192,11 @@
 
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel P_Tabs;
-		private SlickControls.Controls.VerticalScroll verticalScroll;
-		private UserControls.SectionPanel SP_UpcomingMovies;
-		private UserControls.SectionPanel SP_UpcomingEps;
-		private UserControls.SectionPanel SP_RecentMovies;
-		private UserControls.SectionPanel SP_RecentEps;
-		private UserControls.SectionPanel SP_OnDeck;
+		private SlickControls.Controls.SlickScroll verticalScroll;
+		private SlickControls.Controls.SlickSectionPanel SP_UpcomingMovies;
+		private SlickControls.Controls.SlickSectionPanel SP_UpcomingEps;
+		private SlickControls.Controls.SlickSectionPanel SP_RecentMovies;
+		private SlickControls.Controls.SlickSectionPanel SP_RecentEps;
+		private SlickControls.Controls.SlickSectionPanel SP_OnDeck;
 	}
 }

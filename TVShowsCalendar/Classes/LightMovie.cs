@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TMDbLib.Objects.Search;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public class LightMovie
 	{

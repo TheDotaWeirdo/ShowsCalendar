@@ -6,11 +6,12 @@ using System.Linq;
 using System.Windows.Forms;
 using SlickControls.Panels;
 using Extensions;
-using TVShowsCalendar.HandlerClasses;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.UserControls;
+using ShowsCalendar.Handlers;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Controls;
+using SlickControls.Controls;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Watch : PanelContent
 	{
@@ -88,7 +89,7 @@ namespace TVShowsCalendar.Panels
 
 			P_Tabs.ResumeDrawing();
 
-			TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SectionPanel>().Any(x => x.Content.Controls.Count > 0);
+			TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SlickSectionPanel>().Any(x => x.Content.Controls.Count > 0);
 
 			StopLoader();
 		}
@@ -118,7 +119,7 @@ namespace TVShowsCalendar.Panels
 				SP_RewatchEps.Content.Controls.Add(new WatchControl(item, false));
 			SP_RewatchEps.Content.OrderByDescending(x => (x as WatchControl).Episode.GetDateOrder());
 
-			TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SectionPanel>().Any(x => x.Content.Controls.Count > 0);
+			TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SlickSectionPanel>().Any(x => x.Content.Controls.Count > 0);
 
 			P_Tabs.ResumeDrawing();
 		}

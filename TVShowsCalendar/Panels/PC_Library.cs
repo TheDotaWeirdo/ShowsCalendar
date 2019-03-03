@@ -6,11 +6,12 @@ using System.Linq;
 using System.Windows.Forms;
 using SlickControls.Panels;
 using Extensions;
-using TVShowsCalendar.HandlerClasses;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.UserControls;
+using ShowsCalendar.Handlers;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Controls;
+using SlickControls.Controls;
 
-namespace TVShowsCalendar.Panels
+namespace ShowsCalendar.Panels
 {
 	public partial class PC_Library : PanelContent
 	{
@@ -63,7 +64,7 @@ namespace TVShowsCalendar.Panels
 				}
 				SP_Shows.Content.OrderByDescending(x => (x as WatchControl).Episode.GetDateOrder());
 
-				TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SectionPanel>().Any(x => x.Content.Controls.Count > 0);
+				TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SlickSectionPanel>().Any(x => x.Content.Controls.Count > 0);
 
 				SP_Shows.Content.ResumeDrawing();
 			});
@@ -78,11 +79,11 @@ namespace TVShowsCalendar.Panels
 
 				SP_Movies.Content.Controls.Clear(true, x => movie == null || (x as WatchControl).Movie == movie);
 
-				foreach (var item in movies.Where(x => (x.VidFile?.Exists ?? false)))
+				foreach (var item in movies.Where(x => (x.VidFiles.Any(y => y.Exists))))
 					SP_Movies.Content.Controls.Add(new WatchControl(item, false));
 				SP_Movies.Content.OrderByDescending(x => (x as WatchControl).Movie.GetDateOrder());
 
-				TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SectionPanel>().Any(x => x.Content.Controls.Count > 0);
+				TLP_NoShows.Visible = !P_Tabs.Controls.ThatAre<SlickSectionPanel>().Any(x => x.Content.Controls.Count > 0);
 
 				SP_Movies.Content.ResumeDrawing();
 

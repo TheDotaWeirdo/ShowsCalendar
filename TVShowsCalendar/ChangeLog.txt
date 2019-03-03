@@ -1,16 +1,27 @@
 ﻿V 4.0.0
-New Design
-  •  Completely redesigned the app to a sidebar single window style.
-New Icons
-  •  Introducing Pixel-Perfect icons.
-  •  Changed every icon used to new, slicker, pixel-perfect icons.
+One year later, Shows Calendar finally has its 4th major revision, introducing a complete design change in every single aspect of the app, as well as more needed features and quality of life improvements.
+The Slickest Design Yet
+  •  Complete re-think of the design, every aspect of the app is changed, more modern and simple.
+  •  Introducing pixel-perfect icons; slicker, aesthetic icon re-haul.
+Re-Namer meets Calendar
+  •  Introduced the magical re-naming feature of Shows Re-Namer, right in the app.
+  •  Allowing you to seamlessly organize your library with a single click.
+  •  Automate your cleanup routine with the Automatic Cleanup feature that cleans up your files when you're away
 Download Anything
   •  Downloads no longer require a show to be linked to Zooqle.
   •  You can now download any episode, season or movie with a click.
-Improvements
+  •  Download info is more accurate, including a health indicator for the torrent.
+New pages to check out
+  •  Library; view the entirety of your watch library in one place.
+  •  Season & Episode Page; view more information like guest stars, crew, images and local files.
+  •  Library Folders; with the introduction of a library search feature to automatically scan your files and suggest Shows & Movies to add.
+Other Improvements
   •  Improved the local library handler, now faster and automatically refreshes when you download/edit a file.
-Fixes
-  •  Changed the look of Show Tiles for the first time since their creation.
+  •  Smarter file handler, allows for more than one file associated to an episode or movie.
+  •  Trying to play an episode or movie with multiple files will open a page to choose which to play, including useful info to differentiate them.
+  •  Shows & Movies search; start typing in your Content tabs to immediately search your library.
+  •  Discover now shows 5x more items than usual.
+  •  Smooth Scrolling; true smoothness.
 V 3.4.2
 New Show Tiles
   •  Changed the look of Show Tiles for the first time since their creation.

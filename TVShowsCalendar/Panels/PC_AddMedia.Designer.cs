@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_AddMedia
 	{
@@ -34,7 +34,7 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.FLP_Results = new System.Windows.Forms.FlowLayoutPanel();
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.TLP_Main.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ML_Info)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -65,7 +65,7 @@
 			this.ML_Info.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.ML_Info.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ML_Info.HoverState = SlickControls.Enums.HoverState.Normal;
-			this.ML_Info.Image = global::TVShowsCalendar.Properties.Resources.Icon_Info;
+			this.ML_Info.Image = global::ShowsCalendar.Properties.Resources.Icon_Info;
 			this.ML_Info.Location = new System.Drawing.Point(741, 9);
 			this.ML_Info.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
 			this.ML_Info.MinimumIconSize = 20;
@@ -84,15 +84,14 @@
 			this.TB_SeriesName.LabelText = "Series Name";
 			this.TB_SeriesName.Location = new System.Drawing.Point(30, 3);
 			this.TB_SeriesName.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-			this.TB_SeriesName.MaximumSize = new System.Drawing.Size(9999, 34);
 			this.TB_SeriesName.MaxLength = 32767;
-			this.TB_SeriesName.MinimumSize = new System.Drawing.Size(50, 35);
 			this.TB_SeriesName.Name = "TB_SeriesName";
 			this.TB_SeriesName.Placeholder = "Type the name of a TV Show to search";
+			this.TB_SeriesName.ReadOnly = false;
 			this.TB_SeriesName.SelectedText = "";
 			this.TB_SeriesName.SelectionLength = 0;
 			this.TB_SeriesName.SelectionStart = 0;
-			this.TB_SeriesName.Size = new System.Drawing.Size(437, 35);
+			this.TB_SeriesName.Size = new System.Drawing.Size(437, 34);
 			this.TB_SeriesName.TabIndex = 0;
 			this.TB_SeriesName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
 			this.TB_SeriesName.Validation = SlickControls.Enums.ValidationType.None;
@@ -104,10 +103,10 @@
 			this.TLP_Main.SetColumnSpan(this.panel1, 2);
 			this.panel1.Controls.Add(this.tableLayoutPanel1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(15, 44);
+			this.panel1.Location = new System.Drawing.Point(15, 43);
 			this.panel1.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(748, 361);
+			this.panel1.Size = new System.Drawing.Size(748, 362);
 			this.panel1.TabIndex = 1;
 			// 
 			// tableLayoutPanel1
@@ -136,13 +135,14 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = this.tableLayoutPanel1;
 			this.verticalScroll.Location = new System.Drawing.Point(385, 29);
 			this.verticalScroll.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
 			this.verticalScroll.Name = "verticalScroll";
-			this.verticalScroll.Size = new System.Drawing.Size(12, 381);
+			this.verticalScroll.Size = new System.Drawing.Size(5, 381);
+			this.verticalScroll.SizeSource = null;
+			this.verticalScroll.Style = SlickControls.Controls.StyleType.Vertical;
 			this.verticalScroll.TabIndex = 13;
 			// 
 			// PC_AddMedia
@@ -153,7 +153,6 @@
 			this.Controls.Add(this.TLP_Main);
 			this.Name = "PC_AddMedia";
 			this.Padding = new System.Windows.Forms.Padding(5, 30, 0, 0);
-			this.ShowBack = true;
 			this.Resize += new System.EventHandler(this.TMDbForm_Resize);
 			this.Controls.SetChildIndex(this.TLP_Main, 0);
 			this.Controls.SetChildIndex(this.verticalScroll, 0);
@@ -174,7 +173,7 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.FlowLayoutPanel FLP_Results;
-		private SlickControls.Controls.VerticalScroll verticalScroll;
+		private SlickControls.Controls.SlickScroll verticalScroll;
 		private SlickControls.Controls.SlickTextBox TB_SeriesName;
 		private SlickControls.Controls.SlickIcon ML_Info;
 	}

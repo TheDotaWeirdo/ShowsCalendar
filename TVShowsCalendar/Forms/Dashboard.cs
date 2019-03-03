@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Extensions;
+using ShowsCalendar.Classes;
+using ShowsCalendar.Handlers;
+using ShowsCalendar.Panels;
+using ShowsRenamer.Module.Classes;
+using ShowsRenamer.Module.Handlers;
 using SlickControls.Classes;
 using SlickControls.Enums;
 using SlickControls.Forms;
 using SlickControls.Panels;
-using TVShowsCalendar.Classes;
-using TVShowsCalendar.Panels;
+using System.Runtime.InteropServices;
 
-namespace TVShowsCalendar.Forms
+namespace ShowsCalendar.Forms
 {
 	public partial class Dashboard : BasePanelForm
 	{
@@ -34,6 +37,10 @@ namespace TVShowsCalendar.Forms
 				Bounds = Data.Preferences.DashBounds;
 
 			WindowState = Data.Preferences.DashMax ? FormWindowState.Maximized : FormWindowState.Normal;
+
+			AutoCleanupTimer.Elapsed += AutoCleanupTimer_Elapsed;
+			if (Data.Options.AutoCleaner)
+				AutoCleanupTimer.Start();
 		}
 
 		#endregion Public Constructors
@@ -74,14 +81,6 @@ namespace TVShowsCalendar.Forms
 
 		#region Protected Methods
 
-		protected override void DesignChanged(FormDesign design)
-		{
-			base.DesignChanged(design);
-
-			PB_TMDb.Color(design.LabelColor);
-			L_Version.ForeColor = L_Icons8.ForeColor = design.LabelColor;
-		}
-
 		protected override void OnFormClosing(FormClosingEventArgs e)
 		{
 			if (!Data.FirstTimeSetup && e.CloseReason == CloseReason.UserClosing && e.CloseReason != CloseReason.ApplicationExitCall)
@@ -115,19 +114,11 @@ namespace TVShowsCalendar.Forms
 			}
 		}
 
-		private void L_Icons8_Click(object sender, EventArgs e)
-		{
-			Cursor.Current = Cursors.WaitCursor;
-			try { Process.Start("https://icons8.com"); }
-			catch (Exception) { Cursor.Current = Cursors.Default; MessagePrompt.Show("Could not open link because you do not have a default Web Browser Selected", "No Browser Selected", PromptButtons.OK, PromptIcons.Error, this); }
-			Cursor.Current = Cursors.Default;
-		}
-
 		private void L_Version_Click(object sender, EventArgs e)
 		{
 			Cursor.Current = Cursors.WaitCursor;
 			var assembly = Assembly.GetExecutingAssembly();
-			var resourceName = "TVShowsCalendar.ChangeLog.txt";
+			var resourceName = "ShowsCalendar.ChangeLog.txt";
 			var result = new string[0];
 
 			using (Stream stream = assembly.GetManifestResourceStream(resourceName))
@@ -156,21 +147,21 @@ namespace TVShowsCalendar.Forms
 				this.ShowUp();
 		}
 
-		private void PB_TMDb_Click(object sender, EventArgs e)
-		{
-			Cursor.Current = Cursors.WaitCursor;
-			try { Process.Start("https://themoviedb.org/"); }
-			catch (Exception) { Cursor.Current = Cursors.Default; MessagePrompt.Show("Could not open link because you do not have a default Web Browser Selected", "No Browser Selected", PromptButtons.OK, PromptIcons.Error, this); }
-			Cursor.Current = Cursors.Default;
-		}
+		//private void PB_TMDb_Click(object sender, EventArgs e)
+		//{
+		//	Cursor.Current = Cursors.WaitCursor;
+		//	try { Process.Start("https://themoviedb.org/"); }
+		//	catch (Exception) { Cursor.Current = Cursors.Default; MessagePrompt.Show("Could not open link because you do not have a default Web Browser Selected", "No Browser Selected", PromptButtons.OK, PromptIcons.Error, this); }
+		//	Cursor.Current = Cursors.Default;
+		//}
 
-		private void PB_TMDb_Paint(object sender, PaintEventArgs e)
-		{
-			e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-			e.Graphics.DrawString("powered by", new Font("Nirmala UI", 6.75F), new SolidBrush(FormDesign.Design.LabelColor), 7, 3);
+		//private void PB_TMDb_Paint(object sender, PaintEventArgs e)
+		//{
+		//	e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+		//	e.Graphics.DrawString("powered by", new Font("Nirmala UI", 6.75F), new SolidBrush(base_P_SideControls.ForeColor), 7, 3);
 
-			e.Graphics.DrawString("THE MOVIE DB", new Font("Nirmala UI", 8.25F, FontStyle.Bold), new SolidBrush(FormDesign.Design.LabelColor), 5, 14);
-		}
+		//	e.Graphics.DrawString("THE MOVIE DB", new Font("Nirmala UI", 8.25F, FontStyle.Bold), new SolidBrush(base_P_SideControls.ForeColor), 5, 14);
+		//}
 
 		private void PI_About_OnClick(object sender, MouseEventArgs e) => SetPanel<PC_About>((PanelItem)sender);
 
@@ -188,6 +179,67 @@ namespace TVShowsCalendar.Forms
 
 		private void PI_Watch_OnClick(object sender, MouseEventArgs e) => SetPanel<PC_Watch>((PanelItem)sender);
 
+		private void PI_LibraryRename_OnClick(object sender, MouseEventArgs e) => SetPanel<PC_LibraryRenamer>((PanelItem)sender);
+
 		#endregion Private Methods
+
+		private void L_Text_Click(object sender, EventArgs e) => PI_About_OnClick(PI_About, null);
+
+		private System.Timers.Timer AutoCleanupTimer = new System.Timers.Timer(3000);
+
+		private void Dashboard_Activated(object sender, EventArgs e)
+		{
+			if (Data.Options.AutoCleaner)
+				AutoCleanupTimer.Stop();
+		}
+
+		private void Dashboard_Deactivate(object sender, EventArgs e)
+		{
+			if (Data.Options.AutoCleaner)
+				AutoCleanupTimer.Start();
+		}
+
+		private void AutoCleanupTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+		{
+			if (Data.Options.AutoCleaner && GetInactiveTime().TotalHours >= 1.5)
+			{
+				Data.RenameHandler = new RenameHandler(new CleaningSessionInfo()
+				{
+					Paths = LocalFileHandler.GeneralFolders.Convert(x => x.FullName)
+				});
+
+				new Action(PC_LibraryRenamer.RunCleaner).RunInBackground(System.Threading.ThreadPriority.BelowNormal);
+			}
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct LASTINPUTINFO
+		{
+			public uint cbSize;
+			public uint dwTime;
+		}
+
+		[DllImport("user32.dll")]
+		static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
+		public TimeSpan GetInactiveTime()
+		{
+			if (Data.Options.AutoCleaner)
+			{
+				LASTINPUTINFO info = new LASTINPUTINFO();
+				info.cbSize = (uint)Marshal.SizeOf(info);
+				if (GetLastInputInfo(ref info))
+					return TimeSpan.FromMilliseconds(Environment.TickCount - info.dwTime);
+			}
+
+			return TimeSpan.Zero;
+		}
+
+		private void Dashboard_ResizeEnd(object sender, EventArgs e)
+		{
+			if (Data.Preferences.DashMax = WindowState == FormWindowState.Maximized)
+				Data.Preferences.DashBounds = Bounds;
+			Data.Preferences.Save();
+		}
 	}
 }

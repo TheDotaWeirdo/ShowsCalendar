@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_Download
 	{
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PC_Download));
-			this.verticalScroll = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll = new SlickControls.Controls.SlickScroll();
 			this.TLP_Main = new System.Windows.Forms.TableLayoutPanel();
 			this.PB_Image = new System.Windows.Forms.PictureBox();
 			this.P_Spacer_1 = new System.Windows.Forms.Panel();
@@ -39,6 +39,7 @@
 			this.L_NoResults = new System.Windows.Forms.Label();
 			this.TLP_Torrents = new System.Windows.Forms.TableLayoutPanel();
 			this.TLP_Icons = new System.Windows.Forms.TableLayoutPanel();
+			this.PB_Health = new System.Windows.Forms.PictureBox();
 			this.PB_Download = new System.Windows.Forms.PictureBox();
 			this.PB_Size = new System.Windows.Forms.PictureBox();
 			this.PB_Res = new System.Windows.Forms.PictureBox();
@@ -59,6 +60,7 @@
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Loader)).BeginInit();
 			this.TLP_Icons.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PB_Health)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Download)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Size)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Res)).BeginInit();
@@ -76,13 +78,14 @@
 			// 
 			// verticalScroll
 			// 
-			this.verticalScroll.BarColor = null;
 			this.verticalScroll.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll.LinkedControl = null;
-			this.verticalScroll.Location = new System.Drawing.Point(779, 30);
+			this.verticalScroll.Location = new System.Drawing.Point(778, 30);
 			this.verticalScroll.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
 			this.verticalScroll.Name = "verticalScroll";
-			this.verticalScroll.Size = new System.Drawing.Size(4, 408);
+			this.verticalScroll.Size = new System.Drawing.Size(5, 408);
+			this.verticalScroll.SizeSource = null;
+			this.verticalScroll.Style = SlickControls.Controls.StyleType.Vertical;
 			this.verticalScroll.TabIndex = 13;
 			// 
 			// TLP_Main
@@ -193,14 +196,16 @@
 			// 
 			// TLP_Icons
 			// 
-			this.TLP_Icons.ColumnCount = 6;
+			this.TLP_Icons.ColumnCount = 7;
 			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
 			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
 			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
 			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
 			this.TLP_Icons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-			this.TLP_Icons.Controls.Add(this.PB_Download, 5, 0);
+			this.TLP_Icons.Controls.Add(this.PB_Health, 5, 0);
+			this.TLP_Icons.Controls.Add(this.PB_Download, 6, 0);
 			this.TLP_Icons.Controls.Add(this.PB_Size, 4, 0);
 			this.TLP_Icons.Controls.Add(this.PB_Res, 3, 0);
 			this.TLP_Icons.Controls.Add(this.PB_Sound, 2, 0);
@@ -216,11 +221,27 @@
 			this.TLP_Icons.Size = new System.Drawing.Size(753, 30);
 			this.TLP_Icons.TabIndex = 17;
 			// 
+			// PB_Health
+			// 
+			this.PB_Health.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PB_Health.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PB_Health.Image = global::ShowsCalendar.Properties.Resources.Tiny_Health;
+			this.PB_Health.Location = new System.Drawing.Point(588, 0);
+			this.PB_Health.Margin = new System.Windows.Forms.Padding(0);
+			this.PB_Health.Name = "PB_Health";
+			this.PB_Health.Size = new System.Drawing.Size(35, 30);
+			this.PB_Health.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.PB_Health.TabIndex = 11;
+			this.PB_Health.TabStop = false;
+			this.PB_Health.Click += new System.EventHandler(this.PB_Health_Click);
+			this.PB_Health.MouseEnter += new System.EventHandler(this.PB_Label_MouseEnter);
+			this.PB_Health.MouseLeave += new System.EventHandler(this.PB_Label_MouseLeave);
+			// 
 			// PB_Download
 			// 
 			this.PB_Download.Cursor = System.Windows.Forms.Cursors.Default;
 			this.PB_Download.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_Download.Image = global::TVShowsCalendar.Properties.Resources.Tiny_CloudDownload;
+			this.PB_Download.Image = global::ShowsCalendar.Properties.Resources.Tiny_CloudDownload;
 			this.PB_Download.Location = new System.Drawing.Point(623, 0);
 			this.PB_Download.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Download.Name = "PB_Download";
@@ -233,8 +254,8 @@
 			// 
 			this.PB_Size.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PB_Size.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_Size.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Storage;
-			this.PB_Size.Location = new System.Drawing.Point(558, 0);
+			this.PB_Size.Image = global::ShowsCalendar.Properties.Resources.Tiny_Storage;
+			this.PB_Size.Location = new System.Drawing.Point(523, 0);
 			this.PB_Size.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Size.Name = "PB_Size";
 			this.PB_Size.Size = new System.Drawing.Size(65, 30);
@@ -249,8 +270,8 @@
 			// 
 			this.PB_Res.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PB_Res.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_Res.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Resolution;
-			this.PB_Res.Location = new System.Drawing.Point(493, 0);
+			this.PB_Res.Image = global::ShowsCalendar.Properties.Resources.Tiny_Resolution;
+			this.PB_Res.Location = new System.Drawing.Point(458, 0);
 			this.PB_Res.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Res.Name = "PB_Res";
 			this.PB_Res.Size = new System.Drawing.Size(65, 30);
@@ -265,8 +286,8 @@
 			// 
 			this.PB_Sound.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PB_Sound.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_Sound.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Sound;
-			this.PB_Sound.Location = new System.Drawing.Point(428, 0);
+			this.PB_Sound.Image = global::ShowsCalendar.Properties.Resources.Tiny_Sound;
+			this.PB_Sound.Location = new System.Drawing.Point(393, 0);
 			this.PB_Sound.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Sound.Name = "PB_Sound";
 			this.PB_Sound.Size = new System.Drawing.Size(65, 30);
@@ -281,8 +302,8 @@
 			// 
 			this.PB_Subs.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PB_Subs.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_Subs.Image = global::TVShowsCalendar.Properties.Resources.Tiny_CC;
-			this.PB_Subs.Location = new System.Drawing.Point(363, 0);
+			this.PB_Subs.Image = global::ShowsCalendar.Properties.Resources.Tiny_CC;
+			this.PB_Subs.Location = new System.Drawing.Point(328, 0);
 			this.PB_Subs.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Subs.Name = "PB_Subs";
 			this.PB_Subs.Size = new System.Drawing.Size(65, 30);
@@ -297,11 +318,11 @@
 			// 
 			this.PB_Label.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PB_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_Label.Image = global::TVShowsCalendar.Properties.Resources.Tiny_Label;
+			this.PB_Label.Image = global::ShowsCalendar.Properties.Resources.Tiny_Label;
 			this.PB_Label.Location = new System.Drawing.Point(0, 0);
 			this.PB_Label.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Label.Name = "PB_Label";
-			this.PB_Label.Size = new System.Drawing.Size(363, 30);
+			this.PB_Label.Size = new System.Drawing.Size(328, 30);
 			this.PB_Label.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.PB_Label.TabIndex = 10;
 			this.PB_Label.TabStop = false;
@@ -317,8 +338,8 @@
 			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
 			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
 			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+			this.TLP_QualitySelection.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
 			this.TLP_QualitySelection.Controls.Add(this.L_1080p, 3, 0);
 			this.TLP_QualitySelection.Controls.Add(this.L_720p, 2, 0);
 			this.TLP_QualitySelection.Controls.Add(this.L_Low, 1, 0);
@@ -327,13 +348,11 @@
 			this.TLP_QualitySelection.Controls.Add(this.L_AllDownloads, 6, 0);
 			this.TLP_QualitySelection.Controls.Add(this.L_SelectedQuality, 0, 0);
 			this.TLP_QualitySelection.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TLP_QualitySelection.Enabled = false;
 			this.TLP_QualitySelection.Location = new System.Drawing.Point(10, 101);
 			this.TLP_QualitySelection.Margin = new System.Windows.Forms.Padding(0);
 			this.TLP_QualitySelection.Name = "TLP_QualitySelection";
 			this.TLP_QualitySelection.RowCount = 1;
 			this.TLP_QualitySelection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.TLP_QualitySelection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.TLP_QualitySelection.Size = new System.Drawing.Size(753, 30);
 			this.TLP_QualitySelection.TabIndex = 4;
 			// 
@@ -341,8 +360,9 @@
 			// 
 			this.L_1080p.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.L_1080p.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.L_1080p.Image = global::TVShowsCalendar.Properties.Resources.Tiny_1080;
-			this.L_1080p.Location = new System.Drawing.Point(493, 0);
+			this.L_1080p.Enabled = false;
+			this.L_1080p.Image = global::ShowsCalendar.Properties.Resources.Tiny_1080;
+			this.L_1080p.Location = new System.Drawing.Point(458, 0);
 			this.L_1080p.Margin = new System.Windows.Forms.Padding(0);
 			this.L_1080p.Name = "L_1080p";
 			this.L_1080p.Size = new System.Drawing.Size(65, 30);
@@ -356,8 +376,9 @@
 			// 
 			this.L_720p.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.L_720p.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.L_720p.Image = global::TVShowsCalendar.Properties.Resources.Tiny_720;
-			this.L_720p.Location = new System.Drawing.Point(428, 0);
+			this.L_720p.Enabled = false;
+			this.L_720p.Image = global::ShowsCalendar.Properties.Resources.Tiny_720;
+			this.L_720p.Location = new System.Drawing.Point(393, 0);
 			this.L_720p.Margin = new System.Windows.Forms.Padding(0);
 			this.L_720p.Name = "L_720p";
 			this.L_720p.Size = new System.Drawing.Size(65, 30);
@@ -371,8 +392,9 @@
 			// 
 			this.L_Low.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.L_Low.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.L_Low.Image = global::TVShowsCalendar.Properties.Resources.Tiny_SD;
-			this.L_Low.Location = new System.Drawing.Point(363, 0);
+			this.L_Low.Enabled = false;
+			this.L_Low.Image = global::ShowsCalendar.Properties.Resources.Tiny_SD;
+			this.L_Low.Location = new System.Drawing.Point(328, 0);
 			this.L_Low.Margin = new System.Windows.Forms.Padding(0);
 			this.L_Low.Name = "L_Low";
 			this.L_Low.Size = new System.Drawing.Size(65, 30);
@@ -386,11 +408,12 @@
 			// 
 			this.L_3D.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.L_3D.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.L_3D.Image = global::TVShowsCalendar.Properties.Resources.Tiny_3D;
-			this.L_3D.Location = new System.Drawing.Point(623, 0);
+			this.L_3D.Enabled = false;
+			this.L_3D.Image = global::ShowsCalendar.Properties.Resources.Tiny_3D;
+			this.L_3D.Location = new System.Drawing.Point(588, 0);
 			this.L_3D.Margin = new System.Windows.Forms.Padding(0);
 			this.L_3D.Name = "L_3D";
-			this.L_3D.Size = new System.Drawing.Size(65, 30);
+			this.L_3D.Size = new System.Drawing.Size(35, 30);
 			this.L_3D.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.L_3D.TabIndex = 13;
 			this.L_3D.TabStop = false;
@@ -401,8 +424,9 @@
 			// 
 			this.L_4K.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.L_4K.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.L_4K.Image = global::TVShowsCalendar.Properties.Resources.Tiny_4K;
-			this.L_4K.Location = new System.Drawing.Point(558, 0);
+			this.L_4K.Enabled = false;
+			this.L_4K.Image = global::ShowsCalendar.Properties.Resources.Tiny_4K;
+			this.L_4K.Location = new System.Drawing.Point(523, 0);
 			this.L_4K.Margin = new System.Windows.Forms.Padding(0);
 			this.L_4K.Name = "L_4K";
 			this.L_4K.Size = new System.Drawing.Size(65, 30);
@@ -416,11 +440,12 @@
 			// 
 			this.L_AllDownloads.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.L_AllDownloads.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.L_AllDownloads.Image = global::TVShowsCalendar.Properties.Resources.Tiny_All;
-			this.L_AllDownloads.Location = new System.Drawing.Point(688, 0);
+			this.L_AllDownloads.Enabled = false;
+			this.L_AllDownloads.Image = global::ShowsCalendar.Properties.Resources.Tiny_All;
+			this.L_AllDownloads.Location = new System.Drawing.Point(623, 0);
 			this.L_AllDownloads.Margin = new System.Windows.Forms.Padding(0);
 			this.L_AllDownloads.Name = "L_AllDownloads";
-			this.L_AllDownloads.Size = new System.Drawing.Size(65, 30);
+			this.L_AllDownloads.Size = new System.Drawing.Size(130, 30);
 			this.L_AllDownloads.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.L_AllDownloads.TabIndex = 11;
 			this.L_AllDownloads.TabStop = false;
@@ -433,7 +458,7 @@
 			this.L_SelectedQuality.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.L_SelectedQuality.AutoSize = true;
 			this.L_SelectedQuality.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-			this.L_SelectedQuality.Location = new System.Drawing.Point(129, 6);
+			this.L_SelectedQuality.Location = new System.Drawing.Point(112, 6);
 			this.L_SelectedQuality.Margin = new System.Windows.Forms.Padding(0);
 			this.L_SelectedQuality.Name = "L_SelectedQuality";
 			this.L_SelectedQuality.Size = new System.Drawing.Size(104, 17);
@@ -451,12 +476,11 @@
 			// 
 			// PC_Download
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.verticalScroll);
 			this.Controls.Add(this.TLP_Main);
 			this.Name = "PC_Download";
 			this.Padding = new System.Windows.Forms.Padding(5, 30, 0, 0);
-			this.ShowBack = true;
 			this.Text = "Download Episode";
 			this.Resize += new System.EventHandler(this.TLP_Torrents_Resize);
 			this.Controls.SetChildIndex(this.TLP_Main, 0);
@@ -467,6 +491,7 @@
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Loader)).EndInit();
 			this.TLP_Icons.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PB_Health)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Download)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Size)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Res)).EndInit();
@@ -487,7 +512,7 @@
 		}
 
 		#endregion
-		private SlickControls.Controls.VerticalScroll verticalScroll;
+		private SlickControls.Controls.SlickScroll verticalScroll;
 		private System.Windows.Forms.TableLayoutPanel TLP_Main;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TableLayoutPanel TLP_Torrents;
@@ -512,5 +537,6 @@
 		private System.Windows.Forms.PictureBox PB_Loader;
 		private System.Windows.Forms.Label L_NoResults;
 		private System.Windows.Forms.PictureBox PB_Image;
+		private System.Windows.Forms.PictureBox PB_Health;
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace TVShowsCalendar.Panels
+﻿namespace ShowsCalendar.Panels
 {
 	partial class PC_VidInfo
 	{
@@ -42,7 +42,7 @@
 			this.L_Duration = new System.Windows.Forms.Label();
 			this.L_Resolution = new System.Windows.Forms.Label();
 			this.L_Subtitles = new System.Windows.Forms.Label();
-			this.verticalScroll1 = new SlickControls.Controls.VerticalScroll();
+			this.verticalScroll1 = new SlickControls.Controls.SlickScroll();
 			this.panel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -225,7 +225,6 @@
 			// 
 			// verticalScroll1
 			// 
-			this.verticalScroll1.BarColor = null;
 			this.verticalScroll1.Dock = System.Windows.Forms.DockStyle.Right;
 			this.verticalScroll1.LinkedControl = this.tableLayoutPanel1;
 			this.verticalScroll1.Location = new System.Drawing.Point(779, 30);
@@ -236,12 +235,12 @@
 			// 
 			// PC_VidInfo
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.Controls.Add(this.verticalScroll1);
 			this.Controls.Add(this.panel1);
 			this.Name = "PC_VidInfo";
 			this.Padding = new System.Windows.Forms.Padding(5, 30, 0, 0);
-			this.ShowBack = true;
+			
 			this.Text = "Video Info";
 			this.Resize += new System.EventHandler(this.PC_VidInfo_Resize);
 			this.Controls.SetChildIndex(this.panel1, 0);
@@ -271,6 +270,6 @@
 		private System.Windows.Forms.Label L_Duration;
 		private System.Windows.Forms.Label L_Resolution;
 		private System.Windows.Forms.Label L_Subtitles;
-		private SlickControls.Controls.VerticalScroll verticalScroll1;
+		private SlickControls.Controls.SlickScroll verticalScroll1;
 	}
 }

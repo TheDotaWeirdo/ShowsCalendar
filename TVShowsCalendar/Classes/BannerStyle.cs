@@ -1,7 +1,7 @@
 ﻿using Extensions;
 using System.Drawing;
 
-namespace TVShowsCalendar.Classes
+namespace ShowsCalendar.Classes
 {
 	public enum BannerStyle
 	{

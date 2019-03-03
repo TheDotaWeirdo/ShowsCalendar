@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TVShowsCalendar.Properties {
+namespace ShowsCalendar.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TVShowsCalendar.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TVShowsCalendar.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ShowsCalendar.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -83,9 +83,49 @@ namespace TVShowsCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Big_Add {
+            get {
+                object obj = ResourceManager.GetObject("Big_Add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Big_Airing {
             get {
                 object obj = ResourceManager.GetObject("Big_Airing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Big_Airing1 {
+            get {
+                object obj = ResourceManager.GetObject("Big_Airing1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Big_Automatic {
+            get {
+                object obj = ResourceManager.GetObject("Big_Automatic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Big_Brush {
+            get {
+                object obj = ResourceManager.GetObject("Big_Brush", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +143,29 @@ namespace TVShowsCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Big_Cog {
+            get {
+                object obj = ResourceManager.GetObject("Big_Cog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Big_Country {
             get {
                 object obj = ResourceManager.GetObject("Big_Country", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Big_Info {
+            get {
+                object obj = ResourceManager.GetObject("Big_Info", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +196,16 @@ namespace TVShowsCalendar.Properties {
         internal static System.Drawing.Bitmap Big_OldMovie {
             get {
                 object obj = ResourceManager.GetObject("Big_OldMovie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Big_Palette {
+            get {
+                object obj = ResourceManager.GetObject("Big_Palette", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -621,6 +691,26 @@ namespace TVShowsCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tiny_App {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_App", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Automatic {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Automatic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tiny_Budget {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Budget", resourceCulture);
@@ -634,6 +724,16 @@ namespace TVShowsCalendar.Properties {
         internal static System.Drawing.Bitmap Tiny_Cancel {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Cast {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Cast", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -664,6 +764,16 @@ namespace TVShowsCalendar.Properties {
         internal static System.Drawing.Bitmap Tiny_Country {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Country", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Crew {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Crew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -751,6 +861,36 @@ namespace TVShowsCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Health {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Health", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Hint {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Hint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Image {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tiny_Info {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Info", resourceCulture);
@@ -811,6 +951,16 @@ namespace TVShowsCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Licence {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Licence", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tiny_Link {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Link", resourceCulture);
@@ -824,6 +974,16 @@ namespace TVShowsCalendar.Properties {
         internal static System.Drawing.Bitmap Tiny_Log {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Log", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Manage {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Manage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1011,6 +1171,56 @@ namespace TVShowsCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Signal_0 {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Signal_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Signal_1 {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Signal_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Signal_2 {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Signal_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Signal_3 {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Signal_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Similar {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Similar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tiny_Sound {
             get {
                 object obj = ResourceManager.GetObject("Tiny_Sound", resourceCulture);
@@ -1094,6 +1304,16 @@ namespace TVShowsCalendar.Properties {
         internal static System.Drawing.Bitmap Tiny_TVEmpty {
             get {
                 object obj = ResourceManager.GetObject("Tiny_TVEmpty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tiny_Z {
+            get {
+                object obj = ResourceManager.GetObject("Tiny_Z", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
