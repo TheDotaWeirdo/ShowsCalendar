@@ -33,8 +33,10 @@
 			// 
 			// CharacterControl
 			// 
+			this.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.Margin = new System.Windows.Forms.Padding(5, 7, 0, 5);
 			this.Size = new System.Drawing.Size(110, 195);
+			this.Click += new System.EventHandler(this.CharacterControl_Click);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.CastControl_Paint);
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 			this.ResumeLayout(false);

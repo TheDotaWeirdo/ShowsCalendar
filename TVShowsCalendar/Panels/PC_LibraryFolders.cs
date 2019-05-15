@@ -87,7 +87,7 @@ namespace ShowsCalendar.Panels
 			FLP_Folders.ResumeDrawing();
 		}
 
-		public override bool CanExit()
+		public override bool CanExit(bool toBeDisposed)
 		{
 			if (!string.IsNullOrWhiteSpace(TB_Path.Text))
 			{

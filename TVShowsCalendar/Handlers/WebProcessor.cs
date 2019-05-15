@@ -37,9 +37,7 @@ namespace ShowsCalendar
 			t.SetApartmentState(ApartmentState.STA);
 			t.Start();
 			t.Join();
-
-
-			
+						
 			try { return GeneratedSource != "" ? GeneratedSource : GetGeneratedHTML(url); }
 			finally { GeneratedSource = null; }
 		}

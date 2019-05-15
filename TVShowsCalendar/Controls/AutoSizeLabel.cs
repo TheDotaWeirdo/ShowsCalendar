@@ -17,7 +17,7 @@ namespace ShowsCalendar.Controls
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		[EditorBrowsable(EditorBrowsableState.Always)]
 		[Bindable(true)]
-		public override string Text { get => base.Text; set => base.Text = value; }
+		public override string Text { get => base.Text; set { base.Text = value; Invalidate(); } }
 
 		public AutoSizeLabel()
 		{

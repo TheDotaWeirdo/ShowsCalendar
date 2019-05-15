@@ -1,272 +1,351 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SlickControls.Panels;
-using Extensions;
+﻿using Extensions;
 using ShowsCalendar.Classes;
-using ShowsCalendar.Forms;
-using SlickControls.Enums;
-using ShowsCalendar.Controls;
-using SlickControls.Forms;
 using SlickControls.Controls;
+using SlickControls.Enums;
+using SlickControls.Forms;
+using SlickControls.Panels;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ShowsCalendar.Panels
 {
-	public partial class PC_Shows : PanelContent
-	{
-		private Dictionary<Show, ShowTile> Tiles = new Dictionary<Show, ShowTile>();
-		private string lastSearch;
+    public partial class PC_Shows : PanelContent
+    {
+        private readonly Dictionary<Show, ShowTile> Tiles = new Dictionary<Show, ShowTile>();
+        private string lastSearch;
 
-		public PC_Shows()
-		{
-			InitializeComponent();
+        public PC_Shows()
+        {
+            InitializeComponent();
 
-			verticalScroll.SizeSource = () => P_Tabs.Controls.Cast<Control>().Sum(c => c.If(x => x.Visible, x => x.Height, 0));
+            verticalScroll.SizeSource = () => P_Tabs.Controls.Cast<Control>().Sum(c => c.If(x => x.Visible, x => x.Height, 0));
 
-			foreach (var show in ShowManager.Shows.Where(x => x.Loaded))
-				AddShow(show);
+            switch (Data.Options.ShowSorting)
+            {
+                case MediaSortOptions.Year:
+                case MediaSortOptions.Name:
+                    P_Tabs.Controls.Clear();
+                    break;
+                default:
+                    break;
+            }
 
-			TLP_NoShows.Visible = ShowManager.Shows.Count == 0;
-			SetLoading();
+            foreach (var show in ShowManager.Shows.Where(x => x.Loaded))
+                AddShow(show);
 
-			SlickTip.SetTo(PB_Search, "Click to Search");
+            TLP_NoShows.Visible = ShowManager.Shows.Count == 0;
+            SetLoading();
 
-			ShowManager.ShowAdded += ShowManager_ShowAdded;
-			ShowManager.ShowLoaded += ShowManager_ShowLoaded;
-			ShowManager.ShowRemoved += ShowManager_ShowRemoved;
+            SlickTip.SetTo(PB_Search, "Click to Search");
 
-			Disposed += (s, e) =>
-			{
-				ShowManager.ShowAdded -= ShowManager_ShowAdded;
-				ShowManager.ShowLoaded -= ShowManager_ShowLoaded;
-				ShowManager.ShowRemoved -= ShowManager_ShowRemoved;
-			};
-		}
+            ShowManager.ShowAdded += ShowManager_ShowAdded;
+            ShowManager.ShowLoaded += ShowManager_ShowLoaded;
+            ShowManager.ShowRemoved += ShowManager_ShowRemoved;
 
-		private void SetLoading()
-		{
-			if (ShowManager.Shows.Any(x => !x.Loaded))
-				StartLoader();
-			else
-				StopLoader();
+            Disposed += (s, e) =>
+            {
+                ShowManager.ShowAdded -= ShowManager_ShowAdded;
+                ShowManager.ShowLoaded -= ShowManager_ShowLoaded;
+                ShowManager.ShowRemoved -= ShowManager_ShowRemoved;
+            };
+        }
 
-			P_Tabs.SuspendDrawing();
-			SP_Airing.BringToFront();
-			SP_Upcoming.BringToFront();
-			SP_Returning.BringToFront();
-			SP_Ended.BringToFront();
-			P_Tabs.ResumeDrawing();
-		}
+        private void SetLoading()
+        {
+            if (ShowManager.Shows.Any(x => !x.Loaded))
+                StartLoader();
+            else
+                StopLoader();
 
-		private void ShowManager_ShowRemoved(Show show)
-		{
-			this.TryInvoke(() =>
-			{
-				SetLoading();
-				TLP_NoShows.Visible = ShowManager.Shows.Count == 0;
-			});
-		}
+            if (Data.Options.ShowSorting == MediaSortOptions.Default)
+            {
+                P_Tabs.SuspendDrawing();
+                SP_Airing.BringToFront();
+                SP_Upcoming.BringToFront();
+                SP_Returning.BringToFront();
+                SP_Ended.BringToFront();
+                P_Tabs.ResumeDrawing();
+            }
+        }
 
-		private void ShowManager_ShowLoaded(Show show)
-		{
-			this.TryInvoke(() =>
-			{
-				TLP_NoShows.Visible = false;
-				AddShow(show);
-				SetLoading();
-			});
-		}
-		private void ShowManager_ShowAdded(Show show)
-		{
-			this.TryInvoke(() =>
-			{
-				SetLoading();
-				TLP_NoShows.Visible = false;
-			});
-		}
+        private void ShowManager_ShowRemoved(Show show) => this.TryInvoke(() =>
+                                                           {
+                                                               SetLoading();
+                                                               TLP_NoShows.Visible = ShowManager.Shows.Count == 0;
+                                                           });
 
-		private void AddShow(Show show, ShowTile tile = null)
-		{
-			if (show.TMDbData == null)
-				return;
+        private void ShowManager_ShowLoaded(Show show) => this.TryInvoke(() =>
+                                                          {
+                                                              TLP_NoShows.Visible = false;
+                                                              AddShow(show);
+                                                              SetLoading();
+                                                          });
+        private void ShowManager_ShowAdded(Show show) => this.TryInvoke(() =>
+                                                         {
+                                                             SetLoading();
+                                                             TLP_NoShows.Visible = false;
+                                                         });
 
-			var panel = SP_Returning;
+        private void AddShow(Show show, ShowTile tile = null)
+        {
+            if (show.TMDbData == null)
+                return;
 
-			if (show.TMDbData.Status == "Ended" || show.TMDbData.Status == "Canceled")
-				panel = SP_Ended;
-			else if (((!show.LastEpisode?.Empty ?? false) && show.LastEpisode.TMDbData.AirDate >= DateTime.Today.AddDays(-7))
-				|| ((!show.NextEpisode?.Empty ?? false) && show.NextEpisode.TMDbData.AirDate <= DateTime.Today.AddDays(7)))
-				panel = SP_Airing;
-			else if ((!show.NextEpisode?.Empty ?? false) && show.NextEpisode.AirState == AirStateEnum.ToBeAired)
-				panel = SP_Upcoming;
+            var panel = SP_Returning;
 
-			if (tile == null)
-			{
-				foreach (var item in P_Tabs.Controls.ThatAre<SlickSectionPanel>())
-					item.Content.Controls.Clear(true, x => (x is ShowTile st) && st.LinkedShow == show);
+            switch (Data.Options.ShowSorting)
+            {
+                case MediaSortOptions.Default:
+                    if (show.TMDbData.Status == "Ended" || show.TMDbData.Status == "Canceled")
+                        panel = SP_Ended;
+                    else if (((!show.LastEpisode?.Empty ?? false) && show.LastEpisode.TMDbData.AirDate >= DateTime.Today.AddDays(-7))
+                        || ((!show.NextEpisode?.Empty ?? false) && show.NextEpisode.TMDbData.AirDate <= DateTime.Today.AddDays(7)))
+                    {
+                        panel = SP_Airing;
+                    }
+                    else if ((!show.NextEpisode?.Empty ?? false) && show.NextEpisode.AirState == AirStateEnum.ToBeAired)
+                        panel = SP_Upcoming;
+                    break;
 
-				tile = new ShowTile(show);
+                case MediaSortOptions.Year:
+                    var year = show.TMDbData.LastAirDate?.Year.ToString() ?? "Unknown";
+                    panel = P_Tabs.Controls.OfType<SlickSectionPanel>().FirstThat(x => x.Text == year) ?? createSection(year, Properties.Resources.Big_Calendar);
+                    break;
+                case MediaSortOptions.Name:
+                    var name = show.TMDbData.Name.Substring(0, 1).ToUpper();
+                    panel = P_Tabs.Controls.OfType<SlickSectionPanel>().FirstThat(x => x.Text == name) ?? createSection(name, Properties.Resources.Big_Label);
+                    break;
+                case MediaSortOptions.Genre:
+                    var genre = show.TMDbData.Genres.FirstOrDefault()?.Name.Replace("&", "&&") ?? "Unknown";
+                    panel = P_Tabs.Controls.OfType<SlickSectionPanel>().FirstThat(x => x.Text == genre) ?? createSection(genre, Properties.Resources.Big_Genre);
+                    break;
+                default:
+                    break;
+            }
 
-				Tiles.TryAdd(show, tile);
+            if (tile == null)
+            {
+                foreach (var item in P_Tabs.Controls.ThatAre<SlickSectionPanel>())
+                    item.Content.Controls.Clear(true, x => (x is ShowTile st) && st.LinkedShow == show);
 
-				if (CheckSearch(show))
-					panel.Content.Controls.Add(tile);
-			}
-			else
-				panel.Content.Controls.Add(tile);
-		}
+                tile = new ShowTile(show);
 
-		protected override void DesignChanged(FormDesign design)
-		{
-			base.DesignChanged(design);
+                Tiles.TryAdd(show, tile);
 
-			L_NoShowsInfo.ForeColor = design.InfoColor;
+                if (CheckSearch(show))
+                    panel.Content.Controls.Add(tile);
+            }
+            else
+            {
+                panel.Content.Controls.Add(tile);
+            }
+        }
 
-			L_NoShows.ForeColor = design.LabelColor;
+        private SlickSectionPanel createSection(string text, Image icon)
+        {
+            var ssp = new SlickSectionPanel()
+            {
+                Text = text,
+                AutoHide = true,
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                Icon = icon
+            };
 
-			PB_Search.Color(searchOpened ? design.ActiveColor : design.IconColor);
-		}
+            P_Tabs.Controls.Add(ssp);
 
-		private void PC_Show_Resize(object sender, EventArgs e)
-		{
-			P_Tabs.MaximumSize = new Size(Width - 12, 9999);
-			P_Tabs.MinimumSize = new Size(Width - 12, 0);
-		}
+            switch (Data.Options.ShowSorting)
+            {
+                case MediaSortOptions.Year:
+                    P_Tabs.OrderBy(x => x.Text);
+                    break;
+                case MediaSortOptions.Name:
+                    P_Tabs.OrderByDescending(x => x.Text);
+                    break;
+                case MediaSortOptions.Genre:
+                    P_Tabs.OrderBy(x => (x as SlickSectionPanel).Content.Controls.Count);
+                    break;
+                default:
+                    break;
+            }
 
-		private void B_Add_Click(object sender, EventArgs e)
-		{
-			if (ConnectionHandler.State == Extensions.ConnectionState.Connected)
-			{
-				Form.PushPanel(null, new PC_AddMedia(false));
-			}
-			else
-			{
-				ShowPrompt("You can not add Shows without Internet connection.\n\nCheck your connectivity then try again.",
-					"No Connection",
-					 PromptButtons.OK,
-					 PromptIcons.Hand);
-			}
-		}
+            if (Data.Options.ShowSorting == MediaSortOptions.Year)
+            {
+                var first = P_Tabs.Controls.OfType<SlickSectionPanel>().FirstThat(x => x.Text == DateTime.Now.Year.ToString());
+                if (first != null)
+                    first.Active = true;
+            }
 
-		private void B_Discover_Click(object sender, EventArgs e)
-		{
-			if (ConnectionHandler.State == Extensions.ConnectionState.Connected)
-			{
-				Form.PushPanel(null, new PC_Discover(false));
-			}
-			else
-			{
-				ShowPrompt("You can not discover Shows without Internet connection.\n\nCheck your connectivity then try again.",
-					"No Connection",
-					 PromptButtons.OK,
-					 PromptIcons.Hand);
-			}
-		}
+            return ssp;
+        }
 
-		private void TB_Search_TextChanged(object sender, EventArgs e)
-		{
-			if (searchOpened && (lastSearch == TB_Search.Text || Tiles.Count == 0))
-				return;
+        protected override void DesignChanged(FormDesign design)
+        {
+            base.DesignChanged(design);
 
-			var results = false;
+            L_NoShowsInfo.ForeColor = design.InfoColor;
+            L_NoShows.ForeColor = design.LabelColor;
+            P_TopSpacer.BackColor = design.AccentColor;
 
-			P_Tabs.SuspendDrawing();
-			foreach (var item in Tiles.Values)
-			{
-				if (CheckSearch(item.LinkedShow))
-				{
-					AddShow(item.LinkedShow, item);
-					results = true;
-				}
-				else
-					item.Parent?.Controls.Remove(item);
-			}
-			P_Tabs.ResumeDrawing();
+            PB_Search.Color(searchOpened ? design.ActiveColor : design.IconColor);
+        }
 
-			TLP_NoShows.Visible = !results;
+        private void PC_Show_Resize(object sender, EventArgs e)
+        {
+            P_Tabs.MaximumSize = new Size(Width - 12, 9999);
+            P_Tabs.MinimumSize = new Size(Width - 12, 0);
+        }
 
-			lastSearch = TB_Search.Text;
-		}
+        private void B_Add_Click(object sender, EventArgs e)
+        {
+            if (ConnectionHandler.State == Extensions.ConnectionState.Connected)
+            {
+                Form.PushPanel(null, new PC_AddMedia(false));
+            }
+            else
+            {
+                ShowPrompt("You can not add Shows without Internet connection.\n\nCheck your connectivity then try again.",
+                    "No Connection",
+                     PromptButtons.OK,
+                     PromptIcons.Hand);
+            }
+        }
 
-		private bool CheckSearch(Show show)
-		{
-			if (string.IsNullOrWhiteSpace(TB_Search.Text))
-				return true;
+        private void B_Discover_Click(object sender, EventArgs e)
+        {
+            if (ConnectionHandler.State == Extensions.ConnectionState.Connected)
+            {
+                Form.PushPanel(null, new PC_Discover(false));
+            }
+            else
+            {
+                ShowPrompt("You can not discover Shows without Internet connection.\n\nCheck your connectivity then try again.",
+                    "No Connection",
+                     PromptButtons.OK,
+                     PromptIcons.Hand);
+            }
+        }
 
-			if (show.Name.SearchCheck(TB_Search.Text))
-				return true;
+        private void TB_Search_TextChanged(object sender, EventArgs e)
+        {
+            if (searchOpened && (lastSearch == TB_Search.Text || Tiles.Count == 0))
+                return;
 
-			if (show.Name.GetAbbreviation().SearchCheck(TB_Search.Text))
-				return true;
+            var results = false;
 
-			if (show.tMDbData.Genres.Any(x => TB_Search.Text.GetWords().Any(y => x.Name.SearchCheck(y))))
-				return true;
+            P_Tabs.SuspendDrawing();
+            foreach (var item in Tiles.Values)
+            {
+                if (CheckSearch(item.LinkedShow))
+                {
+                    AddShow(item.LinkedShow, item);
+                    results = true;
+                }
+                else
+                {
+                    item.Parent?.Controls.Remove(item);
+                }
+            }
+            P_Tabs.ResumeDrawing();
 
-			if (show.Episodes.Any(x => (x.TMDbData.AirDate?.Year ?? int.MinValue) == TB_Search.Text.SmartParse()))
-				return true;
+            TLP_NoShows.Visible = !results;
 
-			return false;
-		}
+            lastSearch = TB_Search.Text;
+        }
 
-		private bool searchOpened = false;
-		private AnimationHandler searchAnimation;
-		private void PB_Search_Click(object sender, EventArgs e)
-		{
-			searchAnimation?.Dispose();
+        private bool CheckSearch(Show show)
+        {
+            if (string.IsNullOrWhiteSpace(TB_Search.Text))
+                return true;
 
-			if (!searchOpened)
-			{
-				searchOpened = TB_Search.ReadOnly = true;
-				TB_Search.Text = string.Empty;
-				TB_Search.Focus();
-				PB_Search.Color(FormDesign.Design.ActiveColor);
-				SlickTip.SetTo(PB_Search, string.Empty);
+            if (show.Name.SearchCheck(TB_Search.Text))
+                return true;
 
-				(searchAnimation = new AnimationHandler(TB_Search, new Size(350, TB_Search.Height)) { IgnoreHeight = true, Lazy = true }).StartAnimation();
-			}
-			else
-			{
-				searchOpened = TB_Search.ReadOnly = false;
-				TB_Search.Text = string.Empty;
-				PB_Search.Color(FormDesign.Design.IconColor);
-				SlickTip.SetTo(PB_Search, "Click to Search");
+            if (show.Name.GetAbbreviation().SearchCheck(TB_Search.Text))
+                return true;
 
-				(searchAnimation = new AnimationHandler(TB_Search, new Size(0, TB_Search.Height)) { IgnoreHeight = true, Lazy = true }).StartAnimation();
-			}
-		}
+            if (show.tMDbData.Genres.Any(x => TB_Search.Text.GetWords().Any(y => x.Name.SearchCheck(y))))
+                return true;
 
-		public override bool KeyPressed(char keyChar)
-		{
-			if (!TB_Search.Focused && char.IsLetterOrDigit(keyChar))
-			{
-				if (!searchOpened)
-					PB_Search_Click(null, null);
-				else
-					TB_Search.Focus();
+            if (show.Episodes.Any(x => (x.TMDbData.AirDate?.Year ?? int.MinValue) == TB_Search.Text.SmartParse()))
+                return true;
 
-				TB_Search.Text += keyChar.ToString().ToLower();
-				SendKeys.Send("{HOME}");
-				SendKeys.Send("{END}");
-			}
+            if (TB_Search.Text.ToLower().GetWords().Contains("unwatched") && show.Episodes.Any(x => x.AirState == AirStateEnum.Aired && !x.Watched))
+                return true;
 
-			return false;
-		}
+            if (TB_Search.Text.ToLower().GetWords().Contains("watched") && !show.Episodes.Any(x => x.AirState == AirStateEnum.Aired && !x.Watched))
+                return true;
 
-		public override bool KeyPressed(ref Message msg, Keys keyData)
-		{
-			if (searchOpened && TB_Search.Focused && keyData == Keys.Escape)
-			{
-				PB_Search_Click(null, null);
-				return true;
-			}
+            return false;
+        }
 
-			return base.KeyPressed(ref msg, keyData);
-		}
-	}
+        private bool searchOpened = false;
+        private AnimationHandler searchAnimation;
+        private void PB_Search_Click(object sender, EventArgs e)
+        {
+            searchAnimation?.Dispose();
+
+            if (!searchOpened)
+            {
+                TB_Search.ReadOnly = !(searchOpened = true);
+                TB_Search.Text = string.Empty;
+                TB_Search.Focus();
+                PB_Search.Color(FormDesign.Design.ActiveColor);
+                SlickTip.SetTo(PB_Search, string.Empty);
+
+                (searchAnimation = new AnimationHandler(TB_Search, new Size(350, TB_Search.Height)) { IgnoreHeight = true, Lazy = true }).StartAnimation();
+            }
+            else
+            {
+                TB_Search.ReadOnly = !(searchOpened = false);
+                TB_Search.Enabled = !(TB_Search.Enabled = false);
+                TB_Search.Text = string.Empty;
+                PB_Search.Color(FormDesign.Design.IconColor);
+                SlickTip.SetTo(PB_Search, "Click to Search");
+
+                (searchAnimation = new AnimationHandler(TB_Search, new Size(0, TB_Search.Height)) { IgnoreHeight = true, Lazy = true }).StartAnimation();
+            }
+        }
+
+        public override bool KeyPressed(char keyChar)
+        {
+            if (char.IsLetterOrDigit(keyChar) && (!searchOpened || !TB_Search.Focused))
+            {
+                var set = !TB_Search.Focused;
+
+                if (!searchOpened)
+                    PB_Search_Click(null, null);
+
+                if (set)
+                {
+                    TB_Search.Focus();
+                    TB_Search.Text += keyChar.ToString().ToLower();
+                }
+
+                SendKeys.Send("{HOME}");
+                SendKeys.Send("{END}");
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public override bool KeyPressed(ref Message msg, Keys keyData)
+        {
+            if (searchOpened && keyData == Keys.Escape)
+            {
+                PB_Search_Click(null, null);
+                return true;
+            }
+
+            return base.KeyPressed(ref msg, keyData);
+        }
+
+        private void verticalScroll_Scroll(object sender, ScrollEventArgs e) => P_TopSpacer.Visible = e.NewValue > 0;
+    }
 }

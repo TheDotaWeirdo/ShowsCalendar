@@ -32,11 +32,16 @@ namespace ShowsCalendar.Panels
 		protected override bool LoadData()
 		{
 			var index = 0;
+			var totRes = 0;
+
 			do
 			{
 				if (IsMovie)
 				{
 					var media = Data.TMDbHandler.DiscoverMovies(index).Result.Convert(LightMovie.Convert);
+
+					if (!media.Any())
+						break;
 
 					this.TryInvoke(() =>
 					{
@@ -46,27 +51,14 @@ namespace ShowsCalendar.Panels
 							if (FLP_Results.Controls.ThatAre<MediaViewer>().Any(x => x.SearchData.Id == item.Id))
 								continue;
 
+							if (totRes++ >= Data.Options.DiscoverResults)
+								break;
+
 							var mediaViewer = new MediaViewer(item) { Anchor = AnchorStyles.Top };
 							FLP_Results.Controls.Add(mediaViewer);
 							mediaViewer.Show();
 						}
 						FLP_Results.ResumeDrawing();
-
-						if (media.Count() == 0)
-						{
-							System.Media.SystemSounds.Exclamation.Play();
-							var label1 = new Label
-							{
-								Anchor = AnchorStyles.None,
-								Size = new Size(145, 150),
-								TextAlign = ContentAlignment.BottomCenter,
-								Font = new Font("Century Gothic", 12F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 0),
-								Text = "No Results Found",
-								ForeColor = FormDesign.Design.RedColor
-							};
-
-							FLP_Results.Controls.Add(label1);
-						}
 
 						PC_Discover_Resize(null, null);
 						PB_Load.Dispose();
@@ -76,6 +68,9 @@ namespace ShowsCalendar.Panels
 				{
 					var media = Data.TMDbHandler.DiscoverTvShow(index).Result.Convert(LightShow.Convert);
 
+					if (!media.Any())
+						break;
+
 					this.TryInvoke(() =>
 					{
 						FLP_Results.SuspendDrawing();
@@ -84,34 +79,23 @@ namespace ShowsCalendar.Panels
 							if (FLP_Results.Controls.ThatAre<MediaViewer>().Any(x => x.SearchData.Id == item.Id))
 								continue;
 
+							if (totRes++ >= Data.Options.DiscoverResults)
+								break;
+
 							var mediaViewer = new MediaViewer(item) { Anchor = AnchorStyles.Top };
 							FLP_Results.Controls.Add(mediaViewer);
 							mediaViewer.Show();
 						}
 						FLP_Results.ResumeDrawing();
 
-						if (media.Count() == 0)
-						{
-							System.Media.SystemSounds.Exclamation.Play();
-							var label1 = new Label
-							{
-								Anchor = AnchorStyles.None,
-								Size = new Size(145, 150),
-								TextAlign = ContentAlignment.BottomCenter,
-								Font = new Font("Century Gothic", 12F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 0),
-								Text = "No Results Found",
-								ForeColor = FormDesign.Design.RedColor
-							};
-
-							FLP_Results.Controls.Add(label1);
-						}
-
 						PC_Discover_Resize(null, null);
 						PB_Load.Dispose();
 					});
 				}
+
+				index++;
 			}
-			while (index++ < 3);
+			while (totRes < Data.Options.DiscoverResults);
 
 			return true;
 		}

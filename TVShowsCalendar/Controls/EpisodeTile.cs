@@ -48,7 +48,7 @@ namespace ShowsCalendar
 				Size = new Size(275, 220);
 				Margin = new Padding(7);
 				I_Dots.Icon = ProjectImages.Tiny_Dots_H;
-				I_Dots.Location = new Point(22, ((Width - 2) * 9 / 16) + 2);
+				I_Dots.Location = new Point(6, ((Width - 2) * 9 / 16) + 2);
 			}
 
 			I_Action.Visible = !displayView && horizontal && Episode.AirState == AirStateEnum.Aired;
@@ -107,9 +107,7 @@ namespace ShowsCalendar
 				if (new Rectangle(1, 1, 82, 123).Contains(e.Location))
 				{
 					if (e.Button == MouseButtons.Left)
-					{
-						Data.Mainform.PushPanel(null, new PC_ShowPage(Episode));
-					}
+						ShowPage();
 					else
 						Episode.ShowStrip();
 				}
@@ -135,6 +133,8 @@ namespace ShowsCalendar
 		private void ShowPage()
 		{
 			if (Data.Mainform.CurrentPanel is PC_SeasonView seasonView && seasonView.Season == Episode.Season)
+				Data.Mainform.PushPanel(null, new PC_EpisodeView(Episode));
+			else if (!Data.Options.OpenAllPagesForEp)
 				Data.Mainform.PushPanel(null, new PC_EpisodeView(Episode));
 			else if (!(Data.Mainform.CurrentPanel is PC_EpisodeView epView && epView.Episode == Episode))
 				Data.Mainform.PushPanel(null, new PC_ShowPage(Episode));
@@ -179,7 +179,13 @@ namespace ShowsCalendar
 		private void LocalShowHandler_FolderChanged(Show show)
 		{
 			if (show == null || show == Episode.Show)
+			{
+				var vid = Episode.VidFiles.Any(y => y.Exists);
+				I_Action.Icon = vid ? ProjectImages.Tiny_Play : ProjectImages.Tiny_Download;
+				I_Action.HoverStyle = vid ? ColorStyle.Active : ColorStyle.Green;
+
 				this.TryInvoke(Invalidate);
+			}
 		}
 
 		private void PaintHorizontal(PaintEventArgs e)
@@ -236,7 +242,7 @@ namespace ShowsCalendar
 
 			e.Graphics.DrawString(Episode.TMDbData.Overview, font, new SolidBrush(FormDesign.Design.InfoColor), new RectangleF(w, h, Width - 100, Height - h - 5), strFrmt);
 
-			if (Data.Options.ShowUnwatchedOnThumb && !DisplayView && Episode?.TMDbData != null && Episode.AirState == AirStateEnum.Aired)
+			if (!DisplayView && Episode?.TMDbData != null && Episode.AirState == AirStateEnum.Aired)
 			{
 				if (!Episode.Watched && (Episode.TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 					e.Graphics.DrawBannerOverImage(imgRect, "NEW", BannerStyle.Active);
@@ -259,6 +265,15 @@ namespace ShowsCalendar
 			else
 				e.Graphics.DrawBorderedImage(ProjectImages.Big_TV.Color(FormDesign.Design.IconColor), imgRect, ImageHandler.ImageSizeMode.Center);
 
+			var mpbar = Episode.Started && (Episode.WatchTime * (100 - Episode.Progress) / Episode.Progress).If(x => x != 0 && !double.IsInfinity(x), true, false);
+			if (mpbar)
+			{
+				e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(175, FormDesign.Design.AccentColor))
+					, new Rectangle(4, imgRect.Height - 7, imgRect.Width - 5, 5));
+				e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(200, FormDesign.Design.ActiveColor))
+					, new RectangleF(4, imgRect.Height - 7, (float)((imgRect.Width - 5) * Episode.Progress / 100), 5));
+			}
+
 			if (imgRect.Contains(PointToClient(MousePosition)))
 			{
 				if (Episode.VidFiles.Any(y => y.Exists))
@@ -267,7 +282,7 @@ namespace ShowsCalendar
 					e.Graphics.DrawIconsOverImage(imgRect, PointToClient(MousePosition), ProjectImages.Icon_Info);
 
 				var bnds = e.Graphics.MeasureString("EPISODE", new Font("Nirmala UI", 6.75F, FontStyle.Bold));
-				e.Graphics.DrawString("EPISODE", new Font("Nirmala UI", 6.75F, FontStyle.Bold), new SolidBrush(FormDesign.Design.ForeColor), imgRect.Width - bnds.Width - 3, imgRect.Height - bnds.Height - 3);
+				e.Graphics.DrawString("EPISODE", new Font("Nirmala UI", 6.75F, FontStyle.Bold), new SolidBrush(FormDesign.Design.ForeColor), imgRect.Width - bnds.Width - 3, imgRect.Height - bnds.Height - 3 - mpbar.If(5, 0));
 			}
 
 			var font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
@@ -292,18 +307,11 @@ namespace ShowsCalendar
 
 			e.Graphics.DrawString(txt, font, new SolidBrush(FormDesign.Design.InfoColor), 3, h);
 
-			// Dots
-			//if (new Rectangle(Width - 22, imgRect.Height + 2, 20, 20).Contains(PointToClient(MousePosition)))
-			//	e.Graphics.DrawImage(new Bitmap(ProjectImages.Tiny_Dots_H).Color(FormDesign.Design.ActiveColor), new PointF(Width - 18, imgRect.Height + 5));
-			//else
-			//	e.Graphics.DrawImage(new Bitmap(ProjectImages.Tiny_Dots_H).Color(FormDesign.Design.IconColor), new PointF(Width - 18, imgRect.Height + 5));
-
-
 			font = new Font("Nirmala UI", 8.25F);
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
 			// New // Unwatched
-			if (Data.Options.ShowUnwatchedOnThumb && ((Episode.TMDbData?.AirDate?.IfNull(false, Episode.TMDbData.AirDate < DateTime.Today)) ?? false) && Episode.AirState == AirStateEnum.Aired)
+			if (((Episode.TMDbData?.AirDate?.IfNull(false, Episode.TMDbData.AirDate < DateTime.Today)) ?? false) && Episode.AirState == AirStateEnum.Aired)
 			{
 				if (!Episode.Watched && (Episode.TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 					e.Graphics.DrawBannerOverImage(imgRect, "NEW", BannerStyle.Active);

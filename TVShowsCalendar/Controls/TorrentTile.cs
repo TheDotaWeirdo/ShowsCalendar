@@ -29,7 +29,7 @@ namespace ShowsCalendar
 
 		#region Public Properties
 
-		public SortingData SortingData { get; }
+		public TorrentSortingData SortingData { get; }
 
 		#endregion Public Properties
 
@@ -153,9 +153,9 @@ namespace ShowsCalendar
 			return "Low";
 		}
 
-		private SortingData GetSort(double health)
+		private TorrentSortingData GetSort(double health)
 		{
-			var data = new SortingData
+			var data = new TorrentSortingData
 			{
 				Tile = this,
 				SeedOrder = SeedOrder,

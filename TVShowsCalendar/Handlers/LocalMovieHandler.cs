@@ -42,7 +42,7 @@ namespace ShowsCalendar.Handlers
 
 			foreach (var item in LocalFileHandler.GeneralFolders.Where(x => x.Exists).ConvertEnumerable(x => x.GetFilesByExtensions(EpisodeFileHandler.VideoExtensions)))
 			{
-				foreach (var movie in movies.Where(x => !x.VidFiles.Any(y => y.Exists)))
+				foreach (var movie in movies)
 				{
 					if (Match(movie.Title, item.FileName()) && !movie.VidFiles.Any(x => item.FullName.Equals(x.FullName, StringComparison.CurrentCultureIgnoreCase)))
 						movie.VidFiles.Add(item); 
@@ -117,15 +117,30 @@ namespace ShowsCalendar.Handlers
 
 		public static bool Match(string showName, string folder)
 		{
-			folder = NameExtractor.GetMovieTitleYear(folder).Item1;
-			folder = folder.RegexRemove(".\\d{4}.$").Trim();
+			if (Check(showName, folder))
+				return true;
 
+			folder = NameExtractor.GetMovieTitleYear(folder).Item1.RegexRemove(".\\d{4}.$").Trim();
+
+			if (Check(showName, folder))
+				return true;
+
+			showName = NameExtractor.GetMovieTitleYear(showName).Item1.RegexRemove(".\\d{4}.$").Trim();
+
+			if (Check(showName, folder))
+				return true;
+
+			return false;
+		}
+
+		private static bool Check(string s1, string s2)
+		{
 			// Exact Match
-			if (showName.Equals(folder, StringComparison.CurrentCultureIgnoreCase))
+			if (s1.Equals(s2, StringComparison.CurrentCultureIgnoreCase))
 				return true;
 
 			// Spell Check
-			if (showName.SpellCheck(folder, 1, false))
+			if (s1.SpellCheck(s2, SPELLCHECK_MAX_ERRORS, false))
 				return true;
 
 			return false;

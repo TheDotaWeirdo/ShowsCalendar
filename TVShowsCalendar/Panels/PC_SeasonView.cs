@@ -22,7 +22,7 @@ namespace ShowsCalendar.Panels
 	{
 		public Season Season { get; }
 
-		public PC_SeasonView(Season season)
+		public PC_SeasonView(Season season, Episode episode = null)
 		{
 			InitializeComponent();
 
@@ -42,13 +42,24 @@ namespace ShowsCalendar.Panels
 			
 			if (season.Images == null)
 				StartDataLoad();
+
+			if(episode != null)
+			{
+				Load += (s, e) =>
+				{
+					var tile = FLP_Episodes.Controls.OfType<EpisodeTile>().FirstThat(x => x.Episode == episode);
+					if (tile != null)
+						verticalScroll.SetPercentage(tile, true);
+				};
+			}
 		}
 
 		protected override bool LoadData()
 		{
-			Season.Images = Data.TMDbHandler.RunTask(x => x.GetTvSeasonImagesAsync(Season.Show.Id, Season.SeasonNumber, "en")).Result;
+			if (Season.Images == null && ConnectionHandler.IsConnected)
+				Season.Images = Data.TMDbHandler.RunTask(x => x.GetTvSeasonImagesAsync(Season.Show.Id, Season.SeasonNumber, "en")).Result;
 
-			return true;
+			return ConnectionHandler.IsConnected;
 		}
 
 		protected override void OnDataLoad()
@@ -121,7 +132,7 @@ namespace ShowsCalendar.Panels
 		{
 			FLP_Episodes.Controls.Clear(true);
 
-			if(Season.Images != null)
+			if (Season.Images != null)
 				foreach (var item in Season.Images.Posters)
 				{
 					var width = 200;

@@ -30,6 +30,7 @@
 		{
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.P_Tabs = new System.Windows.Forms.Panel();
+			this.SP_Oldies = new SlickControls.Controls.SlickSectionPanel();
 			this.SP_Earlier = new SlickControls.Controls.SlickSectionPanel();
 			this.SP_Upcoming = new SlickControls.Controls.SlickSectionPanel();
 			this.SP_Recent = new SlickControls.Controls.SlickSectionPanel();
@@ -42,7 +43,7 @@
 			this.TLP_NoMovies = new System.Windows.Forms.TableLayoutPanel();
 			this.L_NoMovies = new System.Windows.Forms.Label();
 			this.L_NoMoviesInfo = new System.Windows.Forms.Label();
-			this.SP_Oldies = new SlickControls.Controls.SlickSectionPanel();
+			this.P_TopSpacer = new System.Windows.Forms.Panel();
 			this.panel2.SuspendLayout();
 			this.P_Tabs.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -56,9 +57,9 @@
 			// 
 			this.panel2.Controls.Add(this.P_Tabs);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel2.Location = new System.Drawing.Point(5, 62);
+			this.panel2.Location = new System.Drawing.Point(5, 65);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(880, 431);
+			this.panel2.Size = new System.Drawing.Size(880, 428);
 			this.panel2.TabIndex = 23;
 			// 
 			// P_Tabs
@@ -74,6 +75,23 @@
 			this.P_Tabs.Name = "P_Tabs";
 			this.P_Tabs.Size = new System.Drawing.Size(500, 216);
 			this.P_Tabs.TabIndex = 12;
+			// 
+			// SP_Oldies
+			// 
+			this.SP_Oldies.Active = false;
+			this.SP_Oldies.AutoHide = true;
+			this.SP_Oldies.AutoSize = true;
+			this.SP_Oldies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.SP_Oldies.Dock = System.Windows.Forms.DockStyle.Top;
+			this.SP_Oldies.Flavor = null;
+			this.SP_Oldies.Icon = global::ShowsCalendar.Properties.Resources.Big_OldMovie;
+			this.SP_Oldies.Info = "Movies released a while back";
+			this.SP_Oldies.Location = new System.Drawing.Point(0, 162);
+			this.SP_Oldies.MaximumSize = new System.Drawing.Size(9999, 54);
+			this.SP_Oldies.Name = "SP_Oldies";
+			this.SP_Oldies.Size = new System.Drawing.Size(500, 54);
+			this.SP_Oldies.TabIndex = 8;
+			this.SP_Oldies.Text = "Oldies\'";
 			// 
 			// SP_Earlier
 			// 
@@ -133,8 +151,11 @@
 			this.verticalScroll.Location = new System.Drawing.Point(881, 62);
 			this.verticalScroll.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
 			this.verticalScroll.Name = "verticalScroll";
-			this.verticalScroll.Size = new System.Drawing.Size(12, 431);
+			this.verticalScroll.Size = new System.Drawing.Size(5, 431);
+			this.verticalScroll.SizeSource = null;
+			this.verticalScroll.Style = SlickControls.Controls.StyleType.Vertical;
 			this.verticalScroll.TabIndex = 24;
+			this.verticalScroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.verticalScroll_Scroll);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -143,31 +164,36 @@
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel1.Controls.Add(this.TB_Search, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.P_TopSpacer, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.TB_Search, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.B_Discover, 2, 0);
 			this.tableLayoutPanel1.Controls.Add(this.B_Add, 3, 0);
 			this.tableLayoutPanel1.Controls.Add(this.PB_Search, 0, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 30);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(880, 32);
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(880, 35);
 			this.tableLayoutPanel1.TabIndex = 25;
 			// 
 			// TB_Search
 			// 
-			this.TB_Search.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.TB_Search.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TB_Search.Image = null;
 			this.TB_Search.LabelText = "Search";
-			this.TB_Search.Location = new System.Drawing.Point(50, 6);
-			this.TB_Search.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+			this.TB_Search.Location = new System.Drawing.Point(51, 4);
+			this.TB_Search.Margin = new System.Windows.Forms.Padding(10, 4, 3, 0);
 			this.TB_Search.MaximumSize = new System.Drawing.Size(9999, 20);
 			this.TB_Search.MaxLength = 32767;
 			this.TB_Search.MinimumSize = new System.Drawing.Size(0, 20);
 			this.TB_Search.Name = "TB_Search";
+			this.TB_Search.Password = false;
 			this.TB_Search.Placeholder = "Search Movies..";
+			this.TB_Search.ReadOnly = false;
+			this.TB_Search.Required = false;
+			this.TB_Search.SelectAllOnFocus = false;
 			this.TB_Search.SelectedText = "";
 			this.TB_Search.SelectionLength = 0;
 			this.TB_Search.SelectionStart = 0;
@@ -181,7 +207,7 @@
 			// 
 			// B_Discover
 			// 
-			this.B_Discover.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.B_Discover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.B_Discover.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_Discover.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_Discover.ColorShade = null;
@@ -189,7 +215,7 @@
 			this.B_Discover.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
 			this.B_Discover.IconSize = 16;
 			this.B_Discover.Image = global::ShowsCalendar.Properties.Resources.Tiny_Discover;
-			this.B_Discover.Location = new System.Drawing.Point(595, 1);
+			this.B_Discover.Location = new System.Drawing.Point(595, 0);
 			this.B_Discover.Margin = new System.Windows.Forms.Padding(15, 0, 10, 0);
 			this.B_Discover.Name = "B_Discover";
 			this.B_Discover.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
@@ -200,7 +226,7 @@
 			// 
 			// B_Add
 			// 
-			this.B_Add.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.B_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.B_Add.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_Add.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_Add.ColorShade = null;
@@ -208,7 +234,7 @@
 			this.B_Add.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
 			this.B_Add.IconSize = 16;
 			this.B_Add.Image = global::ShowsCalendar.Properties.Resources.Tiny_Add;
-			this.B_Add.Location = new System.Drawing.Point(745, 1);
+			this.B_Add.Location = new System.Drawing.Point(745, 0);
 			this.B_Add.Margin = new System.Windows.Forms.Padding(15, 0, 10, 0);
 			this.B_Add.Name = "B_Add";
 			this.B_Add.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
@@ -219,11 +245,11 @@
 			// 
 			// PB_Search
 			// 
-			this.PB_Search.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.PB_Search.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.PB_Search.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.PB_Search.Image = global::ShowsCalendar.Properties.Resources.Big_Search;
-			this.PB_Search.Location = new System.Drawing.Point(15, 5);
-			this.PB_Search.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
+			this.PB_Search.Location = new System.Drawing.Point(15, 4);
+			this.PB_Search.Margin = new System.Windows.Forms.Padding(15, 4, 4, 3);
 			this.PB_Search.Name = "PB_Search";
 			this.PB_Search.Size = new System.Drawing.Size(22, 22);
 			this.PB_Search.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -275,22 +301,16 @@
     "on to start.";
 			this.L_NoMoviesInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// SP_Oldies
+			// P_TopSpacer
 			// 
-			this.SP_Oldies.Active = false;
-			this.SP_Oldies.AutoHide = true;
-			this.SP_Oldies.AutoSize = true;
-			this.SP_Oldies.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.SP_Oldies.Dock = System.Windows.Forms.DockStyle.Top;
-			this.SP_Oldies.Flavor = null;
-			this.SP_Oldies.Icon = global::ShowsCalendar.Properties.Resources.Big_OldMovie;
-			this.SP_Oldies.Info = "Movies released a while back";
-			this.SP_Oldies.Location = new System.Drawing.Point(0, 162);
-			this.SP_Oldies.MaximumSize = new System.Drawing.Size(9999, 54);
-			this.SP_Oldies.Name = "SP_Oldies";
-			this.SP_Oldies.Size = new System.Drawing.Size(500, 54);
-			this.SP_Oldies.TabIndex = 8;
-			this.SP_Oldies.Text = "Oldies\'";
+			this.tableLayoutPanel1.SetColumnSpan(this.P_TopSpacer, 4);
+			this.P_TopSpacer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.P_TopSpacer.Location = new System.Drawing.Point(0, 34);
+			this.P_TopSpacer.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+			this.P_TopSpacer.Name = "P_TopSpacer";
+			this.P_TopSpacer.Size = new System.Drawing.Size(875, 1);
+			this.P_TopSpacer.TabIndex = 28;
+			this.P_TopSpacer.Visible = false;
 			// 
 			// PC_Movies
 			// 
@@ -339,5 +359,6 @@
 		private SlickControls.Controls.SlickSectionPanel SP_Upcoming;
 		private SlickControls.Controls.SlickTextBox TB_Search;
 		private SlickControls.Controls.SlickSectionPanel SP_Oldies;
+		private System.Windows.Forms.Panel P_TopSpacer;
 	}
 }

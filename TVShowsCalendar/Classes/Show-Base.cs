@@ -192,7 +192,7 @@ namespace ShowsCalendar.Classes
 
 				FlatStripItem.Empty,
 
-				new FlatStripItem("Delete", () => ShowManager.Remove(this), image: ProjectImages.Tiny_Trash)
+				new FlatStripItem("Remove from library", () => ShowManager.Remove(this), image: ProjectImages.Tiny_Trash)
 			 );
 		}
 

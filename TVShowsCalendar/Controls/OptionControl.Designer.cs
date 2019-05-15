@@ -47,11 +47,11 @@
 			// 
 			this.L_Title.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.L_Title.AutoSize = true;
-			this.L_Title.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.L_Title.Location = new System.Drawing.Point(10, 6);
+			this.L_Title.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold);
+			this.L_Title.Location = new System.Drawing.Point(10, 5);
 			this.L_Title.Margin = new System.Windows.Forms.Padding(10, 5, 3, 0);
 			this.L_Title.Name = "L_Title";
-			this.L_Title.Size = new System.Drawing.Size(32, 15);
+			this.L_Title.Size = new System.Drawing.Size(36, 17);
 			this.L_Title.TabIndex = 0;
 			this.L_Title.Text = "Title";
 			// 
@@ -130,9 +130,11 @@
 			this.CB_OptionList.MaxLength = 32767;
 			this.CB_OptionList.MinimumSize = new System.Drawing.Size(50, 20);
 			this.CB_OptionList.Name = "CB_OptionList";
+			this.CB_OptionList.Password = false;
 			this.CB_OptionList.Placeholder = null;
 			this.CB_OptionList.ReadOnly = false;
 			this.CB_OptionList.Required = false;
+			this.CB_OptionList.SelectAllOnFocus = false;
 			this.CB_OptionList.SelectedItem = null;
 			this.CB_OptionList.SelectedText = "";
 			this.CB_OptionList.SelectionLength = 0;

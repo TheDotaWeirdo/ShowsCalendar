@@ -12,6 +12,7 @@ using SlickControls.Forms;
 using ShowsCalendar.Classes;
 using ShowsCalendar.Handlers;
 using ProjectImages = ShowsCalendar.Properties.Resources;
+using ShowsCalendar.Panels;
 
 namespace ShowsCalendar.Controls
 {
@@ -20,13 +21,14 @@ namespace ShowsCalendar.Controls
 		private bool OnDeck;
 
 		public Episode Episode { get; private set; }
+		public string BannerName { get; set; }
 		public Movie Movie { get; private set; }
 
-		public WatchControl(Episode ep, bool onDeck = true)
+		public WatchControl(Episode ep, bool onDeck = true, string bannerName = null)
 		{
 			InitializeComponent();
 			Episode = ep;
-
+			BannerName = bannerName;
 			OnDeck = onDeck;
 
 			if (!onDeck)
@@ -51,11 +53,11 @@ namespace ShowsCalendar.Controls
 				Parent.Controls.SetChildIndex(this, 0);
 			});
 
-		public WatchControl(Movie mov, bool onDeck = true, bool mini = false)
+		public WatchControl(Movie mov, bool onDeck = true, string bannerName = null)
 		{
 			InitializeComponent();
 			Movie = mov;
-
+			BannerName = bannerName;
 			OnDeck = onDeck;
 
 			if (!onDeck)
@@ -103,12 +105,24 @@ namespace ShowsCalendar.Controls
 			Cursor.Current = Cursors.WaitCursor;
 			if (Episode != null)
 			{
-				try { Episode.Play(); }
+				try
+				{
+					if (Episode.VidFiles.Any(y => y.Exists))
+						Episode.Play();
+					else
+						Data.Mainform.PushPanel(null, new PC_Download(Episode));
+				}
 				catch (Exception) { Cursor.Current = Cursors.Default; MessagePrompt.Show($"Could not play the file.\nCheck that you have a default app selected for video files.", "No Supported Player", PromptButtons.OK, PromptIcons.Error); }
 			}
 			else
 			{
-				try { Movie.Play(); }
+				try
+				{
+					if (Movie.VidFiles.Any(y => y.Exists))
+						Movie.Play();
+					else
+						Data.Mainform.PushPanel(null, new PC_Download(Movie));
+				}
 				catch (Exception) { Cursor.Current = Cursors.Default; MessagePrompt.Show($"Could not play the file.\nCheck that you have a default app selected for video files.", "No Supported Player", PromptButtons.OK, PromptIcons.Error); }
 			}
 			Cursor.Current = Cursors.Default;
@@ -124,6 +138,7 @@ namespace ShowsCalendar.Controls
 
 		private void WatchControl_Paint(object sender, PaintEventArgs e)
 		{
+			var playable = (Episode?.VidFiles.Any(y => y.Exists) ?? false) || (Movie?.VidFiles.Any(y => y.Exists) ?? false);
 			var text = Episode != null ? Episode.Name : Movie.Name;
 			var subText = Episode != null ? $"Season {Episode.TMDbData.SeasonNumber} • Episode {Episode.TMDbData.EpisodeNumber}" : Movie.TMDbData.Tagline;
 			var infoText = Episode != null ? Episode.TMDbData.AirDate?.ToReadableString() : Movie.TMDbData.ReleaseDate?.ToReadableString();
@@ -142,13 +157,13 @@ namespace ShowsCalendar.Controls
 			else
 				e.Graphics.DrawBorderedImage(ProjectImages.Huge_Play.Color(FormDesign.Design.IconColor), imgRect, ImageHandler.ImageSizeMode.Center);
 
-			if (imgRect.Contains(PointToClient(MousePosition)))
-				e.Graphics.DrawIconsOverImage(imgRect, PointToClient(MousePosition), ProjectImages.Icon_PlaySlick);
+			if (Enabled && imgRect.Contains(PointToClient(MousePosition)))
+				e.Graphics.DrawIconsOverImage(imgRect, PointToClient(MousePosition), playable ? ProjectImages.Icon_PlaySlick : ProjectImages.Huge_Download);
 
 			var h = 0F;
 			if (Episode != null)
 			{
-				if (Episode.Started)
+				if (Episode.Started && Enabled)
 				{
 					var msecs = Episode.WatchTime * (100 - Episode.Progress) / Episode.Progress;
 					if (msecs != 0 && !double.IsInfinity(msecs))
@@ -165,7 +180,7 @@ namespace ShowsCalendar.Controls
 			}
 			else
 			{
-				if (Movie.Started)
+				if (Movie.Started && Enabled)
 				{
 					var msecs = Movie.WatchTime * (100 - Movie.Progress) / Movie.Progress;
 					if (msecs != 0 && !double.IsInfinity(msecs))
@@ -181,12 +196,12 @@ namespace ShowsCalendar.Controls
 				}
 			}
 
-			var bnds = e.Graphics.MeasureString($"PLAY {(Movie == null ? "EPISODE" : "MOVIE")}", new Font("Nirmala UI", 6.75F, FontStyle.Bold));
-			if (imgRect.Contains(PointToClient(MousePosition)))
+			var bnds = e.Graphics.MeasureString($"{playable.If("PLAY", "DOWNLOAD")} {(Movie == null ? "EPISODE" : "MOVIE")}", new Font("Nirmala UI", 6.75F, FontStyle.Bold));
+			if (Enabled && imgRect.Contains(PointToClient(MousePosition)))
 			{
 				if (OnDeck && Episode != null)
 					e.Graphics.DrawString(Episode.Show.Name.ToUpper(), new Font("Nirmala UI", 6.75F, FontStyle.Bold), new SolidBrush(FormDesign.Design.ForeColor), imgRect.X + 6, imgRect.Height - bnds.Height - 3 - h);
-				e.Graphics.DrawString($"PLAY {(Movie == null ? "EPISODE" : "MOVIE")}", new Font("Nirmala UI", 6.75F, FontStyle.Bold), new SolidBrush(FormDesign.Design.ForeColor), imgRect.Width - bnds.Width - 6, imgRect.Height - bnds.Height - 3 - h);
+				e.Graphics.DrawString($"{playable.If("PLAY", "DOWNLOAD")} {(Movie == null ? "EPISODE" : "MOVIE")}", new Font("Nirmala UI", 6.75F, FontStyle.Bold), new SolidBrush(FormDesign.Design.ForeColor), imgRect.Width - bnds.Width - 6, imgRect.Height - bnds.Height - 3 - h);
 			}
 			var strFormat = new StringFormat() { Trimming = StringTrimming.EllipsisCharacter };
 			var font = OnDeck ? new Font("Nirmala UI", 9.75F, FontStyle.Bold) : new Font("Nirmala UI", 8.25F, FontStyle.Bold);
@@ -208,11 +223,13 @@ namespace ShowsCalendar.Controls
 			e.Graphics.DrawString(infoText, font, new SolidBrush(FormDesign.Design.InfoColor), new RectangleF(3, h, Width - 6, bnds.Height), strFormat);
 
 			// Dots
-			if (new Rectangle(Width - 22, imgRect.Height + 2, 20, 20).Contains(PointToClient(MousePosition)))
-				e.Graphics.DrawImage(new Bitmap(ProjectImages.Tiny_Dots_H).Color(FormDesign.Design.ActiveColor), new PointF(Width - 18, imgRect.Height + 4));
-			else
-				e.Graphics.DrawImage(new Bitmap(ProjectImages.Tiny_Dots_H).Color(FormDesign.Design.IconColor), new PointF(Width - 18, imgRect.Height + 4));
-
+			if (Enabled)
+			{
+				if (new Rectangle(Width - 22, imgRect.Height + 2, 20, 20).Contains(PointToClient(MousePosition)))
+					e.Graphics.DrawImage(new Bitmap(ProjectImages.Tiny_Dots_H).Color(FormDesign.Design.ActiveColor), new PointF(Width - 18, imgRect.Height + 4));
+				else
+					e.Graphics.DrawImage(new Bitmap(ProjectImages.Tiny_Dots_H).Color(FormDesign.Design.IconColor), new PointF(Width - 18, imgRect.Height + 4));
+			}
 
 			font = new Font("Nirmala UI", 9F);
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -220,15 +237,16 @@ namespace ShowsCalendar.Controls
 			var rating = Episode != null ? Episode.TMDbData.VoteAverage : Movie.TMDbData.VoteAverage;
 			var votes = Episode != null ? Episode.TMDbData.VoteCount : Movie.TMDbData.VoteCount;
 
-			// New // Unwatched
 			var tab = 0;
-			if (Episode != null && Episode.Season.Episodes.Last() == Episode)
-			{
-				tab++;
-				var rect = e.Graphics.DrawBannerOverImage(imgRect, "SEASON FINALE", BannerStyle.Active, 0);
-			}
 
-			if (votes > 0)
+			if (!string.IsNullOrWhiteSpace(BannerName))
+				e.Graphics.DrawBannerOverImage(imgRect, BannerName, BannerStyle.Text, 0, tab++);
+
+			// New // Unwatched
+			if (Episode != null && Episode.Season.Episodes.Last() == Episode)
+				e.Graphics.DrawBannerOverImage(imgRect, "SEASON FINALE", BannerStyle.Active, 0, tab++);
+
+			if (votes > 0 && Data.Options.ShowUnwatchedOnThumb)
 			{
 				var style = rating.If(x => x >= 7.5, BannerStyle.Green, rating.If(y => y < 2.5, BannerStyle.Red, BannerStyle.Yellow));
 				var rect = e.Graphics.DrawBannerOverImage(imgRect, rating.ToString("0.##"), style, 16, tab);

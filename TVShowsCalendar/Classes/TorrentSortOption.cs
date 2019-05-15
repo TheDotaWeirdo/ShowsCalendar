@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShowsCalendar.Classes
 {
-	public enum SortOption
+	public enum TorrentSortOption
 	{
 		None,
 		Name,

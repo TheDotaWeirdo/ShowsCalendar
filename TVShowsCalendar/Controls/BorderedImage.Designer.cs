@@ -33,7 +33,6 @@
 			// 
 			// BorderedImage
 			// 
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.BorderedImage_Paint);
 			this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BorderedImage_MouseClick);
 			((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 			this.ResumeLayout(false);

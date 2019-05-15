@@ -11,16 +11,20 @@ namespace ShowsCalendar.Classes
 	{
 		public void Refresh()
 		{
-			new Action(startRefresh).RunInBackground(System.Threading.ThreadPriority.Lowest);
+			ConnectionHandler.WhenConnected(() => new Action(startRefresh).RunInBackground(System.Threading.ThreadPriority.Lowest));
 		}
 
 		private async void startRefresh()
 		{
-			var dat = await Data.TMDbHandler.GetMovie(TMDbData.Id);
+			try
+			{
+				var dat = await Data.TMDbHandler.GetMovie(Id);
 
-			TMDbData = dat;
-			MovieLoaded?.Invoke(this);
-			MovieManager.Save(this);
+				TMDbData = dat;
+				MovieLoaded?.Invoke(this);
+				MovieManager.Save(this);
+			}
+			catch { }
 		}
 	}
 }

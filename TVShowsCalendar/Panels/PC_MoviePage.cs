@@ -84,10 +84,10 @@ namespace ShowsCalendar.Panels
 
 		protected override bool LoadData()
 		{
-			if (LinkedMovie.Images == null)
+			if (LinkedMovie.Images == null && ConnectionHandler.IsConnected)
 				LinkedMovie.Images = Data.TMDbHandler.RunTask(c => c.GetMovieImagesAsync(LinkedMovie.tMDbData.Id, "en")).Result;
 
-			return true;
+			return ConnectionHandler.IsConnected;
 		}
 
 		protected override void OnDataLoad()
@@ -190,7 +190,7 @@ namespace ShowsCalendar.Panels
 
 			font = new Font("Nirmala UI", 8.25F);
 			// New // Unwatched
-			if (Data.Options.ShowUnwatchedOnThumb && (bool)(LinkedMovie.TMDbData?.ReleaseDate?.IfNull(false, LinkedMovie.TMDbData.ReleaseDate < DateTime.Today)))
+			if ((bool)(LinkedMovie.TMDbData?.ReleaseDate?.IfNull(false, LinkedMovie.TMDbData.ReleaseDate < DateTime.Today)))
 			{
 				if (!LinkedMovie.Watched && (LinkedMovie.TMDbData.ReleaseDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 				{
@@ -288,7 +288,7 @@ namespace ShowsCalendar.Panels
 				if (!string.IsNullOrWhiteSpace(LinkedMovie.TMDbData.Homepage))
 					System.Diagnostics.Process.Start(LinkedMovie.TMDbData.Homepage);
 			}
-			catch { ShowPrompt("Failed to open link.\n\nCheck that you have a default browser selected.", icon: SlickControls.Enums.PromptIcons.Error); }
+			catch { ShowPrompt("Failed to open link.\n\nCheck that you have a default browser selected.", SlickControls.Enums.PromptButtons.OK, icon: SlickControls.Enums.PromptIcons.Error); }
 		}
 
 		private void PB_Stars_Paint(object sender, PaintEventArgs e)

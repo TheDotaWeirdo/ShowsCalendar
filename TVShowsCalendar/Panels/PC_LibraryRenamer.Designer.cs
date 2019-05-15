@@ -293,7 +293,7 @@
 			this.L_CN_2.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.L_CN_2.AutoSize = true;
 			this.L_CN_2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(130)))), ((int)(((byte)(170)))));
-			this.L_CN_2.Location = new System.Drawing.Point(149, 6);
+			this.L_CN_2.Location = new System.Drawing.Point(131, 6);
 			this.L_CN_2.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
 			this.L_CN_2.Name = "L_CN_2";
 			this.L_CN_2.Size = new System.Drawing.Size(59, 13);
@@ -305,24 +305,24 @@
 			this.L_CN_3.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.L_CN_3.AutoSize = true;
 			this.L_CN_3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(130)))), ((int)(((byte)(170)))));
-			this.L_CN_3.Location = new System.Drawing.Point(273, 6);
+			this.L_CN_3.Location = new System.Drawing.Point(237, 6);
 			this.L_CN_3.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
 			this.L_CN_3.Name = "L_CN_3";
-			this.L_CN_3.Size = new System.Drawing.Size(35, 13);
+			this.L_CN_3.Size = new System.Drawing.Size(63, 13);
 			this.L_CN_3.TabIndex = 105;
-			this.L_CN_3.Text = "Ep №";
+			this.L_CN_3.Text = "Episode №";
 			// 
 			// L_CN_4
 			// 
 			this.L_CN_4.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.L_CN_4.AutoSize = true;
 			this.L_CN_4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(130)))), ((int)(((byte)(170)))));
-			this.L_CN_4.Location = new System.Drawing.Point(373, 6);
+			this.L_CN_4.Location = new System.Drawing.Point(347, 6);
 			this.L_CN_4.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
 			this.L_CN_4.Name = "L_CN_4";
-			this.L_CN_4.Size = new System.Drawing.Size(52, 13);
+			this.L_CN_4.Size = new System.Drawing.Size(80, 13);
 			this.L_CN_4.TabIndex = 106;
-			this.L_CN_4.Text = "Ep Name";
+			this.L_CN_4.Text = "Episode Name";
 			// 
 			// TB_CN_2
 			// 
@@ -331,13 +331,16 @@
 			this.TB_CN_2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
 			this.TB_CN_2.Image = null;
 			this.TB_CN_2.LabelText = null;
-			this.TB_CN_2.Location = new System.Drawing.Point(226, 3);
+			this.TB_CN_2.Location = new System.Drawing.Point(208, 3);
 			this.TB_CN_2.MaximumSize = new System.Drawing.Size(9999, 20);
 			this.TB_CN_2.MaxLength = 32767;
 			this.TB_CN_2.MinimumSize = new System.Drawing.Size(50, 20);
 			this.TB_CN_2.Name = "TB_CN_2";
+			this.TB_CN_2.Password = false;
 			this.TB_CN_2.Placeholder = null;
 			this.TB_CN_2.ReadOnly = false;
+			this.TB_CN_2.Required = false;
+			this.TB_CN_2.SelectAllOnFocus = false;
 			this.TB_CN_2.SelectedText = "";
 			this.TB_CN_2.SelectionLength = 0;
 			this.TB_CN_2.SelectionStart = 0;
@@ -362,8 +365,11 @@
 			this.TB_CN_1.MaxLength = 32767;
 			this.TB_CN_1.MinimumSize = new System.Drawing.Size(50, 20);
 			this.TB_CN_1.Name = "TB_CN_1";
+			this.TB_CN_1.Password = false;
 			this.TB_CN_1.Placeholder = null;
 			this.TB_CN_1.ReadOnly = false;
+			this.TB_CN_1.Required = false;
+			this.TB_CN_1.SelectAllOnFocus = false;
 			this.TB_CN_1.SelectedText = "";
 			this.TB_CN_1.SelectionLength = 0;
 			this.TB_CN_1.SelectionStart = 0;
@@ -383,13 +389,16 @@
 			this.TB_CN_3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
 			this.TB_CN_3.Image = null;
 			this.TB_CN_3.LabelText = null;
-			this.TB_CN_3.Location = new System.Drawing.Point(326, 3);
+			this.TB_CN_3.Location = new System.Drawing.Point(318, 3);
 			this.TB_CN_3.MaximumSize = new System.Drawing.Size(9999, 20);
 			this.TB_CN_3.MaxLength = 32767;
 			this.TB_CN_3.MinimumSize = new System.Drawing.Size(50, 20);
 			this.TB_CN_3.Name = "TB_CN_3";
+			this.TB_CN_3.Password = false;
 			this.TB_CN_3.Placeholder = null;
 			this.TB_CN_3.ReadOnly = false;
+			this.TB_CN_3.Required = false;
+			this.TB_CN_3.SelectAllOnFocus = false;
 			this.TB_CN_3.SelectedText = "";
 			this.TB_CN_3.SelectionLength = 0;
 			this.TB_CN_3.SelectionStart = 0;
@@ -463,6 +472,7 @@
 			this.CB_ShowSeries.Checked = true;
 			this.CB_ShowSeries.CheckedText = "";
 			this.CB_ShowSeries.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.CB_ShowSeries.DefaultValue = true;
 			this.CB_ShowSeries.HideText = false;
 			this.CB_ShowSeries.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.CB_ShowSeries.IconSize = 16;
@@ -486,6 +496,7 @@
 			this.CB_AddZero.Checked = true;
 			this.CB_AddZero.CheckedText = "";
 			this.CB_AddZero.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.CB_AddZero.DefaultValue = true;
 			this.CB_AddZero.HideText = false;
 			this.CB_AddZero.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.CB_AddZero.IconSize = 16;
@@ -509,6 +520,7 @@
 			this.CB_SyncOnline.Checked = true;
 			this.CB_SyncOnline.CheckedText = "";
 			this.CB_SyncOnline.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.CB_SyncOnline.DefaultValue = true;
 			this.CB_SyncOnline.HideText = false;
 			this.CB_SyncOnline.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.CB_SyncOnline.IconSize = 16;
@@ -531,6 +543,7 @@
 			this.CB_IncSubs.Checked = true;
 			this.CB_IncSubs.CheckedText = "";
 			this.CB_IncSubs.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.CB_IncSubs.DefaultValue = true;
 			this.CB_IncSubs.HideText = false;
 			this.CB_IncSubs.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.CB_IncSubs.IconSize = 16;
@@ -553,6 +566,7 @@
 			this.CB_CleanFolders.Checked = true;
 			this.CB_CleanFolders.CheckedText = "";
 			this.CB_CleanFolders.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.CB_CleanFolders.DefaultValue = true;
 			this.CB_CleanFolders.HideText = false;
 			this.CB_CleanFolders.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.CB_CleanFolders.IconSize = 16;
@@ -610,6 +624,7 @@
 			this.CB_Auto.Checked = false;
 			this.CB_Auto.CheckedText = "";
 			this.CB_Auto.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.CB_Auto.DefaultValue = false;
 			this.CB_Auto.HideText = false;
 			this.CB_Auto.HoverState = SlickControls.Enums.HoverState.Normal;
 			this.CB_Auto.IconSize = 16;

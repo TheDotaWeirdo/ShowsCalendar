@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SlickControls.Panels;
-using Extensions;
-using System.Drawing.Drawing2D;
-using SlickControls.Controls;
-using System.Reflection;
-using System.IO;
+﻿using Extensions;
 using SlickControls.Classes;
-using System.Diagnostics;
+using SlickControls.Controls;
 using SlickControls.Enums;
+using SlickControls.Panels;
+using System;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace ShowsCalendar.Panels
 {
@@ -25,9 +20,11 @@ namespace ShowsCalendar.Panels
 		{
 			InitializeComponent();
 
-			using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ShowsCalendar.ChangeLog.txt"))
-				using (StreamReader reader = new StreamReader(stream))
-					P_Changelog.Controls.Add(new ChangeLogVersion(VersionInfo.GenerateInfo(reader.ReadToEnd().Split('\r', '\n')).FirstThat(x => x.Version.ToString() == ProductVersion)));
+			L_Storage.Text += new DirectoryInfo(Path.Combine(ISave.DocsFolder, "Thumbs")).GetFiles("*", SearchOption.AllDirectories).Sum(x => x.Length).SizeString();
+
+			using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ShowsCalendar.ChangeLog.json"))
+			using (var reader = new StreamReader(stream))
+				P_Changelog.Controls.Add(new ChangeLogVersion(Newtonsoft.Json.JsonConvert.DeserializeObject<VersionChangeLog[]>(reader.ReadToEnd()).FirstThat(x => x.VersionString == ProductVersion)));
 		}
 
 		protected override void DesignChanged(FormDesign design)
@@ -69,9 +66,9 @@ namespace ShowsCalendar.Panels
 
 		private void B_ChangeLog_Click(object sender, EventArgs e)
 		{
-			using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ShowsCalendar.ChangeLog.txt"))
-				using (StreamReader reader = new StreamReader(stream))
-					Form.PushPanel(null, new PC_Changelog(reader.ReadToEnd().Split('\r', '\n'), ProductVersion));
+			Cursor.Current = Cursors.WaitCursor;
+			Form.PushPanel(null, new PC_Changelog(Assembly.GetExecutingAssembly(), "ShowsCalendar.ChangeLog.json", new Version(ProductVersion)));
+			Cursor.Current = Cursors.Default;
 		}
 
 		private void B_TMDb_Click(object sender, EventArgs e)
@@ -97,6 +94,38 @@ namespace ShowsCalendar.Panels
 			try { Process.Start("https://zooqle.com"); }
 			catch (Exception) { Cursor.Current = Cursors.Default; ShowPrompt("Could not open link because you do not have a default Web Browser Selected", "No Browser Selected", PromptButtons.OK, PromptIcons.Error); }
 			Cursor.Current = Cursors.Default;
+		}
+
+		private void B_ClearAll_Click(object sender, EventArgs e)
+		{
+			EmptyFolder(new DirectoryInfo(Path.Combine(ISave.DocsFolder, "Thumbs")));
+			L_Storage.Text = "Shows Calendar stores the thumbnails and images locally so they don\'t have to be downloaded every time they are needed.\r\n\r\nCurrently used storage;  "
+				+ new DirectoryInfo(Path.Combine(ISave.DocsFolder, "Thumbs")).GetFiles("*", SearchOption.AllDirectories).Sum(x => x.Length).SizeString();
+		}
+
+		private void B_ClearRecent_Click(object sender, EventArgs e)
+		{
+			EmptyFolder(new DirectoryInfo(Path.Combine(ISave.DocsFolder, "Thumbs")), x => x.LastAccessTime < DateTime.Now.AddMonths(-1));
+			L_Storage.Text = "Shows Calendar stores the thumbnails and images locally so they don\'t have to be downloaded every time they are needed.\r\n\r\nCurrently used storage;  "
+				+ new DirectoryInfo(Path.Combine(ISave.DocsFolder, "Thumbs")).GetFiles("*", SearchOption.AllDirectories).Sum(x => x.Length).SizeString();
+		}
+
+		private void EmptyFolder(DirectoryInfo directoryInfo, Func<FileInfo, bool> test = null)
+		{
+			if (!directoryInfo.Exists) return;
+
+			foreach (var file in directoryInfo.GetFiles())
+			{
+				if (test == null || test(file))
+				{ try { file.Delete(); } catch { } }
+			}
+
+			foreach (var subfolder in directoryInfo.GetDirectories())
+			{
+				EmptyFolder(subfolder, test);
+			}
+
+			try { directoryInfo.Delete(); } catch { }
 		}
 	}
 }

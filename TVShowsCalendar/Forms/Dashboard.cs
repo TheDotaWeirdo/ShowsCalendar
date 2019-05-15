@@ -117,15 +117,7 @@ namespace ShowsCalendar.Forms
 		private void L_Version_Click(object sender, EventArgs e)
 		{
 			Cursor.Current = Cursors.WaitCursor;
-			var assembly = Assembly.GetExecutingAssembly();
-			var resourceName = "ShowsCalendar.ChangeLog.txt";
-			var result = new string[0];
-
-			using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-			using (StreamReader reader = new StreamReader(stream))
-				result = reader.ReadToEnd().Split('\r', '\n');
-
-			PushPanel(null, new PC_Changelog(result, ProductVersion));
+			PushPanel(null, new PC_Changelog(Assembly.GetExecutingAssembly(), "ShowsCalendar.ChangeLog.json",  new Version(ProductVersion)));
 			Cursor.Current = Cursors.Default;
 		}
 
@@ -136,10 +128,15 @@ namespace ShowsCalendar.Forms
 				new FlatToolStrip(new List<FlatStripItem>()
 				{
 					new FlatStripItem("Open", this.ShowUp, image: Properties.Resources.Icon_16),
+					FlatStripItem.Empty,
 					new FlatStripItem("TV Shows", () => { SetPanel<PC_Shows>(PI_Shows); this.ShowUp(); }, image: Properties.Resources.Tiny_TV),
 					new FlatStripItem("Movies", () => { SetPanel<PC_Movies>(PI_Movies); this.ShowUp(); }, image: Properties.Resources.Tiny_Movie),
+					FlatStripItem.Empty,
 					new FlatStripItem("Watch", () => { SetPanel<PC_Watch>(PI_Watch); this.ShowUp(); }, image: Properties.Resources.Tiny_Play),
+					new FlatStripItem("Library", () => { SetPanel<PC_Library>(PI_Library); this.ShowUp(); }, image: Properties.Resources.Tiny_Library),
+					FlatStripItem.Empty,
 					new FlatStripItem("Settings", () => { SetPanel<PC_Settings>(PI_Settings); this.ShowUp(); }, image: Properties.Resources.Tiny_Settings),
+					FlatStripItem.Empty,
 					new FlatStripItem("Exit App", Close, image: Properties.Resources.Tiny_Cancel)
 				}).ShowUp();
 			}
@@ -185,7 +182,7 @@ namespace ShowsCalendar.Forms
 
 		private void L_Text_Click(object sender, EventArgs e) => PI_About_OnClick(PI_About, null);
 
-		private System.Timers.Timer AutoCleanupTimer = new System.Timers.Timer(3000);
+		private System.Timers.Timer AutoCleanupTimer = new System.Timers.Timer(7200000);
 
 		private void Dashboard_Activated(object sender, EventArgs e)
 		{
@@ -208,7 +205,7 @@ namespace ShowsCalendar.Forms
 					Paths = LocalFileHandler.GeneralFolders.Convert(x => x.FullName)
 				});
 
-				new Action(PC_LibraryRenamer.RunCleaner).RunInBackground(System.Threading.ThreadPriority.BelowNormal);
+				new Action(() => { try { PC_LibraryRenamer.RunCleaner(); } catch { } }).RunInBackground(System.Threading.ThreadPriority.BelowNormal);
 			}
 		}
 
@@ -226,7 +223,7 @@ namespace ShowsCalendar.Forms
 		{
 			if (Data.Options.AutoCleaner)
 			{
-				LASTINPUTINFO info = new LASTINPUTINFO();
+                var info = new LASTINPUTINFO();
 				info.cbSize = (uint)Marshal.SizeOf(info);
 				if (GetLastInputInfo(ref info))
 					return TimeSpan.FromMilliseconds(Environment.TickCount - info.dwTime);
@@ -235,11 +232,14 @@ namespace ShowsCalendar.Forms
 			return TimeSpan.Zero;
 		}
 
-		private void Dashboard_ResizeEnd(object sender, EventArgs e)
-		{
-			if (Data.Preferences.DashMax = WindowState == FormWindowState.Maximized)
-				Data.Preferences.DashBounds = Bounds;
-			Data.Preferences.Save();
-		}
+        private void Dashboard_ResizeEnd(object sender, EventArgs e)
+        {
+            if (!TopMost)
+            {
+                if (!(Data.Preferences.DashMax = WindowState == FormWindowState.Maximized))
+                    Data.Preferences.DashBounds = Bounds;
+                Data.Preferences.Save();
+            }
+        }
 	}
 }

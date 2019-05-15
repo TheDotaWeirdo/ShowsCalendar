@@ -436,13 +436,13 @@ namespace ShowsCalendar.Panels
 			{
 				SelectedSort = null;
 				Reversed = false;
-				SortBy(SortOption.None);
+				SortBy(TorrentSortOption.None);
 			}
 			else
 			{
 				Reversed = r;
 				SelectedSort = PB_Label;
-				SortBy(SortOption.Name);
+				SortBy(TorrentSortOption.Name);
 			}
 		}
 
@@ -465,13 +465,13 @@ namespace ShowsCalendar.Panels
 			{
 				SelectedSort = null;
 				Reversed = false;
-				SortBy(SortOption.None);
+				SortBy(TorrentSortOption.None);
 			}
 			else
 			{
 				Reversed = r;
 				SelectedSort = PB_Res;
-				SortBy(SortOption.Res);
+				SortBy(TorrentSortOption.Res);
 			}
 		}
 
@@ -482,13 +482,13 @@ namespace ShowsCalendar.Panels
 			{
 				SelectedSort = null;
 				Reversed = false;
-				SortBy(SortOption.None);
+				SortBy(TorrentSortOption.None);
 			}
 			else
 			{
 				Reversed = r;
 				SelectedSort = PB_Size;
-				SortBy(SortOption.Size);
+				SortBy(TorrentSortOption.Size);
 			}
 		}
 
@@ -499,13 +499,13 @@ namespace ShowsCalendar.Panels
 			{
 				SelectedSort = null;
 				Reversed = false;
-				SortBy(SortOption.None);
+				SortBy(TorrentSortOption.None);
 			}
 			else
 			{
 				Reversed = r;
 				SelectedSort = PB_Sound;
-				SortBy(SortOption.Sound);
+				SortBy(TorrentSortOption.Sound);
 			}
 		}
 
@@ -516,13 +516,13 @@ namespace ShowsCalendar.Panels
 			{
 				SelectedSort = null;
 				Reversed = false;
-				SortBy(SortOption.None);
+				SortBy(TorrentSortOption.None);
 			}
 			else
 			{
 				Reversed = r;
 				SelectedSort = PB_Subs;
-				SortBy(SortOption.Subs);
+				SortBy(TorrentSortOption.Subs);
 			}
 		}
 
@@ -594,28 +594,28 @@ namespace ShowsCalendar.Panels
 			SlickTip.SetTo(PB_Health, "Sort by Torrent Health");
 		}
 
-		private void SortBy(SortOption sortOption)
+		private void SortBy(TorrentSortOption sortOption)
 		{
 			var torrentData = TLP_Torrents.Controls.OfType<TorrentTile>().Select(x => x.SortingData);
 
 			switch (sortOption)
 			{
-				case SortOption.Name:
+				case TorrentSortOption.Name:
 					torrentData = torrentData.OrderByDescending(x => x.Name);
 					break;
-				case SortOption.Subs:
+				case TorrentSortOption.Subs:
 					torrentData = torrentData.OrderBy(x => x.Subs);
 					break;
-				case SortOption.Sound:
+				case TorrentSortOption.Sound:
 					torrentData = torrentData.OrderBy(x => x.Sound);
 					break;
-				case SortOption.Res:
+				case TorrentSortOption.Res:
 					torrentData = torrentData.OrderBy(x => x.Res);
 					break;
-				case SortOption.Size:
+				case TorrentSortOption.Size:
 					torrentData = torrentData.OrderBy(x => x.Size);
 					break;
-				case SortOption.Health:
+				case TorrentSortOption.Health:
 					torrentData = torrentData.OrderBy(x => x.Health);
 					break;
 				default:
@@ -647,13 +647,13 @@ namespace ShowsCalendar.Panels
 			{
 				SelectedSort = null;
 				Reversed = false;
-				SortBy(SortOption.None);
+				SortBy(TorrentSortOption.None);
 			}
 			else
 			{
 				Reversed = r;
 				SelectedSort = PB_Health;
-				SortBy(SortOption.Health);
+				SortBy(TorrentSortOption.Health);
 			}
 		}
 	}

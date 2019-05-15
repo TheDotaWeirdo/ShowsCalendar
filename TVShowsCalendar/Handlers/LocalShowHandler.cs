@@ -268,33 +268,64 @@ namespace ShowsCalendar.Handlers
 			}
 		}
 
-		public static void LoadLibrary(out List<Episode> onDeck, Show refShow = null)
+		public static void LoadLibrary(out List<Episode> onDeck, Show refShow = null, bool toDownload = false)
 		{
 			onDeck = new List<Episode>();
 
 			foreach (var show in ShowManager.Shows.Where(x => refShow == null || refShow == x))
 			{
-				var firstEp = show.Episodes.FirstThat(x => x.VidFiles.Any(y => y.Exists) && !x.Watched);
 				var lastEp = show.Episodes.LastThat(x => x.Watched);
 
-				if (firstEp != null)
+				if (lastEp != null)
 				{
-					if ((lastEp != null && lastEp.WatchDate > DateTime.Now.AddDays(-10)) || firstEp.Started)
-						onDeck.Add(firstEp);
+					if (toDownload)
+					{
+						var next = lastEp?.Next;
+
+						if (next != null
+							&& (lastEp.WatchDate > DateTime.Now.AddDays(-10) || next.TMDbData.AirDate > DateTime.Today.AddDays(-10))
+							&& next.AirState == AirStateEnum.Aired
+							&& !next.VidFiles.Any(y => y.Exists) 
+							&& next.SN > 0)
+							onDeck.Add(next);
+					}
+					else
+					{
+						var firstEp = show.Episodes.FirstThat(x => x.VidFiles.Any(y => y.Exists) && !x.Watched);
+
+						if (firstEp != null && (lastEp.WatchDate > DateTime.Now.AddDays(-10) || firstEp.Started))
+							onDeck.Add(firstEp);
+					}
 				}
 			}
 		}
 
 		public static bool Match(string showName, string folder)
 		{
-			folder = NameExtractor.GetSeriesName(folder);
+			if (Check(showName, folder))
+				return true;
 
+			folder = NameExtractor.GetSeriesName(folder).Trim();
+
+			if (Check(showName, folder))
+				return true;
+
+			showName = NameExtractor.GetSeriesName(showName).Trim();
+
+			if (Check(showName, folder))
+				return true;
+
+			return false;
+		}
+
+		private static bool Check(string s1, string s2)
+		{
 			// Exact Match
-			if (showName.Equals(folder, StringComparison.CurrentCultureIgnoreCase))
+			if (s1.Equals(s2, StringComparison.CurrentCultureIgnoreCase))
 				return true;
 
 			// Spell Check
-			if (showName.SpellCheck(folder, SPELLCHECK_MAX_ERRORS, false))
+			if (s1.SpellCheck(s2, SPELLCHECK_MAX_ERRORS, false))
 				return true;
 
 			return false;

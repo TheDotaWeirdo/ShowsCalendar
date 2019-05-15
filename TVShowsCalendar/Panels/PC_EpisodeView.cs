@@ -35,7 +35,7 @@ namespace ShowsCalendar.Panels
 
 			L_Unwatched.Parent = PB_EpisodeInfo;
 
-			if (Data.Options.ShowUnwatchedOnThumb && !Episode.Watched && Episode.AirState == AirStateEnum.Aired)
+			if (!Episode.Watched && Episode.AirState == AirStateEnum.Aired)
 			{
 				if (!Episode.Watched && (Episode.TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 				{
@@ -61,9 +61,10 @@ namespace ShowsCalendar.Panels
 
 		protected override bool LoadData()
 		{
-			Episode.Images = Data.TMDbHandler.RunTask(x => x.GetTvEpisodeImagesAsync(Episode.Show.Id, Episode.SN, Episode.EN, "en")).Result;
+			if (Episode.Images == null && ConnectionHandler.IsConnected)
+				Episode.Images = Data.TMDbHandler.RunTask(x => x.GetTvEpisodeImagesAsync(Episode.Show.Id, Episode.SN, Episode.EN, "en")).Result;
 
-			return true;
+			return ConnectionHandler.IsConnected;
 		}
 
 		protected override void OnDataLoad()
@@ -129,16 +130,17 @@ namespace ShowsCalendar.Panels
 		private void ST_Images_TabSelected(object sender, EventArgs e)
 		{
 			FLP_Content.Controls.Clear(true);
-			foreach (var item in Episode.Images.Stills)
-			{
-				var width = 265;
-				var height = width * item.Height / item.Width;
+			if (Episode.Images != null)
+				foreach (var item in Episode.Images.Stills)
+				{
+					var width = 265;
+					var height = width * item.Height / item.Width;
 
-				var pb = new BorderedImage() { Size = new Size(width, height), Margin = new Padding(7) };
-				pb.GetImage(item.FilePath, 300);
+					var pb = new BorderedImage() { Size = new Size(width, height), Margin = new Padding(7) };
+					pb.GetImage(item.FilePath, 300);
 
-				FLP_Content.Controls.Add(pb);
-			}
+					FLP_Content.Controls.Add(pb);
+				}
 		}
 
 		private void ST_Cast_TabSelected(object sender, EventArgs e)

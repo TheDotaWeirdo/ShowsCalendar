@@ -168,7 +168,7 @@ namespace ShowsCalendar.Classes
 				if (pushed)
 					Data.Mainform.PushBack();
 
-				MessagePrompt.Show("Something went wrong while loading your movie.\n\nMake sure it fully downloaded, or try another file.", icon: PromptIcons.Error, form: Data.Mainform);
+				MessagePrompt.Show("Something went wrong while loading your movie.\n\nMake sure it fully downloaded, or try another file.", PromptButtons.OK, icon: PromptIcons.Error, form: Data.Mainform);
 
 				return;
 			}
@@ -250,7 +250,7 @@ namespace ShowsCalendar.Classes
 					Cursor.Current = Cursors.Default;
 				}),
 				FlatStripItem.Empty,
-				new FlatStripItem("Delete", () => MovieManager.Remove(this), image: ProjectImages.Tiny_Trash)
+				new FlatStripItem("Remove from library", () => MovieManager.Remove(this), image: ProjectImages.Tiny_Trash)
 			);
 		}
 

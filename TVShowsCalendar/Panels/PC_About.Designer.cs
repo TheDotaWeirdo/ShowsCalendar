@@ -40,6 +40,10 @@
 			this.autoSizeLabel1 = new ShowsCalendar.Controls.AutoSizeLabel();
 			this.sectionPanel1 = new SlickControls.Controls.SlickSectionPanel();
 			this.P_AppInfo = new System.Windows.Forms.TableLayoutPanel();
+			this.B_ClearAll = new SlickControls.Controls.SlickButton();
+			this.B_ClearRecent = new SlickControls.Controls.SlickButton();
+			this.L_Storage = new ShowsCalendar.Controls.AutoSizeLabel();
+			this.slickSectionPanel2 = new SlickControls.Controls.SlickSectionPanel();
 			this.B_Zooqle = new SlickControls.Controls.SlickButton();
 			this.autoSizeLabel2 = new ShowsCalendar.Controls.AutoSizeLabel();
 			this.slickSectionPanel1 = new SlickControls.Controls.SlickSectionPanel();
@@ -64,6 +68,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.B_ChangeLog)).BeginInit();
 			this.P_Tips.SuspendLayout();
 			this.P_AppInfo.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.B_ClearAll)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.B_ClearRecent)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.B_Zooqle)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.B_Icons8)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.B_TMDb)).BeginInit();
@@ -104,7 +110,7 @@
 			this.P_Stuff.Location = new System.Drawing.Point(0, 0);
 			this.P_Stuff.MinimumSize = new System.Drawing.Size(600, 200);
 			this.P_Stuff.Name = "P_Stuff";
-			this.P_Stuff.Size = new System.Drawing.Size(600, 946);
+			this.P_Stuff.Size = new System.Drawing.Size(600, 1087);
 			this.P_Stuff.TabIndex = 34;
 			// 
 			// P_Changelog
@@ -113,7 +119,7 @@
 			this.P_Changelog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.P_Changelog.Controls.Add(this.panel1);
 			this.P_Changelog.Dock = System.Windows.Forms.DockStyle.Top;
-			this.P_Changelog.Location = new System.Drawing.Point(0, 906);
+			this.P_Changelog.Location = new System.Drawing.Point(0, 1047);
 			this.P_Changelog.Name = "P_Changelog";
 			this.P_Changelog.Size = new System.Drawing.Size(600, 40);
 			this.P_Changelog.TabIndex = 3;
@@ -152,7 +158,7 @@
 			// 
 			this.P_Licence.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.P_Licence.Dock = System.Windows.Forms.DockStyle.Top;
-			this.P_Licence.Location = new System.Drawing.Point(0, 771);
+			this.P_Licence.Location = new System.Drawing.Point(0, 912);
 			this.P_Licence.Name = "P_Licence";
 			this.P_Licence.Size = new System.Drawing.Size(600, 135);
 			this.P_Licence.TabIndex = 2;
@@ -166,7 +172,7 @@
 			this.P_Tips.Controls.Add(this.autoSizeLabel1, 0, 1);
 			this.P_Tips.Controls.Add(this.sectionPanel1, 0, 0);
 			this.P_Tips.Dock = System.Windows.Forms.DockStyle.Top;
-			this.P_Tips.Location = new System.Drawing.Point(0, 603);
+			this.P_Tips.Location = new System.Drawing.Point(0, 744);
 			this.P_Tips.Name = "P_Tips";
 			this.P_Tips.RowCount = 3;
 			this.P_Tips.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -207,7 +213,13 @@
 			// 
 			this.P_AppInfo.AutoSize = true;
 			this.P_AppInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.P_AppInfo.ColumnCount = 2;
 			this.P_AppInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.P_AppInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.P_AppInfo.Controls.Add(this.B_ClearAll, 1, 13);
+			this.P_AppInfo.Controls.Add(this.B_ClearRecent, 0, 13);
+			this.P_AppInfo.Controls.Add(this.L_Storage, 0, 12);
+			this.P_AppInfo.Controls.Add(this.slickSectionPanel2, 0, 11);
 			this.P_AppInfo.Controls.Add(this.B_Zooqle, 0, 10);
 			this.P_AppInfo.Controls.Add(this.autoSizeLabel2, 0, 9);
 			this.P_AppInfo.Controls.Add(this.slickSectionPanel1, 0, 8);
@@ -222,7 +234,10 @@
 			this.P_AppInfo.Dock = System.Windows.Forms.DockStyle.Top;
 			this.P_AppInfo.Location = new System.Drawing.Point(0, 0);
 			this.P_AppInfo.Name = "P_AppInfo";
-			this.P_AppInfo.RowCount = 12;
+			this.P_AppInfo.RowCount = 15;
+			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -235,8 +250,79 @@
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.P_AppInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.P_AppInfo.Size = new System.Drawing.Size(600, 603);
+			this.P_AppInfo.Size = new System.Drawing.Size(600, 744);
 			this.P_AppInfo.TabIndex = 0;
+			// 
+			// B_ClearAll
+			// 
+			this.B_ClearAll.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.B_ClearAll.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.B_ClearAll.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.B_ClearAll.ColorShade = null;
+			this.B_ClearAll.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.B_ClearAll.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.B_ClearAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.B_ClearAll.IconSize = 16;
+			this.B_ClearAll.Image = global::ShowsCalendar.Properties.Resources.Tiny_Trash;
+			this.B_ClearAll.Location = new System.Drawing.Point(455, 694);
+			this.B_ClearAll.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
+			this.B_ClearAll.Name = "B_ClearAll";
+			this.B_ClearAll.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
+			this.B_ClearAll.Size = new System.Drawing.Size(130, 30);
+			this.B_ClearAll.TabIndex = 25;
+			this.B_ClearAll.Text = "CLEAR ALL";
+			this.B_ClearAll.Click += new System.EventHandler(this.B_ClearAll_Click);
+			// 
+			// B_ClearRecent
+			// 
+			this.B_ClearRecent.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.B_ClearRecent.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.B_ClearRecent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.B_ClearRecent.ColorShade = null;
+			this.B_ClearRecent.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.B_ClearRecent.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.B_ClearRecent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+			this.B_ClearRecent.IconSize = 16;
+			this.B_ClearRecent.Image = global::ShowsCalendar.Properties.Resources.Tiny_RemoveImage;
+			this.B_ClearRecent.Location = new System.Drawing.Point(310, 694);
+			this.B_ClearRecent.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
+			this.B_ClearRecent.Name = "B_ClearRecent";
+			this.B_ClearRecent.Padding = new System.Windows.Forms.Padding(10, 5, 5, 5);
+			this.B_ClearRecent.Size = new System.Drawing.Size(130, 30);
+			this.B_ClearRecent.TabIndex = 24;
+			this.B_ClearRecent.Text = "CLEAR OLD";
+			this.B_ClearRecent.Click += new System.EventHandler(this.B_ClearRecent_Click);
+			// 
+			// L_Storage
+			// 
+			this.P_AppInfo.SetColumnSpan(this.L_Storage, 2);
+			this.L_Storage.Dock = System.Windows.Forms.DockStyle.Top;
+			this.L_Storage.Location = new System.Drawing.Point(7, 640);
+			this.L_Storage.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
+			this.L_Storage.Name = "L_Storage";
+			this.L_Storage.Size = new System.Drawing.Size(586, 51);
+			this.L_Storage.TabIndex = 23;
+			this.L_Storage.Text = "Shows Calendar stores the thumbnails and images locally so they don\'t have to be " +
+    "downloaded every time they are needed.\r\n\r\nCurrently used storage;  ";
+			// 
+			// slickSectionPanel2
+			// 
+			this.slickSectionPanel2.Active = false;
+			this.slickSectionPanel2.AutoHide = false;
+			this.slickSectionPanel2.AutoSize = true;
+			this.slickSectionPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.P_AppInfo.SetColumnSpan(this.slickSectionPanel2, 2);
+			this.slickSectionPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.slickSectionPanel2.Flavor = null;
+			this.slickSectionPanel2.Icon = global::ShowsCalendar.Properties.Resources.Big_Harddisk;
+			this.slickSectionPanel2.Info = "";
+			this.slickSectionPanel2.Location = new System.Drawing.Point(0, 583);
+			this.slickSectionPanel2.Margin = new System.Windows.Forms.Padding(0);
+			this.slickSectionPanel2.MaximumSize = new System.Drawing.Size(9999, 54);
+			this.slickSectionPanel2.Name = "slickSectionPanel2";
+			this.slickSectionPanel2.Size = new System.Drawing.Size(600, 54);
+			this.slickSectionPanel2.TabIndex = 22;
+			this.slickSectionPanel2.Text = "Storage";
 			// 
 			// B_Zooqle
 			// 
@@ -244,6 +330,7 @@
 			this.B_Zooqle.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_Zooqle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_Zooqle.ColorShade = null;
+			this.P_AppInfo.SetColumnSpan(this.B_Zooqle, 2);
 			this.B_Zooqle.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.B_Zooqle.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.B_Zooqle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -260,6 +347,7 @@
 			// 
 			// autoSizeLabel2
 			// 
+			this.P_AppInfo.SetColumnSpan(this.autoSizeLabel2, 2);
 			this.autoSizeLabel2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.autoSizeLabel2.Location = new System.Drawing.Point(7, 512);
 			this.autoSizeLabel2.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
@@ -276,6 +364,7 @@
 			this.slickSectionPanel1.AutoHide = false;
 			this.slickSectionPanel1.AutoSize = true;
 			this.slickSectionPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.P_AppInfo.SetColumnSpan(this.slickSectionPanel1, 2);
 			this.slickSectionPanel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.slickSectionPanel1.Flavor = null;
 			this.slickSectionPanel1.Icon = global::ShowsCalendar.Properties.Resources.Big_Z;
@@ -294,6 +383,7 @@
 			this.B_Icons8.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_Icons8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_Icons8.ColorShade = null;
+			this.P_AppInfo.SetColumnSpan(this.B_Icons8, 2);
 			this.B_Icons8.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.B_Icons8.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.B_Icons8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -314,6 +404,7 @@
 			this.B_TMDb.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.B_TMDb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.B_TMDb.ColorShade = null;
+			this.P_AppInfo.SetColumnSpan(this.B_TMDb, 2);
 			this.B_TMDb.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.B_TMDb.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.B_TMDb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -330,6 +421,7 @@
 			// 
 			// L_Icons8Info
 			// 
+			this.P_AppInfo.SetColumnSpan(this.L_Icons8Info, 2);
 			this.L_Icons8Info.Dock = System.Windows.Forms.DockStyle.Top;
 			this.L_Icons8Info.Location = new System.Drawing.Point(7, 371);
 			this.L_Icons8Info.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
@@ -342,6 +434,7 @@
 			// 
 			// L_ShowsCalendarInfo
 			// 
+			this.P_AppInfo.SetColumnSpan(this.L_ShowsCalendarInfo, 2);
 			this.L_ShowsCalendarInfo.Dock = System.Windows.Forms.DockStyle.Top;
 			this.L_ShowsCalendarInfo.Location = new System.Drawing.Point(7, 57);
 			this.L_ShowsCalendarInfo.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
@@ -356,6 +449,7 @@
 			this.SP_Icons8.AutoHide = false;
 			this.SP_Icons8.AutoSize = true;
 			this.SP_Icons8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.P_AppInfo.SetColumnSpan(this.SP_Icons8, 2);
 			this.SP_Icons8.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_Icons8.Flavor = null;
 			this.SP_Icons8.Icon = ((System.Drawing.Image)(resources.GetObject("SP_Icons8.Icon")));
@@ -374,6 +468,7 @@
 			this.SP_TMDb.AutoHide = false;
 			this.SP_TMDb.AutoSize = true;
 			this.SP_TMDb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.P_AppInfo.SetColumnSpan(this.SP_TMDb, 2);
 			this.SP_TMDb.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_TMDb.Flavor = null;
 			this.SP_TMDb.Icon = global::ShowsCalendar.Properties.Resources.TMDB;
@@ -392,6 +487,7 @@
 			this.SP_ShowsCalendar.AutoHide = false;
 			this.SP_ShowsCalendar.AutoSize = true;
 			this.SP_ShowsCalendar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.P_AppInfo.SetColumnSpan(this.SP_ShowsCalendar, 2);
 			this.SP_ShowsCalendar.Dock = System.Windows.Forms.DockStyle.Top;
 			this.SP_ShowsCalendar.Flavor = null;
 			this.SP_ShowsCalendar.Icon = global::ShowsCalendar.Properties.Resources.Icon_22;
@@ -406,6 +502,7 @@
 			// 
 			// L_TMDbInfo
 			// 
+			this.P_AppInfo.SetColumnSpan(this.L_TMDbInfo, 2);
 			this.L_TMDbInfo.Dock = System.Windows.Forms.DockStyle.Top;
 			this.L_TMDbInfo.Location = new System.Drawing.Point(7, 205);
 			this.L_TMDbInfo.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
@@ -495,7 +592,7 @@
 			this.T_Licence.Selected = false;
 			this.T_Licence.Size = new System.Drawing.Size(150, 26);
 			this.T_Licence.TabIndex = 1;
-			this.T_Licence.Text = "Licence Agreement";
+			this.T_Licence.Text = "License Agreement";
 			this.T_Licence.TabSelected += new System.EventHandler(this.T_Licence_Click);
 			// 
 			// T_AppInfo
@@ -537,6 +634,8 @@
 			this.P_Tips.PerformLayout();
 			this.P_AppInfo.ResumeLayout(false);
 			this.P_AppInfo.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.B_ClearAll)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.B_ClearRecent)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.B_Zooqle)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.B_Icons8)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.B_TMDb)).EndInit();
@@ -575,5 +674,9 @@
 		private SlickControls.Controls.SlickButton B_Zooqle;
 		private Controls.AutoSizeLabel autoSizeLabel2;
 		private SlickControls.Controls.SlickSectionPanel slickSectionPanel1;
+		private SlickControls.Controls.SlickSectionPanel slickSectionPanel2;
+		private SlickControls.Controls.SlickButton B_ClearAll;
+		private SlickControls.Controls.SlickButton B_ClearRecent;
+		private Controls.AutoSizeLabel L_Storage;
 	}
 }

@@ -16,8 +16,6 @@ using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 
 namespace ShowsCalendar.Classes
 {
-	public enum TaskbarLocation { Top, Left, Bottom, Right, None }
-
 	public static class GeneralMethods
 	{
 		public delegate void action();
@@ -41,20 +39,6 @@ namespace ShowsCalendar.Classes
 			{ "720p" ,  5     },
 			{ "Low"  ,  1     },
 		};
-		
-		public static void WhenClosed(this Process process, action action)
-		{
-			var T = new System.Timers.Timer(1000);
-			T.Elapsed += (s, e) =>
-			{
-				if (IntPtr.Zero == GetWindow(process.MainWindowHandle, GW_HWNDPREV))
-				{
-					T.Dispose();
-					action();
-				}
-			};
-			T.Start();
-		}
 
 		[DllImport("user32.dll", SetLastError = true)]
 		private static extern IntPtr GetWindow(IntPtr hWnd, int nIndex);
@@ -96,50 +80,6 @@ namespace ShowsCalendar.Classes
 			}
 		}
 
-		public static void LoadPicture(this SlickControls.Controls.RoundedPicture pictureBox, string url, Func<Bitmap> defaultImage, PictureBoxSizeMode pictureBoxSizeMode = PictureBoxSizeMode.CenterImage)
-		{
-			if (string.IsNullOrEmpty(url))
-			{
-				if (pictureBox.InvokeRequired)
-					pictureBox.Invoke(new Action(() => { pictureBox.SizeMode = pictureBoxSizeMode; pictureBox.Image = defaultImage(); }));
-				else
-				{ pictureBox.SizeMode = pictureBoxSizeMode; pictureBox.Image = defaultImage(); }
-
-				return;
-			}
-
-			pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
-			pictureBox.Image = FormDesign.Loader;
-
-			new Action(() =>
-			{
-				try
-				{
-					var picbox = new PictureBox();
-					picbox.Load($"https://image.tmdb.org/t/p/w200{url}");
-
-					if (pictureBox.InvokeRequired)
-						pictureBox.Invoke(new Action(() =>
-						{
-							pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-							pictureBox.Image = picbox.Image;
-						}));
-					else
-					{
-						pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-						pictureBox.Image = picbox.Image;
-					}
-				}
-				catch
-				{
-					if (pictureBox.InvokeRequired)
-						pictureBox.Invoke(new Action(() => pictureBox.Image = defaultImage()));
-					else
-						pictureBox.Image = defaultImage();
-				}
-			}).RunInBackground();
-		}
-
 		private static bool? isadministrator;
 		public static bool IsAdministrator
 		{
@@ -153,22 +93,6 @@ namespace ShowsCalendar.Classes
 				}
 				return (bool)(isadministrator);
 			}
-		}
-
-		public static TaskbarLocation GetTaskbarLocation()
-		{
-			var sc = Screen.FromHandle(new WindowInteropHelper(new System.Windows.Window()).Handle);
-
-			if (sc.WorkingArea.Top > 0)
-				return TaskbarLocation.Top;
-			else if (sc.WorkingArea.Left != sc.Bounds.X)
-				return TaskbarLocation.Left;
-			else if ((sc.Bounds.Height - sc.WorkingArea.Height) > 0)
-				return TaskbarLocation.Bottom;
-			else if (sc.WorkingArea.Right != 0)
-				return TaskbarLocation.Right;
-
-			return TaskbarLocation.None;
 		}
 
 		public static void CreateShortcut(string Shortcut, string TargetPath)

@@ -11,24 +11,28 @@ namespace ShowsCalendar.Classes
 	{
 		public void Refresh()
 		{
-			new Action(startRefresh).RunInBackground(System.Threading.ThreadPriority.Lowest);
+			ConnectionHandler.WhenConnected(() => new Action(startRefresh).RunInBackground(System.Threading.ThreadPriority.Lowest));
 		}
 
 		private async void startRefresh()
 		{
-			var dat = await Data.TMDbHandler.GetTvShow(Id);
-			var seasons = new List<Season>();
+			try
+			{
+				var dat = await Data.TMDbHandler.GetTvShow(Id);
+				var seasons = new List<Season>();
 
-			foreach (var sn in dat.Seasons.Select(x => x.SeasonNumber))
-				seasons.Add(new Season(await Data.TMDbHandler.GetTvSeason(Id, sn), this));
+				foreach (var sn in dat.Seasons.Select(x => x.SeasonNumber))
+					seasons.Add(new Season(await Data.TMDbHandler.GetTvSeason(Id, sn), this));
 
-			foreach (var s in Seasons)
-				s.Update(seasons.FirstThat(y => s.SeasonNumber == y.SeasonNumber));
+				foreach (var s in Seasons)
+					s.Update(seasons.FirstThat(y => s.SeasonNumber == y.SeasonNumber));
 
-			Seasons.AddRange(seasons.Where(y => !Seasons.Any(x => x.SeasonNumber == y.SeasonNumber)));
-			TMDbData = dat;
-			ShowLoaded?.Invoke(this);
-			ShowManager.Save(this);
+				Seasons.AddRange(seasons.Where(y => !Seasons.Any(x => x.SeasonNumber == y.SeasonNumber)));
+				TMDbData = dat;
+				ShowLoaded?.Invoke(this);
+				ShowManager.Save(this);
+			}
+			catch { }
 		}
 	}
 }

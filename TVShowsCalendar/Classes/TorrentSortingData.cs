@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShowsCalendar.Classes
 {
-	public struct SortingData
+	public struct TorrentSortingData
 	{
-		#region Public Fields
-
 		public string Name { get; set; }
 		public int Res { get; set; }
 		public int SeedOrder { get; set; }
@@ -18,7 +16,5 @@ namespace ShowsCalendar.Classes
 		public string Subs { get; set; }
 		public TorrentTile Tile { get; set; }
 		public double Health { get; set; }
-
-		#endregion Public Fields
 	}
 }

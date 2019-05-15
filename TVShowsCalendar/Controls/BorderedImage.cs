@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Extensions;
-using SlickControls.Classes;
-using SlickControls.Forms;
+﻿using Extensions;
 using ShowsCalendar.Classes;
 using ShowsCalendar.Handlers;
+using SlickControls.Classes;
+using SlickControls.Forms;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ShowsCalendar.Controls
 {
@@ -22,6 +16,8 @@ namespace ShowsCalendar.Controls
 		public BorderedImage()
 		{
 			InitializeComponent();
+
+			Paint += BorderedImage_Paint;
 		}
 
 		private void BorderedImage_Paint(object sender, PaintEventArgs e)
@@ -29,7 +25,7 @@ namespace ShowsCalendar.Controls
 			e.Graphics.Clear(BackColor);
 
 			e.Graphics.DrawBorderedImage(
-				(Image ?? new Bitmap(Properties.Resources.Icon_ErrorImage).Color(FormDesign.Modern.IconColor))
+				Image ?? new Bitmap(Properties.Resources.Icon_ErrorImage).Color(FormDesign.Modern.IconColor)
 				, 1
 				, 1
 				, Width - 2
@@ -69,12 +65,12 @@ namespace ShowsCalendar.Controls
 							var pb = frm.PictureBox;
 
 							pb.GetImage(ImageUrl, 0);
-							pb.LoadCompleted += (s, re)=>
+							pb.LoadCompleted += (s, re) =>
 							{
 								if (re.Error == null && !re.Cancelled)
 									pb.Image.Save(path);
 								frm.TryInvoke(frm.Dispose);
-							};	
+							};
 						}
 					}
 					, Properties.Resources.Tiny_CloudDownload

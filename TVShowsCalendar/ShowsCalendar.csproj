@@ -213,6 +213,7 @@
     <Compile Include="Classes\GeneralMethods.cs" />
     <Compile Include="Classes\LightMovie.cs" />
     <Compile Include="Classes\LightShow.cs" />
+    <Compile Include="Classes\MediaSortOptions.cs" />
     <Compile Include="Classes\Movie-Base.cs" />
     <Compile Include="Classes\Options.cs" />
     <Compile Include="Classes\Preferences.cs" />
@@ -223,8 +224,11 @@
     <Compile Include="Classes\Show-Update.cs" />
     <Compile Include="Classes\Show-Create.cs" />
     <Compile Include="Classes\ShowAssosiation.cs" />
-    <Compile Include="Classes\SortingData.cs" />
-    <Compile Include="Classes\SortOption.cs" />
+    <Compile Include="Classes\TorrentSortingData.cs" />
+    <Compile Include="Classes\TorrentSortOption.cs" />
+    <Compile Include="Controls\ContextedImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\VideoFileControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -255,6 +259,12 @@
     </Compile>
     <Compile Include="Panels\PC_AddMedia.Designer.cs">
       <DependentUpon>PC_AddMedia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PC_CharacterView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PC_CharacterView.Designer.cs">
+      <DependentUpon>PC_CharacterView.cs</DependentUpon>
     </Compile>
     <Compile Include="Panels\PC_Dashboard.cs">
       <SubType>UserControl</SubType>
@@ -414,6 +424,9 @@
     <Compile Include="Controls\OptionControl.Designer.cs">
       <DependentUpon>OptionControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\ContextedImage.resx">
+      <DependentUpon>ContextedImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\VideoFileControl.resx">
       <DependentUpon>VideoFileControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -425,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\PC_AddMedia.resx">
       <DependentUpon>PC_AddMedia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PC_CharacterView.resx">
+      <DependentUpon>PC_CharacterView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\PC_Dashboard.resx">
       <DependentUpon>PC_Dashboard.cs</DependentUpon>
@@ -529,6 +545,7 @@
     <EmbeddedResource Include="Controls\ShowTile.resx">
       <DependentUpon>ShowTile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangeLog.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -564,6 +581,19 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Big_Crew.png" />
+    <None Include="Resources\Tiny_RemoveImage.png" />
+    <None Include="Resources\Big_Harddisk.png" />
+    <None Include="Resources\Tiny_Job.png" />
+    <None Include="Resources\Big_Cast.png" />
+    <None Include="Resources\ArrowUp.png" />
+    <None Include="Resources\ArrowDown.png" />
+    <None Include="Resources\Big_Genre.png" />
+    <None Include="Resources\Big_Calendar.png" />
+    <None Include="Resources\Big_Label.png" />
+    <None Include="Resources\Big_Wait.png" />
+    <None Include="Resources\Huge_Download.png" />
+    <None Include="Resources\Big_ViewPlay.png" />
     <None Include="Resources\Tiny_Health.png" />
     <None Include="Resources\Tiny_Signal_3.png" />
     <None Include="Resources\Tiny_Signal_2.png" />
@@ -596,7 +626,6 @@
     <None Include="Resources\Circle_Empty.png" />
     <None Include="Resources\Circle_Filled.png" />
     <None Include="Resources\PoweredByTMDb.png" />
-    <EmbeddedResource Include="ChangeLog_Old.txt" />
     <None Include="Resources\Icon_BigPlay.png" />
     <None Include="Resources\ArrowRight.png" />
     <Content Include="Icon.ico" />
@@ -685,7 +714,6 @@
     <None Include="Resources\Icon_PlaySlick.png" />
     <None Include="Resources\Icon_Next.png" />
     <None Include="Resources\Icon_32.png" />
-    <EmbeddedResource Include="ChangeLog.txt" />
     <None Include="Resources\TodayNotification.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -717,4 +745,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\GitInfo.2.0.11\build\GitInfo.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitInfo.2.0.11\build\GitInfo.targets'))" />
   </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ChangeLog_1json__JSONSchema="http://json.schemastore.org/appsettings" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

@@ -99,10 +99,10 @@ namespace ShowsCalendar.Panels
 
 		protected override bool LoadData()
 		{
-			if (LinkedShow.Images == null)
+			if (LinkedShow.Images == null && ConnectionHandler.IsConnected)
 				LinkedShow.Images = Data.TMDbHandler.RunTask(c => c.GetTvShowImagesAsync(LinkedShow.tMDbData.Id, "en")).Result;
 
-			return true;
+			return ConnectionHandler.IsConnected;
 		}
 
 		protected override void OnDataLoad()
@@ -152,7 +152,7 @@ namespace ShowsCalendar.Panels
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
 			// New // Unwatched
-			if (Data.Options.ShowUnwatchedOnThumb && (pb.Tag as Season).Episodes.Any(x => !x.Watched && x.AirState == AirStateEnum.Aired))
+			if ((pb.Tag as Season).Episodes.Any(x => !x.Watched && x.AirState == AirStateEnum.Aired))
 			{
 				if ((pb.Tag as Season).Episodes.LastThat(x => x.AirState == AirStateEnum.Aired)?.TMDbData != null && !(pb.Tag as Season).Episodes.LastThat(x => x.AirState == AirStateEnum.Aired).Watched && ((pb.Tag as Season).Episodes.LastThat(x => x.AirState == AirStateEnum.Aired).TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 				{
@@ -196,17 +196,17 @@ namespace ShowsCalendar.Panels
 			};
 		}
 
-		public PC_ShowPage(Season season) : this(season.Show)
+		public PC_ShowPage(Season season, Episode episode = null) : this(season.Show)
 		{
 			Load += (s, e) =>
 			{
-				SetSeason(season);
+				SetSeason(season, episode);
 			};
 		}
 
-		private void SetSeason(Season season)
+		private void SetSeason(Season season, Episode episode = null)
 		{
-			Form.PushPanel(null, new PC_SeasonView(season));
+			Form.PushPanel(null, new PC_SeasonView(season, episode));
 		}
 
 		protected override void DesignChanged(FormDesign design)
@@ -288,7 +288,7 @@ namespace ShowsCalendar.Panels
 
 			font = new Font("Nirmala UI", 8.25F);
 			// New // Unwatched
-			if (Data.Options.ShowUnwatchedOnThumb && LinkedShow.Episodes.Any(x => !x.Watched && x.AirState == AirStateEnum.Aired))
+			if (LinkedShow.Episodes.Any(x => !x.Watched && x.AirState == AirStateEnum.Aired))
 			{
 				if (LinkedShow.LastEpisode?.TMDbData != null && !LinkedShow.LastEpisode.Watched && (LinkedShow.LastEpisode.TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 				{
@@ -405,7 +405,7 @@ namespace ShowsCalendar.Panels
 				if (!string.IsNullOrWhiteSpace(LinkedShow.TMDbData.Homepage))
 					System.Diagnostics.Process.Start(LinkedShow.TMDbData.Homepage);
 			}
-			catch { ShowPrompt("Failed to open link.\n\nCheck that you have a default browser selected.", icon: SlickControls.Enums.PromptIcons.Error); }
+			catch { ShowPrompt("Failed to open link.\n\nCheck that you have a default browser selected.", SlickControls.Enums.PromptButtons.OK, icon: SlickControls.Enums.PromptIcons.Error); }
 		}
 
 		private void PB_Stars_Paint(object sender, PaintEventArgs e)

@@ -92,6 +92,7 @@ namespace ShowsCalendar.Panels
 				P_Tabs.SuspendDrawing();
 
 				SP_OnDeck.BringToFront();
+				SP_ContinueWatching.BringToFront();
 				SP_RecentEps.BringToFront();
 				SP_RecentMovies.BringToFront();
 				SP_UpcomingEps.BringToFront();
@@ -126,7 +127,33 @@ namespace ShowsCalendar.Panels
 					}
 				}
 
+				LocalShowHandler.LoadLibrary(out onDeck, show, true);
+
+				foreach (var item in onDeck)
+				{
+					var current = SP_ContinueWatching.Content.Controls.ThatAre<WatchControl>().FirstThat(x => x.Episode == item);
+
+					if (current == null)
+					{
+						var c = new WatchControl(item);
+
+						controls.Add(c);
+						SP_ContinueWatching.Content.Controls.Add(c);
+					}
+					else
+					{
+						current.Refresh();
+						controls.Add(current);
+					}
+				}
+
 				foreach (var item in SP_OnDeck.Content.Controls.ThatAre<WatchControl>().Where(x => x.Episode != null && !controls.Contains(x)))
+				{
+					if (show == null || item.Episode.Show == show)
+						item.Dispose();
+				}
+
+				foreach (var item in SP_ContinueWatching.Content.Controls.ThatAre<WatchControl>().Where(x => x.Episode != null && !controls.Contains(x)))
 				{
 					if (show == null || item.Episode.Show == show)
 						item.Dispose();
@@ -135,6 +162,7 @@ namespace ShowsCalendar.Panels
 				P_Tabs.SuspendDrawing();
 
 				SP_OnDeck.BringToFront();
+				SP_ContinueWatching.BringToFront();
 				SP_RecentEps.BringToFront();
 				SP_RecentMovies.BringToFront();
 				SP_UpcomingEps.BringToFront();
@@ -188,6 +216,7 @@ namespace ShowsCalendar.Panels
 				P_Tabs.SuspendDrawing();
 
 				SP_OnDeck.BringToFront();
+				SP_ContinueWatching.BringToFront();
 				SP_RecentEps.BringToFront();
 				SP_RecentMovies.BringToFront();
 				SP_UpcomingEps.BringToFront();
@@ -250,6 +279,7 @@ namespace ShowsCalendar.Panels
 				P_Tabs.SuspendDrawing();
 
 				SP_OnDeck.BringToFront();
+				SP_ContinueWatching.BringToFront();
 				SP_RecentEps.BringToFront();
 				SP_RecentMovies.BringToFront();
 				SP_UpcomingEps.BringToFront();

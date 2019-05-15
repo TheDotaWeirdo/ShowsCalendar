@@ -62,10 +62,11 @@ namespace ShowsCalendar.Handlers
 		{
 			watchers.TryGetValue(item.FullName.ToLower(), out var watcher);
 
-			watcher.Dispose();
-
 			if (watcher != null)
+			{
+				watcher.Dispose();
 				watchers.Remove(item.FullName.ToLower());
+			}
 		}
 
 		private static void file_Changed(object sender, FileSystemEventArgs e)

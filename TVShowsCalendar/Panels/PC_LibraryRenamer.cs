@@ -40,7 +40,11 @@ namespace ShowsCalendar.Panels
 			CB_CleanFolders.Checked = Options.Current.CleanFolders;
 			CB_Auto.Checked = Classes.Data.Options.AutoCleaner;
 
-			if (RB_Style1.RadioGroup.Any(x => Options.Current.NamingStyle.Equals(x.Data)))
+			if (Options.Current.NamingStyle == null)
+			{
+				RB_Style1.Checked = true;
+			}
+			else if (RB_Style1.RadioGroup.Any(x => Options.Current.NamingStyle.Equals(x.Data)))
 			{
 				RB_Style1.RadioGroup.FirstThat(x => Options.Current.NamingStyle.Equals(x.Data)).Checked = true;
 			}
@@ -57,6 +61,7 @@ namespace ShowsCalendar.Panels
 			if (Classes.Data.RenameHandler != null)
 				SetEnabled(false);
 		}
+
 		protected override void DesignChanged(FormDesign design)
 		{
 			base.DesignChanged(design);
@@ -78,7 +83,7 @@ namespace ShowsCalendar.Panels
 				radio.Text = sampleEp.GetName(radio.Data as NamingStyle);
 		}
 
-		public override bool CanExit()
+		public override bool CanExit(bool toBeDisposed)
 		{
 			Options.Current.ShowSeries = CB_ShowSeries.Checked;
 			Options.Current.AddZero = CB_AddZero.Checked;
@@ -113,7 +118,7 @@ namespace ShowsCalendar.Panels
 		private void B_Run_Click(object sender, EventArgs e)
 		{
 			SetEnabled(false);
-			CanExit();
+			CanExit(false);
 
 			var notif = Notification.Create(PaintNotification, null).Show(Form);
 

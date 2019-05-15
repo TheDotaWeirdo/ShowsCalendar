@@ -26,22 +26,29 @@ namespace ShowsCalendar.Panels
 		{
 			InitializeComponent();
 
+			PC_ShowsOrder.OptionList = PC_MoviesOrder.OptionList = typeof(MediaSortOptions).GetEnumDescs();
+
 			if (!Data.FirstTimeSetup)
 			{
-				OC_Quality.SelectedOption = GeneralMethods.QualityDicId2Txt[Data.Options.PrefferedQuality];
+				OC_Quality.SelectedOption = GeneralMethods.QualityDicId2Txt[Data.Options.PrefferedQuality.If(0, 7)];
 				OC_DownloadOption.Checked = Data.Options.ShowAllDownloads;
 				OC_StartMode.Checked = Data.Options.StartupMode;
 				OC_DownloadBehavior.Checked = Data.Options.DownloadBehavior;
-				OC_EpBehavior.Checked = Data.Options.EpisodeBehavior;
 				OC_EpNotification.Checked = Data.Options.EpisodeNotification;
 				OC_NotificationSound.Checked = Data.Options.NotificationSound;
 				OC_UnwatchedBanner.Checked = Data.Options.ShowUnwatchedOnThumb;
 				OC_FinaleWarning.Checked = Data.Options.FinaleWarning;
 				OC_FullScreenPlayer.Checked = Data.Options.FullScreenPlayer;
+				OC_EpBehavior.Checked = Data.Options.OpenAllPagesForEp;
+				OC_AutoEpSwitch.Checked = Data.Options.AutomaticEpisodeSwitching;
+				OC_AutoPauseScroll.Checked = Data.Options.AutoPauseOnInfo;
+				OC_AutoEpPLay.Checked = Data.Options.AutomaticEpisodePlay;
+                OC_DisableMini.Checked = Data.Options.DisabledMiniplayer;
+				OC_DiscoverPages.SelectedOption = $"{Data.Options.DiscoverResults} results";
 				OC_ForwardTime.SelectedOption = $"{Data.Options.ForwardTime} seconds";
 				OC_BackwardTime.SelectedOption = $"{Data.Options.BackwardTime} seconds";
-				OC_MoviesRefreshDays.SelectedOption = $"{Data.Options.MoviesRefreshDays} days";
-				OC_ShowsRefreshDays.SelectedOption = $"{Data.Options.ShowsRefreshDays} days";
+				PC_ShowsOrder.SelectedOption = Data.Options.ShowSorting.GetDescription();
+				PC_MoviesOrder.SelectedOption = Data.Options.MovieSorting.GetDescription();
 
 				OC_LaunchWithWindows.Checked = File.Exists(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Shows Calendar.lnk");
 
@@ -61,21 +68,26 @@ namespace ShowsCalendar.Panels
 
 		private void B_Apply_Click(object sender, EventArgs e)
 		{
-			Data.Options.PrefferedQuality = GeneralMethods.QualityDicId2Txt.Where(x => x.Value == OC_Quality.SelectedOption).FirstOrDefault().Key;
+			Data.Options.PrefferedQuality = GeneralMethods.QualityDicId2Txt.Where(x => x.Value == OC_Quality.SelectedOption).FirstOrDefault().Key.If(0, 7);
 			Data.Options.ShowAllDownloads = OC_DownloadOption.Checked;
 			Data.Options.StartupMode = OC_StartMode.Checked;
 			Data.Options.LaunchWithWindows = OC_LaunchWithWindows.Checked;
 			Data.Options.DownloadBehavior = OC_DownloadBehavior.Checked;
-			Data.Options.EpisodeBehavior = OC_EpBehavior.Checked;
 			Data.Options.EpisodeNotification = OC_EpNotification.Checked;
 			Data.Options.NotificationSound = OC_NotificationSound.Checked;
 			Data.Options.ShowUnwatchedOnThumb = OC_UnwatchedBanner.Checked;
 			Data.Options.FinaleWarning = OC_FinaleWarning.Checked;
+			Data.Options.OpenAllPagesForEp = OC_EpBehavior.Checked;
 			Data.Options.FullScreenPlayer = OC_FullScreenPlayer.Checked;
+			Data.Options.AutomaticEpisodeSwitching = OC_AutoEpSwitch.Checked;
+			Data.Options.AutomaticEpisodePlay = OC_AutoEpPLay.Checked;
+			Data.Options.AutoPauseOnInfo = OC_AutoPauseScroll.Checked;
+            Data.Options.DisabledMiniplayer = OC_DisableMini.Checked;
 			Data.Options.ForwardTime = OC_ForwardTime.SelectedOption.SmartParse();
 			Data.Options.BackwardTime = OC_BackwardTime.SelectedOption.SmartParse();
-			Data.Options.MoviesRefreshDays = OC_MoviesRefreshDays.SelectedOption.SmartParse();
-			Data.Options.ShowsRefreshDays = OC_ShowsRefreshDays.SelectedOption.SmartParse();
+			Data.Options.DiscoverResults = OC_DiscoverPages.SelectedOption.SmartParse();
+			Data.Options.ShowSorting = (MediaSortOptions)typeof(MediaSortOptions).GetEnumValueFromDescs(PC_ShowsOrder.SelectedOption);
+			Data.Options.MovieSorting = (MediaSortOptions)typeof(MediaSortOptions).GetEnumValueFromDescs(PC_MoviesOrder.SelectedOption);
 
 			Data.Options.Save();
 
@@ -102,7 +114,7 @@ namespace ShowsCalendar.Panels
 			P_OptionContainer.BackColor = B_Done.BackColor = verticalScroll1.BackColor = design.BackColor.Tint(Lum: design.Type.If(FormDesignType.Dark, 3, -3));
 		}
 
-		public override bool CanExit()
+		public override bool CanExit(bool toBeDisposed)
 		{
 			if (valuesChanged)
 			{

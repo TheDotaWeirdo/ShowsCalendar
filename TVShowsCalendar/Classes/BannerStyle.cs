@@ -8,7 +8,8 @@ namespace ShowsCalendar.Classes
 		Active,
 		Green,
 		Yellow,
-		Red
+		Red,
+		Text,
 	}
 
 	public static class BannerStyleExtensions
@@ -19,6 +20,8 @@ namespace ShowsCalendar.Classes
 			{
 				case BannerStyle.Active:
 					return FormDesign.Design.ActiveForeColor;
+				case BannerStyle.Text:
+					return FormDesign.Design.MenuColor;
 				default:
 					return FormDesign.Design.Type.If(FormDesignType.Light, FormDesign.Design.ForeColor, FormDesign.Design.MenuColor);
 			}
@@ -36,6 +39,8 @@ namespace ShowsCalendar.Classes
 					return FormDesign.Design.YellowColor;
 				case BannerStyle.Red:
 					return FormDesign.Design.RedColor;
+				case BannerStyle.Text:
+					return FormDesign.Design.MenuForeColor;
 				default:
 					return FormDesign.Design.ActiveColor;
 			}

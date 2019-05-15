@@ -168,7 +168,7 @@ namespace ShowsCalendar.Classes
 
 			if (!epFile?.Exists ?? false)
 			{
-				MessagePrompt.Show($"Could not find the file associated with {Show} {this}\n\nCheck if the file exists, or if it was renamed into something Shows Calendar can't detect.", icon: PromptIcons.Hand, form: Data.Mainform);
+				MessagePrompt.Show($"Could not find the file associated with {Show} {this}\n\nCheck if the file exists, or if it was renamed into something Shows Calendar can't detect.", PromptButtons.OK, icon: PromptIcons.Hand, form: Data.Mainform);
 				return;
 			}
 
@@ -195,7 +195,7 @@ namespace ShowsCalendar.Classes
 				if (pushed)
 					Data.Mainform.PushBack();
 
-				MessagePrompt.Show("Something went wrong while loading your episode.\n\nMake sure it fully downloaded, or try another file.", icon: PromptIcons.Error, form: Data.Mainform);
+				MessagePrompt.Show("Something went wrong while loading your episode.\n\nMake sure it fully downloaded, or try another file.", PromptButtons.OK, icon: PromptIcons.Error, form: Data.Mainform);
 
 				return;
 			}
@@ -252,13 +252,18 @@ namespace ShowsCalendar.Classes
 				{
 					if (Data.Mainform.CurrentPanel is PC_SeasonView seasonView && seasonView.Season == Season)
 						Data.Mainform.PushPanel(null, new PC_EpisodeView(this));
+					else if (!Data.Options.OpenAllPagesForEp)
+						Data.Mainform.PushPanel(null, new PC_EpisodeView(this));
 					else if (!(Data.Mainform.CurrentPanel is PC_EpisodeView epView && epView.Episode == this))
 						Data.Mainform.PushPanel(null, new PC_ShowPage(this));
 				}, image: ProjectImages.Tiny_Info),
 
 				new FlatStripItem("Season Info", () =>
 				{
-					Data.Mainform.PushPanel(null, new PC_ShowPage(Season));
+					if (!Data.Options.OpenAllPagesForEp)
+						Data.Mainform.PushPanel(null, new PC_ShowPage(Season, this));
+					else
+						Data.Mainform.PushPanel(null, new PC_SeasonView(Season, this));
 				}, image: ProjectImages.Tiny_TVEmpty),
 
 				new FlatStripItem("Show Page", () =>

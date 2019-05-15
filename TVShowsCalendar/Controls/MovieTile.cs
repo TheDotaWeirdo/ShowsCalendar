@@ -176,7 +176,7 @@ namespace ShowsCalendar
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
 			// New // Unwatched
-			if (Data.Options.ShowUnwatchedOnThumb && (bool)(LinkedMovie.TMDbData?.ReleaseDate?.IfNull(false, LinkedMovie.TMDbData.ReleaseDate < DateTime.Today)))
+			if ((bool)(LinkedMovie.TMDbData?.ReleaseDate?.IfNull(false, LinkedMovie.TMDbData.ReleaseDate < DateTime.Today)))
 			{
 				if (!LinkedMovie.Watched && (LinkedMovie.TMDbData.ReleaseDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 					e.Graphics.DrawBannerOverImage(imgRect, "NEW", BannerStyle.Active);
@@ -241,7 +241,7 @@ namespace ShowsCalendar
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
 			// New // Unwatched
-			if (Data.Options.ShowUnwatchedOnThumb && (bool)(LinkedMovie.TMDbData?.ReleaseDate?.IfNull(false, LinkedMovie.TMDbData.ReleaseDate < DateTime.Today)))
+			if ((bool)(LinkedMovie.TMDbData?.ReleaseDate?.IfNull(false, LinkedMovie.TMDbData.ReleaseDate < DateTime.Today)))
 			{
 				if (!LinkedMovie.Watched && (LinkedMovie.TMDbData.ReleaseDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 					e.Graphics.DrawBannerOverImage(imgRect, "NEW", BannerStyle.Active);

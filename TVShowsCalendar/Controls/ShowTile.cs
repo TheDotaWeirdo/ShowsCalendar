@@ -172,7 +172,7 @@ namespace ShowsCalendar
 
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-			if (Data.Options.ShowUnwatchedOnThumb && LinkedShow.Episodes.Any(x => !x.Watched && x.AirState == AirStateEnum.Aired))
+			if (LinkedShow.Episodes.Any(x => !x.Watched && x.AirState == AirStateEnum.Aired))
 			{
 				if (LinkedShow.LastEpisode?.TMDbData != null && !LinkedShow.LastEpisode.Watched && (LinkedShow.LastEpisode.TMDbData.AirDate ?? DateTime.MinValue) > DateTime.Today.AddDays(-7))
 					e.Graphics.DrawBannerOverImage(imgRect, "NEW", BannerStyle.Active);

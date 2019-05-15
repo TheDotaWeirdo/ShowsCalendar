@@ -45,11 +45,20 @@ namespace ShowsCalendar.Controls
 			var shell = new Shell32.Shell();
 			var objFolder = shell.NameSpace(fileInfo.DirectoryName);
 			var item = objFolder.ParseName(fileInfo.Name);
+			var vidprops = 0;
+			var audprops = (NReco.VideoInfo.MediaInfo.StreamInfo)null;
+			var subs = new NReco.VideoInfo.MediaInfo.StreamInfo[0];
+			var dur = "File Read Failed";
 
-			var fileprops = new NReco.VideoInfo.FFProbe().GetMediaInfo(fileInfo.FullName);
-			var vidprops = fileprops.Streams.FirstThat(x => x.CodecType == "video")?.Height ?? 0;
-			var audprops = fileprops.Streams.FirstThat(x => x.CodecType == "audio");
-			var subs = fileprops.Streams.Where(x => x.CodecType == "subtitle");
+			try
+			{
+				var fileprops = new NReco.VideoInfo.FFProbe().GetMediaInfo(fileInfo.FullName);
+				vidprops = fileprops.Streams.FirstThat(x => x.CodecType == "video")?.Height ?? 0;
+				audprops = fileprops.Streams.FirstThat(x => x.CodecType == "audio");
+				subs = fileprops.Streams.Where(x => x.CodecType == "subtitle").ToArray();
+				dur = fileprops.Duration.ToReadableString();
+			}
+			catch { }
 
 			var vidQ = "Low Quality";
 
@@ -69,11 +78,11 @@ namespace ShowsCalendar.Controls
 				fileInfo.FileName(),
 				vidQ,
 				fileInfo.Length.SizeString(),
-				fileprops.Duration.ToReadableString(),
+				dur,
 				$"Created on {fileInfo.CreationTime.ToReadableString(true, ExtensionClass.DateFormat.TDMY)}",
 				fileInfo.AbreviatedPath(true).Replace("\\..\\", "\\ ..\\"),
 				audprops?.CodecLongName ?? string.Empty,
-				subs.Any() ? $"{subs.Count()} Subtitle".Plural(subs) : string.Empty
+				subs.Any() ? $"{subs.Length} Subtitle".Plural(subs) : string.Empty
 			};
 		}
 
@@ -170,10 +179,10 @@ namespace ShowsCalendar.Controls
 
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-			if (Data.Options.ShowUnwatchedOnThumb && !string.IsNullOrWhiteSpace(infoStrings[1]))
+			if (!string.IsNullOrWhiteSpace(infoStrings[1]))
 				e.Graphics.DrawBannerOverImage(new Rectangle(1, 1, 82, 123), infoStrings[1], BannerStyle.Active);
 
-			if (Data.Options.ShowUnwatchedOnThumb && !string.IsNullOrWhiteSpace(infoStrings[7]))
+			if (!string.IsNullOrWhiteSpace(infoStrings[7]))
 				e.Graphics.DrawBannerOverImage(new Rectangle(1, 1, 82, 123), infoStrings[7], BannerStyle.Green, tab: string.IsNullOrWhiteSpace(infoStrings[1]).If(0, 1));
 		}
 
